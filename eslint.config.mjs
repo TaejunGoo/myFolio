@@ -1,55 +1,105 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import storybook from "eslint-plugin-storybook";
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import stylistic from '@stylistic/eslint-plugin';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import storybook from 'eslint-plugin-storybook';
+import betterTailwindcss from 'eslint-plugin-better-tailwindcss';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default defineConfig([
+  // ============================================
+  // 기본 설정: JavaScript, TypeScript, Next.js
+  // ============================================
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.stylistic,
+  ...nextVitals,
+  ...nextTs,
+  ...storybook.configs['flat/recommended'],
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals"),
-  ...compat.extends("next/typescript"),
-  ...compat.extends("airbnb"),
-  ...compat.extends("airbnb-typescript"),
-  ...storybook.configs["flat/recommended"],
+  // ============================================
+  // Tailwind CSS 설정
+  // ============================================
   {
-    languageOptions: {
-      parserOptions: {
-        project: "./tsconfig.json",
+    plugins: {
+      'better-tailwindcss': betterTailwindcss,
+    },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: './src/app/globals.css',
       },
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/require-default-props": "off",
-      "import/prefer-default-export": "off",
-      "import/extensions": "off",
-      "react/function-component-definition": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
-      "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+      // Stylistic rules (recommended + autofix)
+      'better-tailwindcss/enforce-consistent-line-wrapping': 'warn',
+      'better-tailwindcss/enforce-consistent-class-order': 'warn',
+      'better-tailwindcss/enforce-consistent-variable-syntax': 'warn',
+      'better-tailwindcss/enforce-consistent-important-position': 'warn',
+      'better-tailwindcss/enforce-shorthand-classes': 'warn',
+      'better-tailwindcss/no-duplicate-classes': 'error',
+      'better-tailwindcss/no-deprecated-classes': 'warn',
+      'better-tailwindcss/no-unnecessary-whitespace': 'error',
+
+      // Correctness rules (recommended)
+      'better-tailwindcss/no-conflicting-classes': 'error',
     },
   },
-  {
-    ignores: [
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      "postcss.config.mjs",
-      "eslint.config.mjs",
-      "vitest.config.ts",
-      "vitest.shims.d.ts",
-      "next.config.ts",
-      "tailwind.config.ts",
-      "components.json",
-      ".storybook/**",
-      "public/**",
-    ],
-  },
-];
 
-export default eslintConfig;
+  // ============================================
+  // 무시할 파일 및 폴더
+  // ============================================
+  {
+    ignores: ['build/*', 'dist/*', '**/.next/*', '**/node_modules/*'],
+  },
+
+  // ============================================
+  // 파일별 언어 설정
+  // ============================================
+  {
+    files: ['**/*.{js,ts,jsx,tsx}'],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+
+  // ============================================
+  // React 설정
+  // ============================================
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+    },
+  },
+
+  // ============================================
+  // 코드 스타일 규칙 (@stylistic)
+  // ============================================
+  {
+    plugins: { '@stylistic': stylistic },
+    rules: {
+      // 들여쓰기 및 따옴표
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/jsx-quotes': ['error', 'prefer-double'],
+
+      // 공백 및 괄호
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/array-bracket-spacing': ['error', 'never'],
+      '@stylistic/comma-spacing': ['error', { before: false, after: true }],
+      '@stylistic/arrow-parens': ['error', 'always'],
+
+      // 줄바꿈 및 빈 줄
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/eol-last': ['error', 'always'],
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
+    },
+  },
+]);
