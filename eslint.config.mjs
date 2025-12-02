@@ -33,7 +33,7 @@ export default defineConfig([
     },
     rules: {
       // Stylistic rules (recommended + autofix)
-      'better-tailwindcss/enforce-consistent-line-wrapping': 'warn',
+      'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { lineBreakStyle: 'windows' }],
       'better-tailwindcss/enforce-consistent-class-order': 'warn',
       'better-tailwindcss/enforce-consistent-variable-syntax': 'warn',
       'better-tailwindcss/enforce-consistent-important-position': 'warn',
