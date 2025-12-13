@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 // 1. Axios 인스턴스 생성 (기본 설정)
 export const api = axios.create({
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   // 필요하다면 baseURL 설정 (MSW는 상대 경로도 잘 잡으므로 생략 가능)
 });

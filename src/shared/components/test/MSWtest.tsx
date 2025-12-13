@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import useSWR from 'swr';
-import { fetcher } from '@/shared/api/axios';
-import { cn } from '@/shared/utils/cn'; // 아까 만든 유틸 활용
+import useSWR from "swr";
+
+import { fetcher } from "@/shared/api/axios";
+import { cn } from "@/shared/utils/cn"; // 아까 만든 유틸 활용
 
 interface Notice {
   id: number;
@@ -15,7 +16,7 @@ export default function MSWtest() {
   // ✅ SWR 사용: useEffect, useState, 로딩 처리 등을 한 줄로 해결
   // 첫 번째 인자: API URL (Key 역할)
   // 두 번째 인자: 데이터를 가져오는 함수 (Axios fetcher)
-  const { data: notices, error, isLoading } = useSWR<Notice[]>('/api/notices', fetcher);
+  const { data: notices, error, isLoading } = useSWR<Notice[]>("/api/notices", fetcher);
 
   // 1. 로딩 상태 처리
   if (isLoading) {
@@ -36,7 +37,7 @@ export default function MSWtest() {
           <li key={notice.id} className={cn(`
             border-b pb-2
             hover:bg-gray-50
-          `, 'transition-colors duration-200')}>
+          `, "transition-colors duration-200")}>
             <div className="flex items-center justify-between">
               <span className="font-medium">{notice.title}</span>
               <span className="text-sm text-gray-500">{notice.date}</span>

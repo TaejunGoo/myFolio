@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function MSWProvider({ children }: { children: React.ReactNode }) {
   const [mswReady, setMswReady] = useState(false);
 
   useEffect(() => {
     async function enableMocking() {
-      if (typeof window !== 'undefined') {
-        const { worker } = await import('@/mocks/browser');
+      if (typeof window !== "undefined") {
+        const { worker } = await import("@/mocks/browser");
         await worker.start({
-          onUnhandledRequest: 'bypass', // 핸들러 없는 요청은 그냥 통과
+          onUnhandledRequest: "bypass", // 핸들러 없는 요청은 그냥 통과
         });
         setMswReady(true);
       }
