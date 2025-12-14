@@ -1,25 +1,40 @@
-import { Grip, Hamburger, X } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+
+import { Grip, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 import { LocaleToggleBtn } from "./LocaleToggleBtn";
 import Nav from "./Nav";
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const MobileHeader = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="block md:hidden">
       <div className="flex w-full items-center justify-between p-4">
         <h1 className="text-2xl font-bold text-foreground">Header</h1>
-        <Drawer direction="right">
+        <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
           <DrawerTrigger asChild>
             <Button variant="ghost">
               <Grip className="size-6" />
               <span className="sr-only">Open menu</span>
             </Button>
           </DrawerTrigger>
-          {/* Drawer content goes here */}
+
           <DrawerContent>
             <DrawerHeader>
               <div className="flex w-full items-center justify-between">
@@ -35,9 +50,11 @@ export const MobileHeader = () => {
                 </DrawerClose>
               </div>
             </DrawerHeader>
+
             <div className="px-4">
-              <Nav />
+              <Nav onNavigate={() => setIsOpen(false)} />
             </div>
+
             <DrawerFooter>
               <div className="flex w-full items-center justify-end">
                 <LocaleToggleBtn />
