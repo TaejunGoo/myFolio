@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
+const Home = () => {
   const t = useTranslations("HomePage");
   return (
     <div>
@@ -12,8 +12,10 @@ export default function Home() {
       <p className="font-medium">font-weight 500</p>
       <p className="font-semibold">font-weight 600</p>
       <p className="font-bold">font-weight 700</p>
-      <p className="p-0">zz</p>
+      <p className="h-[9999px] p-0">zz</p>
       <hr />
     </div>
   );
-}
+};
+export default Home;
+

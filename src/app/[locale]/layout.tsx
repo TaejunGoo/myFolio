@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "next-themes";
 
+import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
 import { MSWProvider } from "@/shared/provider/MSWProvider";
@@ -18,10 +20,10 @@ interface RootLayoutProps {
   params: Promise<{ locale: string }>;
 }
 
-export default async function RootLayout({
+const RootLayout = async ({
   children,
   params,
-}: Readonly<RootLayoutProps>) {
+}: Readonly<RootLayoutProps>) => {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -32,12 +34,24 @@ export default async function RootLayout({
       className={`
         ${pretendard.variable}
       `}
+      suppressHydrationWarning
     >
       <body className={pretendard.className}>
         <NextIntlClientProvider locale={locale}>
-          <MSWProvider>{children}</MSWProvider>
+          <MSWProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+            >
+              <Header />
+              {children}
+            </ThemeProvider>
+          </MSWProvider>
         </NextIntlClientProvider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

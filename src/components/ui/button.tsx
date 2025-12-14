@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   `
-    inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm
+    inline-flex
+    shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md text-sm
     font-medium whitespace-nowrap transition-all outline-none
     focus-visible:border-ring focus-visible:ring-[3px]
     focus-visible:ring-ring/50
@@ -77,7 +78,7 @@ const buttonVariants = cva(
   },
 );
 
-function Button({
+const Button = ({
   className,
   variant,
   size,
@@ -86,7 +87,7 @@ function Button({
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
-  }) {
+  }) => {
   const Comp = asChild ? Slot : "button";
 
   return (
@@ -96,6 +97,6 @@ function Button({
       {...props}
     />
   );
-}
+};
 
 export { Button, buttonVariants };

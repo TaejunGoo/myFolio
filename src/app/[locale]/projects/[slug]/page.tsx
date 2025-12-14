@@ -2,7 +2,7 @@ interface ProjectDetailProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ProjectDetailPage({ params }: ProjectDetailProps) {
+const ProjectDetailPage = async ({ params }: ProjectDetailProps) => {
   const { slug } = await params;
 
   return (
@@ -26,4 +26,5 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
       </div>
     </div>
   );
-}
+};
+export default ProjectDetailPage;

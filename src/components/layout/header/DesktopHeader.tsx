@@ -1,0 +1,20 @@
+import { LocaleToggleBtn } from "./LocaleToggleBtn";
+import Nav from "./Nav";
+import { ThemeToggleBtn } from "./ThemeToggleBtn";
+
+export const DesktopHeader = () => {
+  return (
+    <div className="relative hidden md:block">
+      <div className="flex w-full items-center justify-between p-4">
+        <h1 className="text-2xl font-bold text-foreground">Header</h1>
+        <Nav />
+        <div className="flex items-center gap-1">
+          <LocaleToggleBtn />
+          <ThemeToggleBtn />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DesktopHeader;
