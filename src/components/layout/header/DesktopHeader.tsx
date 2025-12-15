@@ -6,7 +6,7 @@ export const DesktopHeader = () => {
   return (
     <div className="relative hidden md:block">
       <div className="flex w-full items-center justify-between p-4">
-        <h1 className="text-2xl font-bold text-foreground">Header</h1>
+        <span className="text-2xl font-bold text-foreground">Header</span>
         <Nav />
         <div className="flex items-center gap-1">
           <LocaleToggleBtn />

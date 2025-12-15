@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
 import { MSWProvider } from "@/shared/provider/MSWProvider";
+import { cn } from "@/shared/utils/cn";
 
 const pretendard = localFont({
   src: "../../../public/fonts/pretendard/PretendardVariable.woff2",
@@ -36,7 +37,7 @@ const RootLayout = async ({
       `}
       suppressHydrationWarning
     >
-      <body className={pretendard.className}>
+      <body className={cn(pretendard.className, "antialiased")}>
         <NextIntlClientProvider locale={locale}>
           <MSWProvider>
             <ThemeProvider

@@ -4,7 +4,7 @@ import MobileHeader from "./MobileHeader";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="fixed top-0 z-50 w-full">
       <HeaderBackground />
       <MobileHeader />
       <DesktopHeader />

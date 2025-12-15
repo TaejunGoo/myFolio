@@ -1,14 +1,22 @@
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/shared/utils/cn";
 
 import { sitemap } from "./sitemap";
 
 interface NavProps {
   onNavigate?: () => void;
+  direction?: "horizontal" | "vertical";
 }
 
-export const Nav = ({ onNavigate }: NavProps) => {
+export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
   return (
-    <nav className="flex space-x-4">
+    <nav 
+      className={cn(
+        "flex gap-4",
+        direction === "horizontal" ? "flex-row items-center" : "flex-col items-start",
+      )}
+      aria-label="Main navigation"
+    >
       {sitemap.map((item) => (
         <Link
           key={item.href}

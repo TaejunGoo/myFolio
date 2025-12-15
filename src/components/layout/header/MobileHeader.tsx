@@ -26,7 +26,7 @@ export const MobileHeader = () => {
   return (
     <div className="block md:hidden">
       <div className="flex w-full items-center justify-between p-4">
-        <h1 className="text-2xl font-bold text-foreground">Header</h1>
+        <span className="text-2xl font-bold text-foreground">Header</span>
         <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
           <DrawerTrigger asChild>
             <Button variant="ghost">
@@ -52,7 +52,7 @@ export const MobileHeader = () => {
             </DrawerHeader>
 
             <div className="px-4">
-              <Nav onNavigate={() => setIsOpen(false)} />
+              <Nav direction="vertical" onNavigate={() => setIsOpen(false)} />
             </div>
 
             <DrawerFooter>
