@@ -25,55 +25,59 @@ const UntangleLine = ({
   tangleStart = 0,
   tangleEnd = 1,
   direction = "horizontal",
-  isUntangled = false, // 기본값 false (꼬인 상태 유지)
+  isUntangled = false,
 }: UntangleLineProps) => {
-  // Generate random values once on mount
-  const [randomSeed] = useState(() =>
-    Array.from({ length: 60 }).map(() => ({
-      xOffset: (Math.random() - 0.5) * 50,
-      yRandom: Math.random(),
-    })),
-  );
+  // Generate random phases for sine waves to make each render unique
+  const [randomSeed] = useState(() => ({
+    phase1: Math.random() * Math.PI * 2,
+    phase2: Math.random() * Math.PI * 2,
+    phase3: Math.random() * Math.PI * 2,
+    ampFactor: 0.8 + Math.random() * 0.4, // 0.8 ~ 1.2
+  }));
 
   const paths = useMemo(() => {
-    const POINTS = 60;
-    const SVG_SIZE = 100; // 가로/세로 100으로 통일하여 계산
+    const POINTS = 100; // 점의 개수를 늘려 곡선을 더 부드럽게 만듦
+    const SVG_SIZE = 100;
     const CENTER = SVG_SIZE / 2;
 
     // 2. 직선 경로 데이터 생성 (목표 상태)
     const straightPoints = Array.from({ length: POINTS }).map((_, i) => {
-      let mainVal; // 주축 값 (Horizontal: x, Vertical: y)
+      let mainVal;
       let isAnchor = false;
 
+      // 경계 인덱스 계산
+      const startIndex = 1;
+      const endIndex = POINTS - 2;
+      
       if (i === 0) {
-        mainVal = 0; // 전체 시작점
+        mainVal = 0;
         isAnchor = true;
-      } else if (i === 1) {
-        mainVal = tangleStart * SVG_SIZE; // 꼬임 시작 경계점
+      } else if (i === startIndex) {
+        mainVal = tangleStart * SVG_SIZE;
         isAnchor = true;
-      } else if (i === POINTS - 2) {
-        mainVal = tangleEnd * SVG_SIZE; // 꼬임 끝 경계점
+      } else if (i === endIndex) {
+        mainVal = tangleEnd * SVG_SIZE;
         isAnchor = true;
       } else if (i === POINTS - 1) {
-        mainVal = SVG_SIZE; // 전체 끝점
+        mainVal = SVG_SIZE;
         isAnchor = true;
       } else {
-        // 나머지 점들은 tangleStart ~ tangleEnd 구간에 집중 배치
+        // 중간 점들 배치
         const innerIndex = i - 2;
         const innerTotal = POINTS - 4;
-        const step = innerIndex / (innerTotal - 1); // 0 ~ 1
+        const step = innerIndex / (innerTotal - 1);
         const range = tangleEnd - tangleStart;
         
         mainVal = (tangleStart + step * range) * SVG_SIZE;
       }
 
-      // 교차축 값 (중앙 정렬 + 미세 오차)
       const crossVal = CENTER + (i % 2 === 0 ? 0.001 : -0.001);
 
       return {
         x: direction === "horizontal" ? mainVal : crossVal,
         y: direction === "horizontal" ? crossVal : mainVal,
         isAnchor,
+        progress: i / (POINTS - 1), // 전체 진행률 (0~1)
       };
     });
 
@@ -83,40 +87,48 @@ const UntangleLine = ({
         return { x: p.x, y: p.y };
       }
 
+      // 사인파를 이용한 유기적인 꼬임 생성
+      // progress 값을 증폭시켜 파동의 빈도를 결정
+      const t = p.progress * Math.PI * 8; // 4 cycles
+      
+      // 3개의 파동을 합성 (큰 파동 + 중간 파동 + 작은 떨림)
+      const wave1 = Math.sin(t + randomSeed.phase1) * 15; 
+      const wave2 = Math.cos(t * 2.5 + randomSeed.phase2) * 10;
+      const wave3 = Math.sin(t * 5 + randomSeed.phase3) * 5;
+      
+      const totalNoise = (wave1 + wave2 + wave3) * randomSeed.ampFactor;
+
+      // 주축(Main Axis)에도 약간의 왜곡을 주어 선이 앞뒤로 뭉치는 느낌 추가
+      const mainAxisNoise = Math.cos(t * 3) * 5 * randomSeed.ampFactor;
+
       if (direction === "horizontal") {
         return {
-          x: p.x + randomSeed[i].xOffset, // 진행 방향으로 약간의 떨림
-          y: randomSeed[i].yRandom * SVG_SIZE, // 수직 방향으로 랜덤 확산
+          x: p.x + mainAxisNoise, 
+          y: CENTER + totalNoise, // 중앙을 기준으로 파동 적용
         };
       } else {
         return {
-          x: randomSeed[i].yRandom * SVG_SIZE, // 수평 방향으로 랜덤 확산
-          y: p.y + randomSeed[i].xOffset, // 진행 방향으로 약간의 떨림
+          x: CENTER + totalNoise, // 중앙을 기준으로 파동 적용
+          y: p.y + mainAxisNoise,
         };
       }
     });
 
-    // 4. 점들을 SVG Path 문자열로 변환하는 함수 (부드러운 곡선 - Quadratic Bezier)
+    // 4. 점들을 SVG Path 문자열로 변환
     const pointsToPath = (points: { x: number; y: number }[]) => {
       if (points.length === 0) return "";
 
-      // 첫 번째 점으로 이동
       let d = `M ${points[0].x} ${points[0].y}`;
 
-      // 점들을 부드럽게 연결 (중간점을 제어점으로 사용)
       for (let i = 1; i < points.length - 1; i++) {
         const p1 = points[i];
         const nextPoint = points[i + 1];
-
-        // 현재 점(p1)을 제어점으로 사용하고,
-        // (p1)과 (다음 점)의 중간을 도착점으로 설정
         const midX = (p1.x + nextPoint.x) / 2;
         const midY = (p1.y + nextPoint.y) / 2;
 
         d += ` Q ${p1.x} ${p1.y} ${midX} ${midY}`;
       }
 
-      // 마지막 점 연결
       d += ` L ${points[points.length - 1].x} ${points[points.length - 1].y}`;
 
       return d;
@@ -145,7 +157,7 @@ const UntangleLine = ({
             ease: "backInOut",
           }}
           stroke={color}
-          strokeWidth="1.1"
+          strokeWidth="2"
           vectorEffect="non-scaling-stroke"
           fill="transparent"
           strokeLinecap="round"
