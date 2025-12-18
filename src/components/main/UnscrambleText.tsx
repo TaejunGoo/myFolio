@@ -33,7 +33,7 @@ const UnscrambleText =  ({
   }, [delay]);
 
   return (
-    <div className={cn("flex overflow-visible", className)} aria-label={text}>
+    <div className={cn("inline-flex overflow-visible", className)} aria-label={text}>
       {text.split("").map((char, index) => {
         // 공백은 회전해도 안 보이므로 그냥 렌더링
         if (char === " ") return <span key={index}>&nbsp;</span>;
