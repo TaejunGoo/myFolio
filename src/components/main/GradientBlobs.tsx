@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { motion } from "framer-motion";
 
@@ -12,14 +12,6 @@ interface GradientBlobsProps {
 }
 
 export const GradientBlobs = ({ isUntangled, className }: GradientBlobsProps) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   // 뭉치들의 설정
   const blobs = [
     { color: "bg-primary/80 dark:bg-white/60", size: "w-[500px] h-[500px]" },
@@ -81,7 +73,14 @@ export const GradientBlobs = ({ isUntangled, className }: GradientBlobsProps) =>
   );
 };
 
-const Blob = ({ isUntangled, className, size, index }: any) => {
+interface BlobProps {
+  isUntangled: boolean;
+  className: string;
+  size: string;
+  index: number;
+}
+
+const Blob = ({ isUntangled, className, size, index }: BlobProps) => {
   // 각 Blob마다 랜덤한 움직임 경로 생성
   const [randomPath] = useState(() => ({
     x: Array.from({ length: 4 }).map(() => (Math.random() - 0.5) * 600),
@@ -168,13 +167,21 @@ const Particle = ({ isUntangled, index }: { isUntangled: boolean; index: number 
     return glyphs[Math.floor(Math.random() * glyphs.length)];
   });
 
+  const [fontSize] = useState(() => Math.random() * 12 + 8 + "px");
+
+  const [randomDuration] = useState(() => 10 + Math.random() * 10);
+
+  const [randomDelay] = useState(() => Math.random() * 2);
+
+  const [untangledDelay] = useState(() => Math.random() * 0.2);
+
   return (
     <motion.div
       className="absolute text-foreground/60 select-none dark:text-white/40"
       style={{
         left: initialPos.left,
         top: initialPos.top,
-        fontSize: Math.random() * 12 + 8 + "px",
+        fontSize: fontSize,
       }}
       animate={
         isUntangled
@@ -193,13 +200,13 @@ const Particle = ({ isUntangled, index }: { isUntangled: boolean; index: number 
       }
       transition={
         isUntangled
-          ? { duration: 0.6, ease: "easeIn", delay: Math.random() * 0.2 }
+          ? { duration: 0.6, ease: "easeIn", delay: untangledDelay }
           : {
-            duration: 10 + Math.random() * 10,
+            duration: randomDuration,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut",
-            delay: Math.random() * 2,
+            delay: randomDelay,
           }
       }
     >
