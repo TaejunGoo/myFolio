@@ -28,7 +28,7 @@ export const GradientBlobs = ({ isUntangled, className }: GradientBlobsProps) =>
   return (
     <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
       {/* 1. 배경 블러 뭉치들 */}
-      <div className="absolute inset-0 opacity-80 blur-[60px] md:blur-[100px] lg:blur-[140px] dark:opacity-50">
+      {/* <div className="absolute inset-0 opacity-80 blur-[60px] md:blur-[100px] lg:blur-[140px] dark:opacity-50">
         {blobs.map((blob, i) => (
           <Blob
             key={i}
@@ -38,7 +38,7 @@ export const GradientBlobs = ({ isUntangled, className }: GradientBlobsProps) =>
             index={i}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Noise Overlay */}
       <motion.div 
@@ -50,7 +50,7 @@ export const GradientBlobs = ({ isUntangled, className }: GradientBlobsProps) =>
       </motion.div>
 
       {/* 2. 부유하는 기하학적 심볼들 */}
-      <FloatingParticles isUntangled={isUntangled} count={60} />
+      <FloatingParticles isUntangled={isUntangled} count={100} />
 
       <svg className="hidden">
         <filter id="noiseFilter">

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 import { GradientBlobs } from "./GradientBlobs";
 import UnscrambleText from "./UnscrambleText";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 const Hero = () => {
   const [isUntangled, setIsUntangled] = useState(false);
@@ -16,7 +16,7 @@ const Hero = () => {
     
     setTimeout(() => {
       window.scrollBy({
-        top: window.innerHeight * 1.3,
+        top: window.innerHeight * 1.1,
         behavior: "smooth",
       });
     }, 1200);

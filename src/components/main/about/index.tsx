@@ -1,0 +1,31 @@
+"use client";
+
+import { motion, useAnimation } from "framer-motion";
+
+import IntroCard from "./IntroCard";
+import TimelineCard from "./TimelineCard";
+
+const About = () => {
+  return (
+    <section>
+      <h2 className="sr-only">About</h2>
+      <div className="container mx-auto flex flex-col gap-6 lg:flex-row lg:items-stretch">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <IntroCard className="h-full min-w-[0px] flex-1" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <TimelineCard className="h-full min-w-[0px] flex-1 lg:flex-2" />
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+export default About;
