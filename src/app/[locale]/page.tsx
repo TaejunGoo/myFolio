@@ -1,3 +1,4 @@
+import Container from "@/components/layout/header/Container";
 import About from "@/components/main/about";
 import Hero from "@/components/main/hero/Hero";
 import Projects from "@/components/main/projects";
@@ -8,10 +9,10 @@ const Home = () => {
     <main>
       <Hero />
       <About />
-      <Separator className="container mx-auto my-20 border-dotted" />
+      <Container className="my-20">
+        <Separator />
+      </Container>
       <Projects />
-      <p className="h-[9999px] p-0">zz</p>
-      <hr />
     </main>
   );
 };

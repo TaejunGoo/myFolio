@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    domains: ["placehold.co"],
+  },
 };
 
 export default withNextIntl(nextConfig);

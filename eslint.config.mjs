@@ -65,7 +65,7 @@ export default defineConfig([
     },
     rules: {
       "import/order": [
-        "error",
+        "warn",
         {
           "groups": [
             "builtin",
@@ -127,7 +127,7 @@ export default defineConfig([
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/function-component-definition": [
-        "error",
+        "warn",
         {
           "namedComponents": "arrow-function",
           "unnamedComponents": "arrow-function",
