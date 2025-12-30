@@ -1,5 +1,6 @@
 import { IconType } from "react-icons";
 import { FaCss3Alt, FaFigma, FaGitAlt, FaHtml5, FaJs, FaReact, FaSass, FaVuejs } from "react-icons/fa";
+import { MdLanguage, MdOutlineDevices } from "react-icons/md";
 import {
   SiAdobephotoshop,
   SiAntdesign,
@@ -42,9 +43,19 @@ export type TechName =
   | "Shadcn UI"
   | "Ant Design"
   | "PhotoShop"
+  | "반응형"
+  | "다국어"
   ;
 
 export const techMap: Record<TechName, TechConfig> = {
+  "반응형": {
+    icon: MdOutlineDevices,
+    className: "bg-gray-500/10 text-gray-600 border-gray-500/20",
+  },
+  "다국어": {
+    icon: MdLanguage,
+    className: "bg-green-500/10 text-green-600 border-green-500/20",
+  },
   "Next.js": {
     icon: SiNextdotjs,
     className: "bg-black text-white dark:bg-white dark:text-black border-transparent",
