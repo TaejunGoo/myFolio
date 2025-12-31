@@ -18,7 +18,7 @@ export interface ProjectCardProps {
   title: string;
   category: string;
   description: string;
-  imageUrlAry: string[];
+  imageUrlAry?: string[];
   projectLink?: string;
   periodStart: string;
   periodEnd?: string;
@@ -35,25 +35,35 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, p
       <CardContent>
         <div className="relative">
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
-          <Swiper
-            modules={[Pagination]}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-          >
-            {
-              imageUrlAry.map((url, index) => (
-                <SwiperSlide key={index}>
-                  <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
-                    {/* 로컬 이미지로 변경 시 next/image 사용 */}
-                    <Image src={url} alt={title} fill />
-                  </AspectRatio>
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
+          {
+            imageUrlAry ? (
+              <Swiper
+                modules={[Pagination]}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+              >
+                {
+                  imageUrlAry.map((url, index) => (
+                    <SwiperSlide key={index}>
+                      <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
+                        {/* 로컬 이미지로 변경 시 next/image 사용 */}
+                        <Image src={url} alt={title} fill />
+                      </AspectRatio>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
+            ) : (
+              <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={"https://placehold.co/960x540?text=no-image"} alt={title} className="object-cover" />
+              </AspectRatio>
+            )
+          }
+          
         </div>
         <div className="mt-4 flex flex-col">
-          <p className="text-xl font-bold">
+          <p className="text-xl leading-tight font-bold break-keep">
             {
               projectLink ? (
                 <a href={projectLink} title="링크 이동" className="inline-flex items-center gap-1 hover:underline">

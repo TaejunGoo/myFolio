@@ -58,7 +58,7 @@ export const techMap: Record<TechName, TechConfig> = {
   },
   "Next.js": {
     icon: SiNextdotjs,
-    className: "bg-black text-white dark:bg-white dark:text-black border-transparent",
+    className: "bg-transparent text-black border-black/20 dark:bg-muted-foreground/20 dark:text-white dark:border-white/20",
   },
   TypeScript: {
     icon: SiTypescript,
