@@ -66,7 +66,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, p
           <p className="text-xl leading-tight font-bold break-keep">
             {
               projectLink ? (
-                <a href={projectLink} title="링크 이동" className="inline-flex items-center gap-1 hover:underline">
+                <a href={projectLink} target="_blank" title="링크 이동" className="inline-flex items-center gap-1 hover:underline">
                   <span>{title}</span>
                   <Link className="size-4" />
                 </a>
@@ -76,12 +76,12 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, p
             }
           </p>
           <div className="flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">{client}</span>
+            <span className="font-medium text-muted-foreground">{client}</span>
             <span>·</span>
             <span>{formattedStart} - {formattedEnd}</span>
           </div>
         </div>
-        <p className="mt-3 leading-tight">{description}</p>
+        <p className="mt-3 min-h-[3em] text-sm leading-tight">{description}</p>
         <div className="mt-4 flex flex-wrap gap-1">
           {
             stack.map((tech) => (
