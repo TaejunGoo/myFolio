@@ -22,6 +22,7 @@ const Projects = () => {
       setVisibleProjects(3);
     }
   };
+  const remainingProjects = maxVisibleProjects - visibleProjects;
 
   return (
     <>
@@ -31,7 +32,7 @@ const Projects = () => {
         transition={{ delay: 0.3 }}
       >
         <Container>
-          <SubTitle title="Projects" desc="대표 프로젝트를 소개합니다." />
+          <SubTitle title="Projects" desc="Selected Works & Project Archive" />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence>
               { 
@@ -52,7 +53,7 @@ const Projects = () => {
           </div>
           <div className="flex justify-center">
             <Button variant={"outline"} className="mt-4" size={"lg"} onClick={toggleProjects}>
-              {visibleProjects === 3 ? "더 보기" : "줄이기"}
+              {visibleProjects === 3 ? `더 보기 (${remainingProjects})` : "닫기"}
             </Button>
           </div>
         </Container>

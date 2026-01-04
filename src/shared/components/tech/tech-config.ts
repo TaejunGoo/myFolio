@@ -42,7 +42,7 @@ export type TechName =
   | "MUI"
   | "Shadcn UI"
   | "Ant Design"
-  | "PhotoShop"
+  | "Photoshop"
   | "반응형"
   | "다국어"
   ;
@@ -132,7 +132,7 @@ export const techMap: Record<TechName, TechConfig> = {
     icon: SiAntdesign,
     className: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },
-  PhotoShop: {
+  Photoshop: {
     icon: SiAdobephotoshop,
     className: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },

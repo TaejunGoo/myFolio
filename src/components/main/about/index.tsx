@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Container from "@/components/layout/header/Container";
 
 import IntroCard from "./IntroCard";
+import ProfileCard from "./ProfileCard";
 import TimelineCard from "./TimelineCard";
 
 const About = () => {
@@ -24,7 +25,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <TimelineCard className="h-full min-w-[0px] flex-1 lg:flex-2" />
+          <ProfileCard className="h-full min-w-[0px] flex-1 lg:flex-2" />
         </motion.div>
       </div>
     </Container>
