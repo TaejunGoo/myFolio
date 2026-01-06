@@ -5,6 +5,7 @@ export const projectsData:ProjectCardProps[] = [
     title: "JTBC 뉴스 플랫폼 구축",
     projectLink: "https://news.jtbc.co.kr/",
     slug: "jtbc-news-renewal",
+    imageUrlAry: ["/images/projects/jtbc_01.png"],
     category: "Media",
     client: "JTBC",
     description: "JTBC 뉴스 플랫폼 리빌딩을 위한 Next.js 및 MUI 기반의 반응형 UI 컴포넌트 개발, Storybook 구축",
