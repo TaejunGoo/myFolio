@@ -14,7 +14,7 @@ const About = () => {
       <h2 className="sr-only">About</h2>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
         <motion.div
-          className="lg:basis-2/3"
+          className="lg:basis-2/5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -22,7 +22,7 @@ const About = () => {
           <IntroCard className="h-full" />
         </motion.div>
         <motion.div
-          className="lg:basis-1/3"
+          className="lg:basis-3/5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}

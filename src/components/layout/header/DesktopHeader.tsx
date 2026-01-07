@@ -1,16 +1,24 @@
+import Container from "./Container";
+import HeaderActions from "./HeaderActions";
+import NameCard from "./NameCard";
 import Nav from "./Nav";
-import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const DesktopHeader = () => {
   return (
     <div className="relative hidden md:block">
-      <div className="flex w-full items-center justify-between p-4">
-        <span className="text-2xl font-bold text-foreground">Header</span>
-        <Nav />
-        <div className="flex items-center gap-1">
-          <ThemeToggleBtn />
+      <Container>
+        <div className="grid w-full grid-cols-3 items-center py-4">
+          <div className="flex justify-start">
+            <NameCard />
+          </div>
+          <div className="flex justify-center">
+            <Nav />
+          </div>
+          <div className="flex justify-end">
+            <HeaderActions />
+          </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

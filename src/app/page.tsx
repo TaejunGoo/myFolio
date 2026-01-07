@@ -1,16 +1,27 @@
 import Container from "@/components/layout/header/Container";
 import About from "@/components/main/about";
+import Maintenance from "@/components/main/maintenance";
 import Projects from "@/components/main/projects";
 import { Separator } from "@/components/ui/separator";
 
 const Home = () => {
   return (
     <main>
-      <About />
+      <section id="about" className="pt-16 md:pt-20">
+        <About />
+      </section>
       <Container className="my-20">
         <Separator />
       </Container>
-      <Projects />
+      <section id="projects" className="mb-20">
+        <Projects />
+      </section>
+      <Container className="my-20">
+        <Separator />
+      </Container>
+      <section id="maintenance" className="mb-40">
+        <Maintenance />
+      </section>
     </main>
   );
 };

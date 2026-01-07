@@ -1,8 +1,10 @@
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 
+import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
+import { Toaster } from "@/components/ui/sonner";
 import { MSWProvider } from "@/shared/provider/MSWProvider";
 import { cn } from "@/shared/utils/cn";
 
@@ -26,15 +28,17 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       `}
       suppressHydrationWarning
     >
-      <body className={cn(pretendard.className, "antialiased")}>
+      <body className={cn(pretendard.className, "antialiased pt-16 md:pt-20")}>
         <MSWProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
           >
+            <AnimatedBackground />
             <Header />
             {children}
+            <Toaster />
           </ThemeProvider>
         </MSWProvider>
       </body>

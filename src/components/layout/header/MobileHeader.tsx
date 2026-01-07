@@ -16,52 +16,56 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import Container from "./Container";
+import HeaderActions from "./HeaderActions";
+import NameCard from "./NameCard";
 import Nav from "./Nav";
-import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="block md:hidden">
-      <div className="flex w-full items-center justify-between p-4">
-        <span className="text-2xl font-bold text-foreground">Header</span>
-        <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerTrigger asChild>
-            <Button variant="ghost">
-              <Grip className="size-6" />
-              <span className="sr-only">Open menu</span>
-            </Button>
-          </DrawerTrigger>
+      <Container>
+        <div className="flex w-full items-center justify-between py-4">
+          <NameCard />
+          <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
+            <DrawerTrigger asChild>
+              <Button variant="ghost">
+                <Grip className="size-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </DrawerTrigger>
 
-          <DrawerContent>
-            <DrawerHeader>
-              <div className="flex w-full items-center justify-between">
-                <div>
-                  <DrawerTitle>Menu</DrawerTitle>
-                  <DrawerDescription>Menu Description</DrawerDescription>
+            <DrawerContent>
+              <DrawerHeader>
+                <div className="flex w-full items-center justify-between">
+                  <div>
+                    <DrawerTitle>Menu</DrawerTitle>
+                    <DrawerDescription>Navigation</DrawerDescription>
+                  </div>
+                  <DrawerClose asChild>
+                    <Button variant="ghost">
+                      <X className="size-6" />
+                      <span className="sr-only">Close menu</span>
+                    </Button>
+                  </DrawerClose>
                 </div>
-                <DrawerClose asChild>
-                  <Button variant="ghost">
-                    <X className="size-6" />
-                    <span className="sr-only">Close menu</span>
-                  </Button>
-                </DrawerClose>
-              </div>
-            </DrawerHeader>
+              </DrawerHeader>
 
-            <div className="px-4">
-              <Nav direction="vertical" onNavigate={() => setIsOpen(false)} />
-            </div>
-
-            <DrawerFooter>
-              <div className="flex w-full items-center justify-end">
-                <ThemeToggleBtn />
+              <div className="px-4">
+                <Nav direction="vertical" onNavigate={() => setIsOpen(false)} />
               </div>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </div>
+
+              <DrawerFooter>
+                <div className="flex w-full items-center justify-center">
+                  <HeaderActions />
+                </div>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </div>
+      </Container>
     </div>
   );
 };

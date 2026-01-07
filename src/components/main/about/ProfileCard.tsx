@@ -25,21 +25,33 @@ const subStack: TechName[] = [
 ];
 
 const stats = [
-  { label: "경력", value: getCareerDurationText() },
-  { label: "프로젝트", value: `${projectsData.length}개` },
-  { label: "유지보수", value: `${maintenanceData.length}개` },
+  {
+    label: "경력",
+    value: getCareerDurationText(),
+  },
+  {
+    label: "프로젝트",
+    value: `${projectsData.length}개`,
+  },
+  {
+    label: "유지보수",
+    value: `${maintenanceData.length}개`,
+  },
 ];
 
 const ProfileCard = ({ className }: ProfileCardProps) => {
   return (
     <Card className={cn("w-full", className)}>
       <CardContent>
-        <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-3 gap-2 text-center">
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-3 gap-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1 rounded-lg bg-muted p-3">
-                <span className="text-lg font-bold">{stat.value}</span>
-                <span className="text-xs text-muted-foreground">{stat.label}</span>
+              <div
+                key={stat.label}
+                className="flex flex-col items-center gap-1 rounded-lg border bg-muted/50 p-4 text-center"
+              >
+                <span className="text-3xl font-bold tracking-tight">{stat.value}</span>
+                <span className="text-sm font-medium text-muted-foreground">{stat.label}</span>
               </div>
             ))}
           </div>
