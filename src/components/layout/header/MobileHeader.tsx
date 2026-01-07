@@ -16,7 +16,6 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import { LocaleToggleBtn } from "./LocaleToggleBtn";
 import Nav from "./Nav";
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
@@ -57,7 +56,6 @@ export const MobileHeader = () => {
 
             <DrawerFooter>
               <div className="flex w-full items-center justify-end">
-                <LocaleToggleBtn />
                 <ThemeToggleBtn />
               </div>
             </DrawerFooter>

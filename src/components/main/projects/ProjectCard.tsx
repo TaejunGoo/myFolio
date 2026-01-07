@@ -8,7 +8,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { TechName } from "@/shared/components/tech/tech-config";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn } from "@/shared/utils";

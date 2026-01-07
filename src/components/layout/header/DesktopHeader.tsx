@@ -1,4 +1,3 @@
-import { LocaleToggleBtn } from "./LocaleToggleBtn";
 import Nav from "./Nav";
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
@@ -9,7 +8,6 @@ export const DesktopHeader = () => {
         <span className="text-2xl font-bold text-foreground">Header</span>
         <Nav />
         <div className="flex items-center gap-1">
-          <LocaleToggleBtn />
           <ThemeToggleBtn />
         </div>
       </div>

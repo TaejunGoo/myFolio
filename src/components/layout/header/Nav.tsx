@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
 import { cn } from "@/shared/utils/cn";
 
 import { sitemap } from "./sitemap";
