@@ -1,6 +1,7 @@
 import { format, parseISO } from "date-fns";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,27 +9,15 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import { TechName } from "@/shared/components/tech/tech-config";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn } from "@/shared/utils";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-export interface ProjectCardProps {
-  title: string;
-  category: string;
-  description: string;
-  imageUrlAry?: string[];
-  projectLink?: string;
-  slug?: string; // 상세 페이지 식별자 (폴더명)
-  periodStart: string;
-  periodEnd?: string;
-  stack: TechName[];
-  client: string;
-  className?: string;
-}
+import { ProjectCardProps } from "./types";
+
+export type { ProjectCardProps };
 
 const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className }: ProjectCardProps) => {
   const formattedStart = format(parseISO(periodStart), "yyyy.MM");

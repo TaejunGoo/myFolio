@@ -1,14 +1,34 @@
-interface ProjectDetailProps {
+import { notFound } from "next/navigation";
+
+import Container from "@/components/layout/header/Container";
+import ProjectDetail from "@/components/projects/detail";
+import { getProjectBySlug, projectDetailData } from "@/data/projectDetailData";
+
+interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-const ProjectDetailPage = async ({ params }: ProjectDetailProps) => {
+export const generateStaticParams = () => {
+  return projectDetailData.map((project) => ({
+    slug: project.slug,
+  }));
+};
+
+const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    notFound();
+  }
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="mb-4 text-3xl font-bold">P: {slug}</h1>
-    </div>
+    <main className="py-10">
+      <Container>
+        <ProjectDetail project={project} />
+      </Container>
+    </main>
   );
 };
+
 export default ProjectDetailPage;

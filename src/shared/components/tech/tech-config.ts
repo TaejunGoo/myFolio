@@ -4,6 +4,8 @@ import { MdLanguage, MdOutlineDevices } from "react-icons/md";
 import {
   SiAdobephotoshop,
   SiAntdesign,
+  SiAnthropic,
+  SiGithubcopilot,
   SiJquery,
   SiMui,
   SiNextdotjs,
@@ -43,6 +45,8 @@ export type TechName =
   | "Shadcn UI"
   | "Ant Design"
   | "Photoshop"
+  | "Claude Code"
+  | "GitHub Copilot"
   | "반응형"
   | "다국어"
   ;
@@ -135,5 +139,13 @@ export const techMap: Record<TechName, TechConfig> = {
   Photoshop: {
     icon: SiAdobephotoshop,
     className: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+  },
+  "Claude Code": {
+    icon: SiAnthropic,
+    className: "bg-orange-500/10 text-orange-600 border-orange-500/20",
+  },
+  "GitHub Copilot": {
+    icon: SiGithubcopilot,
+    className: "bg-purple-500/10 text-purple-600 border-purple-500/20",
   },
 };

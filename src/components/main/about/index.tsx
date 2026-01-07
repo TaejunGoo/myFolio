@@ -14,18 +14,20 @@ const About = () => {
       <h2 className="sr-only">About</h2>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
         <motion.div
+          className="lg:basis-2/3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <IntroCard className="h-full min-w-[0px] flex-1" />
+          <IntroCard className="h-full" />
         </motion.div>
         <motion.div
+          className="lg:basis-1/3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <ProfileCard className="h-full min-w-[0px] flex-1 lg:flex-2" />
+          <ProfileCard className="h-full" />
         </motion.div>
       </div>
     </Container>

@@ -7,15 +7,15 @@ import { cn } from "@/shared/utils";
 import { techMap, TechName } from "./tech-config";
 
 interface TechBadgeProps {
-  name: TechName;
+  name: TechName | (string & {});
   className?: string;
   iconOnly?: boolean;
 }
 
 const TechBadge = ({ name, className, iconOnly = false }: TechBadgeProps) => {
-  const config = techMap[name];
+  const config = techMap[name as TechName];
   const Icon = config?.icon || FaCode;
-  const colorClass = config?.className || "bg-secondary text-secondary-foreground border-transparent";
+  const colorClass = config?.className || "bg-secondary text-secondary-foreground border-secondary/50";
 
   const badgeContent = !iconOnly ? (
     <Badge className={cn(colorClass, className)}>
