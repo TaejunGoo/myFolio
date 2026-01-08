@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
+import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/sonner";
@@ -38,6 +39,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
             <AnimatedBackground />
             <Header />
             {children}
+            <Footer />
             <Toaster />
           </ThemeProvider>
         </MSWProvider>

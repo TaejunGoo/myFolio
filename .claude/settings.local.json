@@ -3,7 +3,9 @@
     "allow": [
       "Bash(pnpm lint:*)",
       "Bash(pnpm dev)",
-      "Bash(pnpm dlx:*)"
+      "Bash(pnpm dlx:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

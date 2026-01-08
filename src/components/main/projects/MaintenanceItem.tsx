@@ -17,23 +17,24 @@ const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }:
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div>
+        <div className="flex items-center justify-center">
           {logoUrl ? (
-            <img src={logoUrl} alt={name} className="size-8 rounded-md object-cover" />
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={logoUrl} alt={name} className="h-12 w-auto rounded-sm bg-white object-contain p-2" />
           ) : (
-            <div className="flex size-8 items-center justify-center rounded-md bg-muted">
-              <span className="text-sm font-medium text-muted-foreground">{name.charAt(0)}</span>
+            <div className="flex h-12 min-w-20 items-center justify-center rounded-md bg-muted px-4">
+              <span className="text-sm font-medium text-muted-foreground">{name}</span>
             </div>
           )}
         </div>
       </TooltipTrigger>
       <TooltipContent>
-        <div className="max-w-[200px] py-1">
+        <div className="max-w-60 py-1">
           <div className="flex flex-col">
             <span className="text-lg font-bold">{name}</span>
             <span className="text-xs text-muted-foreground">{formattedStart} - {formattedEnd}</span>
           </div>
-          <p className="mt-2 break-all">{description}</p>
+          <p className="mt-2 leading-relaxed break-keep">{description}</p>
         </div>
       </TooltipContent>
     </Tooltip>
