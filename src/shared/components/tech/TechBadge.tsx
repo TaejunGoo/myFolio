@@ -4,7 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/shared/utils";
 
-import { techMap, TechName } from "./tech-config";
+import { techMap } from "./tech-config";
+
+import type { TechName } from "./tech-config";
 
 interface TechBadgeProps {
   name: TechName | (string & {});

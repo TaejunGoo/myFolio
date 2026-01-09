@@ -1,4 +1,4 @@
-import { StackItem } from "@/components/main/projects/types";
+import type { StackItem } from "@/components/main/projects/types";
 import TechBadge from "@/shared/components/tech/TechBadge";
 
 import ProjectSection from "./ProjectSection";

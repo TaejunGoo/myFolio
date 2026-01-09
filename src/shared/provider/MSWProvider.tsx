@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function MSWProvider({ children }: { children: React.ReactNode }) {
+export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
   const [mswReady, setMswReady] = useState(false);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ export function MSWProvider({ children }: { children: React.ReactNode }) {
   if (!mswReady) return null;
 
   return <>{children}</>;
-}
+};

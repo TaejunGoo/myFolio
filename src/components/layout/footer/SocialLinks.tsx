@@ -22,7 +22,7 @@ export const SocialLinks = ({ className }: SocialLinksProps) => {
             className="group relative"
           >
             <Icon
-              className="size-5 transition-all duration-300 text-foreground/60 hover:text-foreground dark:text-foreground/70 dark:hover:text-foreground group-hover:scale-110"
+              className="size-5 text-foreground/60 transition-all duration-300 group-hover:scale-110 hover:text-foreground dark:text-foreground/70 dark:hover:text-foreground"
             />
             <span className="sr-only">{social.ariaLabel}</span>
           </Link>

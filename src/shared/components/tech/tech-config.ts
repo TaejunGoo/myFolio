@@ -1,4 +1,3 @@
-import { IconType } from "react-icons";
 import { FaCss3Alt, FaFigma, FaGitAlt, FaHtml5, FaJs, FaReact, FaSass, FaVuejs } from "react-icons/fa";
 import { MdLanguage, MdOutlineDevices } from "react-icons/md";
 import {
@@ -18,6 +17,8 @@ import {
 } from "react-icons/si";
 
 import { EmotionIcon } from "./EmotionIcon";
+
+import type { IconType } from "react-icons";
 
 export interface TechConfig {
   icon: IconType;

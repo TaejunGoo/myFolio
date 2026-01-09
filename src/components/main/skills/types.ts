@@ -1,4 +1,4 @@
-import { TechName } from "@/shared/components/tech/tech-config";
+import type { TechName } from "@/shared/components/tech/tech-config";
 
 /**
  * 개별 스킬 아이템

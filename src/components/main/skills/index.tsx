@@ -7,7 +7,8 @@ import { cn } from "@/shared/utils";
 
 import { skillsData } from "./data/skills-data";
 import SkillCategory from "./SkillCategory";
-import { SkillsSectionProps } from "./types";
+
+import type { SkillsSectionProps } from "./types";
 
 /**
  * SkillsSection Component
@@ -65,7 +66,7 @@ const SkillsSection = ({ data = skillsData, className }: SkillsSectionProps) => 
               viewport={{
                 once: true,
                 margin: "-100px",
-                amount: 0.2
+                amount: 0.2,
               }}
               transition={{
                 duration: 0.4,

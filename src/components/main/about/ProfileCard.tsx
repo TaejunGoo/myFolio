@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { TechName } from "@/shared/components/tech/tech-config";
+import type { TechName } from "@/shared/components/tech/tech-config";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn, getCareerDurationText } from "@/shared/utils";
 

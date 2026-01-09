@@ -15,7 +15,7 @@ import { cn } from "@/shared/utils";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { ProjectCardProps } from "./types";
+import type { ProjectCardProps } from "./types";
 
 export type { ProjectCardProps };
 

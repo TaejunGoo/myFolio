@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn } from "@/shared/utils";
 
-import { SkillCategoryProps } from "./types";
+import type { SkillCategoryProps } from "./types";
 
 /**
  * SkillCategory Component
@@ -36,7 +36,7 @@ const SkillCategory = ({ category, className }: SkillCategoryProps) => {
           <div className="space-y-5">
             {category.subCategories.map((subCategory, index) => (
               <div key={subCategory.id} className={cn("space-y-2.5", index > 0 && "pt-1")}>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <h4 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                   {subCategory.title}
                 </h4>
                 <ul className="flex flex-wrap gap-1.5">

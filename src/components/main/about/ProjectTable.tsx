@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TechName } from "@/shared/components/tech/tech-config";
+import type { TechName } from "@/shared/components/tech/tech-config";
 import TechBadge from "@/shared/components/tech/TechBadge";
 
 import { projectsTableData } from "./projectsTableData";

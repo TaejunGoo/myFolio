@@ -7,7 +7,7 @@ export const AnimatedBackground = () => {
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {/* Blob 1 */}
       <motion.div
-        className="absolute -left-20 -top-20 size-96 rounded-full bg-gradient-to-br from-blue-400/15 to-purple-500/15 blur-3xl dark:from-blue-600/10 dark:to-purple-700/10"
+        className="absolute -top-20 -left-20 size-96 rounded-full bg-gradient-to-br from-blue-400/15 to-purple-500/15 blur-3xl dark:from-blue-600/10 dark:to-purple-700/10"
         animate={{
           x: [0, 100, 0],
           y: [0, 150, 0],
@@ -22,7 +22,7 @@ export const AnimatedBackground = () => {
 
       {/* Blob 2 */}
       <motion.div
-        className="absolute right-0 top-1/4 size-[28rem] rounded-full bg-gradient-to-br from-cyan-400/12 to-blue-500/12 blur-3xl dark:from-cyan-600/8 dark:to-blue-700/8"
+        className="absolute top-1/4 right-0 size-[28rem] rounded-full bg-gradient-to-br from-cyan-400/12 to-blue-500/12 blur-3xl dark:from-cyan-600/8 dark:to-blue-700/8"
         animate={{
           x: [0, -80, 0],
           y: [0, 100, 0],

@@ -17,7 +17,7 @@ export const NameCard = () => {
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col">
-        <span className="text-base font-bold leading-tight text-foreground">
+        <span className="text-base leading-tight font-bold text-foreground">
           구태준
         </span>
         <span className="text-xs leading-tight text-muted-foreground">

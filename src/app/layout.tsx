@@ -29,7 +29,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       `}
       suppressHydrationWarning
     >
-      <body className={cn(pretendard.className, "antialiased pt-16 md:pt-20")}>
+      <body className={cn(pretendard.className, "pt-16 antialiased md:pt-20")}>
         <MSWProvider>
           <ThemeProvider
             attribute="class"

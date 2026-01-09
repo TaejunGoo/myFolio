@@ -1,4 +1,4 @@
-import { MaintenanceItemProps } from "./MaintenanceItem";
+import type { MaintenanceItemProps } from "./MaintenanceItem";
 
 export const maintenanceData:MaintenanceItemProps[] = [
   {

@@ -1,4 +1,4 @@
-import { ProjectCardProps } from "./ProjectCard";
+import type { ProjectCardProps } from "./ProjectCard";
 
 export const projectsData:ProjectCardProps[] = [
   {

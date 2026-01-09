@@ -1,4 +1,4 @@
-import { SkillsData } from "../types";
+import type { SkillsData } from "../types";
 
 /**
  * Skills 섹션 데이터

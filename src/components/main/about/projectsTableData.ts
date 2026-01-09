@@ -1,4 +1,4 @@
-import { ProjectType } from "./ProjectTable";
+import type { ProjectType } from "./ProjectTable";
 
 export const projectsTableData: ProjectType[] = [
   {

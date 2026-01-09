@@ -1,4 +1,4 @@
-import { ProjectDetailData } from "@/components/main/projects/types";
+import type { ProjectDetailData } from "@/components/main/projects/types";
 
 export const projectDetailData: ProjectDetailData[] = [
   {

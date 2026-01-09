@@ -6,7 +6,9 @@
       "Bash(pnpm dlx:*)",
       "Bash(npx tsc:*)",
       "Bash(npm run build:*)",
-      "Bash(pnpm install:*)"
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm lint:fix:*)"
     ]
   }
 }

@@ -26,7 +26,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
     // 메인 페이지에서만 섹션 관찰
     if (!isMainPage) return;
 
-    const sections = mainSitemap.map(item => item.href.replace("#", ""));
+    const sections = mainSitemap.map((item) => item.href.replace("#", ""));
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -39,7 +39,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
       {
         rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
-      }
+      },
     );
 
     sections.forEach((id) => {

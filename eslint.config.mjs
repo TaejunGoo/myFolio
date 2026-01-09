@@ -1,161 +1,60 @@
-import js from "@eslint/js";
-import stylistic from "@stylistic/eslint-plugin";
 import { defineConfig } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import betterTailwindcss from "eslint-plugin-better-tailwindcss";
-import importPlugin from "eslint-plugin-import";
-import globals from "globals";
-import tseslint from "typescript-eslint";
 
+// Import modular ESLint configurations
+import accessibility from "./eslint/accessibility.mjs";
+import base from "./eslint/base.mjs";
+import ignores from "./eslint/ignores.mjs";
+import imports from "./eslint/imports.mjs";
+import next from "./eslint/next.mjs";
+import react from "./eslint/react.mjs";
+import security from "./eslint/security.mjs";
+import stylistic from "./eslint/stylistic.mjs";
+import tailwind from "./eslint/tailwind.mjs";
+import typescript from "./eslint/typescript.mjs";
+
+/**
+ * ESLint Configuration
+ *
+ * Modular ESLint configuration for Next.js + TypeScript + React
+ *
+ * Configuration order matters:
+ * 1. Base JavaScript/TypeScript setup
+ * 2. Framework-specific rules (React, Next.js)
+ * 3. Enhancement rules (TypeScript strictness, accessibility, security)
+ * 4. Code style and organization (stylistic, imports, Tailwind)
+ * 5. Ignore patterns
+ *
+ * Each configuration module is located in ./eslint/ directory
+ * for easy reuse and distribution as npm package
+ */
 export default defineConfig([
   // ============================================
-  // 기본 설정: JavaScript, TypeScript, Next.js
+  // Core Configuration
   // ============================================
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
-  ...nextVitals,
-  ...nextTs,
+  ...base,        // JavaScript + TypeScript foundation
+  ...typescript,  // TypeScript strictness and best practices
 
   // ============================================
-  // Tailwind CSS 설정
+  // Framework Configuration
   // ============================================
-  {
-    plugins: {
-      "better-tailwindcss": betterTailwindcss,
-    },
-    settings: {
-      "better-tailwindcss": {
-        entryPoint: "./src/app/globals.css",
-      },
-    },
-    rules: {
-      // Stylistic rules (recommended + autofix)
-      "better-tailwindcss/enforce-consistent-line-wrapping": ["off", { lineBreakStyle: "windows" }],
-      "better-tailwindcss/enforce-consistent-class-order": "warn",
-      "better-tailwindcss/enforce-consistent-variable-syntax": "warn",
-      "better-tailwindcss/enforce-consistent-important-position": "warn",
-      "better-tailwindcss/enforce-shorthand-classes": "warn",
-      "better-tailwindcss/no-duplicate-classes": "error",
-      "better-tailwindcss/no-deprecated-classes": "warn",
-      "better-tailwindcss/no-unnecessary-whitespace": "error",
-
-      // Correctness rules (recommended)
-      "better-tailwindcss/no-conflicting-classes": "error",
-    },
-  },
+  ...react,       // React-specific rules
+  ...next,        // Next.js + React Hooks rules
 
   // ============================================
-  // Import 설정
+  // Enhancement Rules
   // ============================================
-  {
-    plugins: {
-      "import": importPlugin,
-    },
-    settings: {
-      "import/resolver": {
-        typescript: {
-          alwaysTryTypes: true,
-          project: "./tsconfig.json",
-        },
-      },
-    },
-    rules: {
-      "import/order": [
-        "warn",
-        {
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling"],
-            "index",
-            "object",
-            "type",
-          ],
-          "pathGroups": [
-            {
-              "pattern": "react",
-              "group": "external",
-              "position": "before",
-            },
-            {
-              "pattern": "@/**",
-              "group": "internal",
-            },
-          ],
-          "pathGroupsExcludedImportTypes": ["react"],
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true,
-          },
-        },
-      ],
-    },
-  },
+  ...accessibility, // Web accessibility (a11y)
+  ...security,      // Security best practices
 
   // ============================================
-  // 무시할 파일 및 폴더
+  // Code Style & Organization
   // ============================================
-  {
-    ignores: ["build/*", "dist/*", "**/.next/*", "**/node_modules/*"],
-  },
+  ...stylistic,   // Code formatting (indentation, quotes, etc.)
+  ...imports,     // Import ordering and organization
+  ...tailwind,    // Tailwind CSS class organization
 
   // ============================================
-  // 파일별 언어 설정
+  // Ignore Patterns
   // ============================================
-  {
-    files: ["**/*.{js,ts,jsx,tsx}"],
-    languageOptions: {
-      globals: globals.browser,
-    },
-  },
-
-  // ============================================
-  // React 설정
-  // ============================================
-  {
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-    rules: {
-      "react/react-in-jsx-scope": "off",
-      "react/function-component-definition": [
-        "warn",
-        {
-          "namedComponents": "arrow-function",
-          "unnamedComponents": "arrow-function",
-        },
-      ],
-    },
-  },
-
-  // ============================================
-  // 코드 스타일 규칙 (@stylistic)
-  // ============================================
-  {
-    plugins: { "@stylistic": stylistic },
-    rules: {
-      // 들여쓰기 및 따옴표
-      "@stylistic/indent": ["error", 2],
-      "@stylistic/quotes": ["error", "double"],
-      "@stylistic/semi": ["error", "always"],
-      "@stylistic/jsx-quotes": ["error", "prefer-double"],
-
-      // 공백 및 괄호
-      "@stylistic/object-curly-spacing": ["error", "always"],
-      "@stylistic/array-bracket-spacing": ["error", "never"],
-      "@stylistic/comma-spacing": ["error", { before: false, after: true }],
-      "@stylistic/arrow-parens": ["error", "always"],
-
-      // 줄바꿈 및 빈 줄
-      "@stylistic/comma-dangle": ["error", "always-multiline"],
-      "@stylistic/eol-last": ["error", "always"],
-      "@stylistic/no-multiple-empty-lines": ["error", { max: 1 }],
-    },
-  },
+  ...ignores,     // Files to exclude from linting
 ]);
