@@ -5,7 +5,6 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
 import importPlugin from "eslint-plugin-import";
-import storybook from "eslint-plugin-storybook";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -18,7 +17,6 @@ export default defineConfig([
   ...tseslint.configs.stylistic,
   ...nextVitals,
   ...nextTs,
-  ...storybook.configs["flat/recommended"],
 
   // ============================================
   // Tailwind CSS 설정
