@@ -10,7 +10,7 @@ const ProfileItem = ({ title, children }: ProfileItemProps) => {
     <Item className="p-0">
       <ItemContent>
         {
-          title && <ItemTitle className="break-keep">{title}</ItemTitle>
+          title && <ItemTitle className="mb-1 font-bold break-keep">{title}</ItemTitle>
         }
         {children}
       </ItemContent>

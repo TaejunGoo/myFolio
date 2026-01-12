@@ -8,6 +8,7 @@ export const mainSitemap: siteMapType[] = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#maintenance", label: "Maintenance" },
+  { href: "#skills", label: "Skills" },
 ];
 
 // 프로젝트 상세 페이지용 네비게이션

@@ -30,7 +30,7 @@ const Projects = () => {
       transition={{ delay: 0.3 }}
     >
       <Container>
-        <SubTitle title="Projects" desc="Selected Works & Project Archive" />
+        <SubTitle title="프로젝트" desc="Selected Works & Project Archive" />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {

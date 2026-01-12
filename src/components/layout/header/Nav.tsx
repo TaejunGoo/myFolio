@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { getProjectBySlug } from "@/data/projectDetailData";
 import { cn } from "@/shared/utils/cn";
 
 import { mainSitemap, detailSitemap } from "./sitemap";
@@ -18,6 +19,11 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
   const isDetailPage = pathname.startsWith("/projects/");
+  
+  // 프로젝트 상세 페이지인 경우 프로젝트 제목 가져오기
+  const projectSlug = isDetailPage ? pathname.split("/").pop() : null;
+  const currentProject = projectSlug ? getProjectBySlug(projectSlug) : null;
+  
   const currentSitemap = isMainPage ? mainSitemap : detailSitemap;
 
   const [activeSection, setActiveSection] = useState<string>("");
@@ -94,45 +100,52 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
       )}
       aria-label="Main navigation"
     >
-      {currentSitemap.map((item) => {
-        const active = isActive(item.href);
+      {isDetailPage && currentProject ? (
+        // 프로젝트 상세 페이지: 프로젝트 제목 표시
+        <span className="font-semibold text-foreground">
+          {currentProject.title}
+        </span>
+      ) : (
+        // 메인 페이지: 네비게이션 링크들 표시
+        currentSitemap.map((item) => {
+          const active = isActive(item.href);
 
-        return isMainPage ? (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleClick(e, item.href)}
-            className={cn(
-              "relative font-medium transition-all duration-300",
-              active
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-foreground/70 hover:text-foreground",
-            )}
-          >
-            {item.label}
-            {active && (
-              <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
-            )}
-          </a>
-        ) : (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleClick(e, item.href)}
-            className={cn(
-              "relative font-medium transition-all duration-300",
-              active
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-foreground/70 hover:text-foreground",
-            )}
-          >
-            {item.label}
-            {active && (
-              <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
-            )}
-          </Link>
-        );
-      })}
+          return isMainPage ? (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              className={cn(
+                "relative font-medium transition-all duration-300",
+                active
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-foreground/70 hover:text-foreground",
+              )}
+            >
+              {item.label}
+              {active && (
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
+              )}
+            </a>
+          ) : (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              className={cn(
+                "relative font-medium transition-all duration-300",
+                active
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-foreground/70 hover:text-foreground",
+              )}
+            >
+              {item.label}
+              {active && (
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
+              )}
+            </Link>
+          );
+        }))}
     </nav>
   );
 };

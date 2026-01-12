@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Container from "@/components/layout/header/Container";
 import SubTitle from "@/shared/components/typo/SubTitle";
 
-import MaintenanceList from "../projects/MaintenanceList";
+import MaintenanceList from "./MaintenanceList";
 
 const Maintenance = () => {
   return (
@@ -15,7 +15,7 @@ const Maintenance = () => {
       transition={{ delay: 0.3 }}
     >
       <Container>
-        <SubTitle title="Maintenance" desc="운영 및 유지보수 중인 프로젝트입니다." />
+        <SubTitle title="운영 및 유지보수" desc="Service Operations & Continuous Maintenance" />
         <MaintenanceList />
       </Container>
     </motion.div>
