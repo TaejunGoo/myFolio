@@ -1,7 +1,6 @@
 "use client";
 
 import { ExternalLink, Mail } from "lucide-react";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,24 +9,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { copyEmailToClipboard } from "@/shared/utils";
 
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const HeaderActions = () => {
-  const email = "gtxggle2@gmail.com";
   const resumeUrl = "https://your-resume-link.com"; // 실제 이력서 링크로 변경 필요
-
-  const handleEmailCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      toast.success("이메일이 복사되었습니다!", {
-        description: email,
-      });
-    } catch (err) {
-      console.error("Failed to copy email:", err);
-      toast.error("이메일 복사에 실패했습니다.");
-    }
-  };
 
   return (
     <div className="flex items-center gap-2">
@@ -37,7 +24,7 @@ export const HeaderActions = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={handleEmailCopy}
+              onClick={copyEmailToClipboard}
               className="hover:bg-accent"
             >
               <Mail className="size-5" />

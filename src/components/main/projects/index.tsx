@@ -24,13 +24,26 @@ const Projects = () => {
   const remainingProjects = maxVisibleProjects - visibleProjects;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-    >
-      <Container>
+    <Container>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
+      >
         <SubTitle title="프로젝트" desc="Selected Works & Project Archive" />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.1,
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
+      >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {
@@ -41,7 +54,10 @@ const Projects = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  // transition={{ duration: 0.4 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  }}
                 >
                   <ProjectCard {...project} className="size-full" />
                 </motion.div>
@@ -50,12 +66,12 @@ const Projects = () => {
           </AnimatePresence>
         </div>
         <div className="flex justify-center">
-          <Button variant={"outline"} className="mt-4" size={"lg"} onClick={toggleProjects}>
+          <Button variant={"outline"} className="mt-6" size={"lg"} onClick={toggleProjects}>
             {visibleProjects === 3 ? `더 보기 (${remainingProjects})` : "닫기"}
           </Button>
         </div>
-      </Container>
-    </motion.div>
+      </motion.div>
+    </Container>
   );
 };
 export default Projects;

@@ -67,14 +67,16 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
             className="rounded-lg border bg-muted/50 p-4 text-center"
           >
             <ProfileItem title="주요 업무 및 역할">
-              <div className="flex flex-wrap justify-start gap-1">
-                {
-                  jobDescription.map((desc) => (
-                    <Badge key={desc} variant={"outline"} className="px-3 py-2">
-                      {desc}
-                    </Badge>
-                  ))
-                }
+              <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                {jobDescription.map((desc, index) => (
+                  <span key={desc} className="inline-flex items-center gap-1">
+                    <span className="text-primary">#</span>
+                    <span>{desc}</span>
+                    {index < jobDescription.length - 1 && (
+                      <span className="ml-3 text-border">|</span>
+                    )}
+                  </span>
+                ))}
               </div>
             </ProfileItem>
           </div>

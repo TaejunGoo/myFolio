@@ -59,8 +59,8 @@ export const projectsData:ProjectCardProps[] = [
     category: "Brand",
     client: "CJ 올리브네트웍스",
     description: "CJ 맥소노미의 브랜드 웹사이트 구축 중 UI/UX 이슈 트러블슈팅 지원",
-    periodStart: "2024-01",
-    periodEnd: "2024-12",
+    periodStart: "2025-01",
+    periodEnd: "2025-02",
     stack: ["React", "Tailwind CSS", "Styled-Components", "반응형", "Git", "Figma"],
   },
   
