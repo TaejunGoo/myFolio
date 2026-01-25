@@ -8,7 +8,10 @@
       "Bash(npm run build:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm add:*)",
-      "Bash(pnpm lint:fix:*)"
+      "Bash(pnpm lint:fix:*)",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

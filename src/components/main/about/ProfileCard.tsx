@@ -1,6 +1,4 @@
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import type { TechName } from "@/shared/components/tech/tech-config";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn, getCareerDurationText } from "@/shared/utils";
@@ -54,7 +52,7 @@ const stats = [
   },
   {
     label: "유지보수",
-    value: `${maintenanceData.length}개`,
+    value: `${maintenanceData.length}개+`,
   },
 ];
 
@@ -67,14 +65,11 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
             className="rounded-lg border bg-muted/50 p-4 text-center"
           >
             <ProfileItem title="주요 업무 및 역할">
-              <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted-foreground">
-                {jobDescription.map((desc, index) => (
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                {jobDescription.map((desc) => (
                   <span key={desc} className="inline-flex items-center gap-1">
                     <span className="text-primary">#</span>
                     <span>{desc}</span>
-                    {index < jobDescription.length - 1 && (
-                      <span className="ml-3 text-border">|</span>
-                    )}
                   </span>
                 ))}
               </div>
@@ -91,7 +86,6 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
               </div>
             ))}
           </div>
-          <Separator />
           <ProfileItem title="사용하는 기술">
             <div className="flex flex-wrap justify-start gap-2">
               {mainStack.map((tech, index) => (
