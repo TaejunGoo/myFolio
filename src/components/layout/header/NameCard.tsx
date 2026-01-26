@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const NameCard = () => {
   const pathname = usePathname();
@@ -12,6 +12,7 @@ export const NameCard = () => {
   const CardContent = (
     <>
       <Avatar className="size-10">
+        <AvatarImage src="/images/profile/cat.jpg" alt="우리집 고양이 감자" sizes="40px" />
         <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-bold text-white">
           구태준
         </AvatarFallback>

@@ -2,7 +2,7 @@
 
 import { ExternalLink, Mail } from "lucide-react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { cn, copyEmailToClipboard } from "@/shared/utils";
@@ -18,7 +18,8 @@ const IntroCard = ({ className }: IntroCardProps) => {
       <CardHeader className="space-y-6">
         <div className="flex flex-col items-start gap-6">
           <div className="flex items-center gap-4">
-            <Avatar className="size-20 border-4 border-background shadow-xl md:size-24">
+            <Avatar className="size-20 shadow-xl md:size-24">
+              <AvatarImage src="/images/profile/cat.jpg" alt="우리집 고양이 감자" sizes="(max-width: 768px) 80px, 96px" />
               <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white">
                 구태준
               </AvatarFallback>
