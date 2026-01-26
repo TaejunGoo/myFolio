@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-
+import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
 import { cn } from "@/shared/utils";
 
@@ -59,24 +58,9 @@ const SkillsSection = ({ data = skillsData, className }: SkillsSectionProps) => 
         */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {data.categories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{
-                once: true,
-                margin: "-100px",
-                amount: 0.2,
-              }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1,
-                ease: [0.25, 0.1, 0.25, 1], // Custom easing for smooth motion
-              }}
-              className="h-full"
-            >
+            <FadeInView key={category.id} delay={index * 0.1} className="h-full">
               <SkillCategory category={category} />
-            </motion.div>
+            </FadeInView>
           ))}
         </div>
       </div>

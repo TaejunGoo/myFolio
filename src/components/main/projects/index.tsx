@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import Container from "@/components/layout/header/Container";
 import { Button } from "@/components/ui/button";
+import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
 
 import ProjectCard from "./ProjectCard";
@@ -30,25 +31,10 @@ const Projects = () => {
 
   return (
     <Container>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-      >
+      <FadeInView>
         <SubTitle title="프로젝트" desc="Selected Works & Project Archive" />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          delay: 0.1,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-      >
+      </FadeInView>
+      <FadeInView delay={0.1}>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {featuredProjects.slice(0, visibleProjects).map((project, index) => (
@@ -75,8 +61,10 @@ const Projects = () => {
             </Button>
           </div>
         )}
+      </FadeInView>
+      <FadeInView>
         {otherProjects.length > 0 && <ProjectTable projects={otherProjects} />}
-      </motion.div>
+      </FadeInView>
     </Container>
   );
 };
