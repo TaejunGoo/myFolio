@@ -16,6 +16,12 @@ export const maintenanceData:MaintenanceItemProps[] = [
     description: "폴더 공식 온라인 스토어 유지보수, 기획전 및 이벤트 페이지 제작 수행",
   },
   {
+    name: "CJ 튼튼스쿨",
+    logoUrl: "/images/maintenance/edited_school.png",
+    periodStart: "2026-01",
+    description: "CJ 튼튼스쿨 웹사이트 고도화 및 유지보수 수행",
+  },
+  {
     name: "이랜드그룹",
     logoUrl: "/images/maintenance/edited_eland.png",
     periodStart: "2021-06",
