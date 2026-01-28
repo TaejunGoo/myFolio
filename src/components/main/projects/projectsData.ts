@@ -5,7 +5,6 @@ export const projectsData: ProjectCardProps[] = [
     title: "JTBC 뉴스 플랫폼 구축",
     projectLink: "https://news.jtbc.co.kr/",
     slug: "jtbc-news-renewal",
-    imageUrlAry: ["/images/projects/jtbc_01.png"],
     category: "Media",
     client: "JTBC",
     description:
@@ -20,20 +19,12 @@ export const projectsData: ProjectCardProps[] = [
     category: "Personal",
     client: "Personal",
     description:
-      "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 대시보드 개발",
-    periodStart: "2024-06",
-    periodEnd: "2024-12",
+      "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 크롤러 및 대시보드 개발",
+    periodStart: "2026-01",
+    periodEnd: "2026-02",
     stack: [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Tailwind CSS",
-      "Shadcn UI",
-      "SWR",
-      "Zustand",
-      "Recharts",
-      "Puppeteer",
-      "SQLite",
+      "Claude Code",
+      "GitHub Copilot",
     ],
   },
   {
@@ -184,11 +175,6 @@ export const projectsData: ProjectCardProps[] = [
     client: "Smilegate",
     description:
       "WCG 2019 공식 웹사이트의 다국어 반응형 UI 개발 및 중국 시안 현지 행사 운영 기술 지원",
-    imageUrlAry: [
-      "/images/projects/wcg2019_01.jpg",
-      "/images/projects/wcg2019_02.jpg",
-      "/images/projects/wcg2019_03.jpg",
-    ],
     periodStart: "2019-07",
     periodEnd: "2020-02",
     stack: ["HTML", "CSS", "jQuery", "반응형", "다국어"],

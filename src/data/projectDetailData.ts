@@ -14,6 +14,7 @@ export const projectDetailData: ProjectDetailData[] = [
   {
     ...getBaseProject("jtbc-news-renewal"),
     slug: "jtbc-news-renewal",
+    imageUrlAry: ["/images/projects/jtbc_01.png"],
     stack: [
       ...getBaseProject("jtbc-news-renewal").stack,
       "Git",
@@ -147,6 +148,7 @@ export const projectDetailData: ProjectDetailData[] = [
   {
     ...getBaseProject("cj-the-square"),
     slug: "cj-the-square",
+    imageUrlAry: ["/images/projects/cjthesquare.jpg"],
     overview:
       "CJ The Square는 대한통운 임직원을 위한 사내 커뮤니티로, 글 작성, 열람, 댓글, 포인트 획득 및 교환 기능 등을 제공합니다. React 및 Tailwind CSS, Styled-components를 기반으로 모바일에 최적화된 UI를 구현했습니다. 심플한 형태의 커뮤니티 기능이 주된 서비스인 점을 고려해 별도의 UI 라이브러리를 사용하지 않고 대부분의 컴포넌트를 직접 구현했습니다.",
     role: [

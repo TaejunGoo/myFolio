@@ -30,22 +30,9 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
           {
             imageUrlAry ? (
-              <Swiper
-                modules={[Pagination]}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-                className="rounded-lg"
-              >
-                {
-                  imageUrlAry.map((url, index) => (
-                    <SwiperSlide key={index}>
-                      <AspectRatio ratio={16/9} className="w-full overflow-hidden bg-muted">
-                        <Image src={url} alt={title} fill className="object-cover" />
-                      </AspectRatio>
-                    </SwiperSlide>
-                  ))
-                }
-              </Swiper>
+              <AspectRatio ratio={16/9} className="w-full overflow-hidden bg-muted">
+                <Image src={imageUrlAry[0]} alt={title} fill className="object-cover" />
+              </AspectRatio>
             ) : (
               <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -89,7 +76,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
             {description}
           </p>
           
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-x-1 gap-y-2">
             {
               stack.map((tech) => (
                 <TechBadge key={tech} name={tech} />

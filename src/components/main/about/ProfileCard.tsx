@@ -62,7 +62,7 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
       <CardContent>
         <div className="flex flex-col gap-6">
           <div
-            className="rounded-lg border bg-muted/50 p-4 text-center"
+            className="rounded-lg bg-muted/50 p-4 text-center"
           >
             <ProfileItem title="주요 업무 및 역할">
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
@@ -79,7 +79,7 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center gap-1 rounded-lg border bg-muted/50 p-4 text-center"
+                className="flex flex-col items-center gap-1 rounded-lg bg-muted/50 p-4 text-center"
               >
                 <span className="text-lg font-bold tracking-tight md:text-2xl">{stat.value}</span>
                 <span className="text-sm font-medium text-muted-foreground">{stat.label}</span>
