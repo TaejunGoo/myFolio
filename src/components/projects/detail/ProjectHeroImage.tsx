@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 interface ProjectHeroImageProps {
   imageUrlAry?: string[];
@@ -44,9 +45,12 @@ const ProjectHeroImage = ({ imageUrlAry, title }: ProjectHeroImageProps) => {
 
   return (
     <Swiper
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay, Navigation]}
       slidesPerView={1}
       pagination={{ clickable: true }}
+      loop={true}
+      autoplay={{ delay: 3000, disableOnInteraction: true }}
+      navigation={true}
       className="overflow-hidden rounded-lg"
     >
       {imageUrlAry.map((url, index) => (

@@ -29,7 +29,7 @@ const ProjectHeader = ({
     <header className="space-y-4">
       <div className="flex items-center gap-2">
         <Button variant="ghost" size="sm" asChild>
-          <Link href="/projects">
+          <Link href="/#projects">
             <ArrowLeft className="mr-1 size-4" />
             목록으로
           </Link>

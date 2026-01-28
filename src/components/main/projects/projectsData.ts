@@ -12,6 +12,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2024-01",
     periodEnd: "2024-12",
     stack: ["Next.js", "TypeScript", "MUI", "Recoil", "Emotion", "Storybook", "Framer Motion", "반응형"],
+    imageUrlAry: ["/images/projects/jtbc_1.png", "/images/projects/jtbc_2.jpg"],
   },
   {
     title: "바이브 코딩 토이 프로젝트",
@@ -49,6 +50,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2025-03",
     periodEnd: "2025-06",
     stack: ["React", "TypeScript", "Tailwind CSS", "Styled-Components", "모바일"],
+    imageUrlAry: ["/images/projects/cjthesquare_1.jpg", "/images/projects/cjthesquare_2.jpg"],
   },
   {
     title: "아워홈 품질관리시스템 고도화",

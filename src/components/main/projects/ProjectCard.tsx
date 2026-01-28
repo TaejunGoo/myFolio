@@ -30,7 +30,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
           {
             imageUrlAry ? (
-              <AspectRatio ratio={16/9} className="w-full overflow-hidden bg-muted">
+              <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
                 <Image src={imageUrlAry[0]} alt={title} fill className="object-cover" />
               </AspectRatio>
             ) : (
