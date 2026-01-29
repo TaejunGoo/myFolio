@@ -1,10 +1,10 @@
-export interface siteMapType {
+export interface SitemapType {
   href: string;
   label: string;
 };
 
 // 메인 페이지용 섹션 네비게이션
-export const mainSitemap: siteMapType[] = [
+export const mainSitemap: SitemapType[] = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#maintenance", label: "Maintenance" },
@@ -12,7 +12,7 @@ export const mainSitemap: siteMapType[] = [
 ];
 
 // 프로젝트 상세 페이지용 네비게이션
-export const detailSitemap: siteMapType[] = [
+export const detailSitemap: SitemapType[] = [
   { href: "/", label: "← Back to Home" },
 ];
 

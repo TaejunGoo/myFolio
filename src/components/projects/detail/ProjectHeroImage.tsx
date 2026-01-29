@@ -62,6 +62,8 @@ const ProjectHeroImage = ({ imageUrlAry, title }: ProjectHeroImageProps) => {
               fill
               className="object-cover"
               priority={index === 0}
+              loading={index === 0 ? undefined : "lazy"}
+              sizes="(max-width: 768px) 100vw, 900px"
             />
           </AspectRatio>
         </SwiperSlide>

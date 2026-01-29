@@ -3,11 +3,9 @@
 import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
 import { cn } from "@/shared/utils";
+import type { SkillsData, SkillsSectionProps } from "@/types";
 
-import { skillsData } from "./data/skills-data";
 import SkillCategory from "./SkillCategory";
-
-import type { SkillsSectionProps } from "./types";
 
 /**
  * SkillsSection Component
@@ -39,10 +37,10 @@ import type { SkillsSectionProps } from "./types";
  * - Reusable SkillCategory card component
  * - Consistent spacing with 8px grid system
  *
- * @param data - 스킬 섹션 데이터 (선택적, 기본값: skillsData)
+ * @param data - 스킬 섹션 데이터
  * @param className - 추가 CSS 클래스
  */
-const SkillsSection = ({ data = skillsData, className }: SkillsSectionProps) => {
+const SkillsSection = ({ data, className }: SkillsSectionProps & { data: SkillsData }) => {
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="container mx-auto px-4">
@@ -73,4 +71,4 @@ export default SkillsSection;
 /**
  * Export types for external usage
  */
-export type { SkillsSectionProps, SkillCategory, SkillsData } from "./types";
+export type { SkillsSectionProps, SkillCategory, SkillsData } from "@/types";

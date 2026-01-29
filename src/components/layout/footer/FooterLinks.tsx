@@ -1,8 +1,7 @@
 "use client";
 
+import { footerNavLinks } from "@/data/shared/footer";
 import { cn } from "@/shared/utils/cn";
-
-import { footerNavLinks } from "./footerData";
 
 interface FooterLinksProps {
   className?: string;

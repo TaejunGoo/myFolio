@@ -1,5 +1,5 @@
-import type { StackItem } from "@/components/main/projects/types";
 import TechBadge from "@/shared/components/tech/TechBadge";
+import type { StackItem } from "@/types";
 
 import ProjectSection from "./ProjectSection";
 

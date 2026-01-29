@@ -1,27 +1,22 @@
-import { format, parseISO } from "date-fns";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import TechBadge from "@/shared/components/tech/TechBadge";
-import { cn } from "@/shared/utils";
+import { cn, formatPeriod } from "@/shared/utils";
+import type { ProjectCardProps } from "@/types";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-import type { ProjectCardProps } from "./types";
-
 export type { ProjectCardProps };
 
 const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className }: ProjectCardProps) => {
-  const formattedStart = format(parseISO(periodStart), "yyyy.MM");
-  const formattedEnd = periodEnd ? format(parseISO(periodEnd), "yyyy.MM") : "진행 중";
+  const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
   
   return (
     <Card className={cn(className, "flex flex-col")}>
@@ -31,12 +26,24 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
           {
             imageUrlAry ? (
               <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
-                <Image src={imageUrlAry[0]} alt={title} fill className="object-cover" />
+                <Image
+                  src={imageUrlAry[0]}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </AspectRatio>
             ) : (
               <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={"https://placehold.co/960x540?text=no-image"} alt={title} className="size-full object-cover" />
+                <img
+                  src={"https://placehold.co/960x540?text=no-image"}
+                  alt={title}
+                  className="size-full object-cover"
+                  loading="lazy"
+                />
               </AspectRatio>
             )
           }

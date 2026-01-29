@@ -1,5 +1,5 @@
-import type { ProjectDetailData } from "@/components/main/projects/types";
 import { Separator } from "@/components/ui/separator";
+import type { ProjectDetailData } from "@/types";
 
 import ProjectCustomSection from "./ProjectCustomSection";
 import ProjectHeader from "./ProjectHeader";

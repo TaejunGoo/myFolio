@@ -1,18 +1,9 @@
-import { format, parseISO } from "date-fns";
-
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-
-export interface MaintenanceItemProps {
-  name: string;
-  logoUrl?: string;
-  periodStart: string;
-  periodEnd?: string;
-  description: string;
-}
+import { formatPeriod } from "@/shared/utils";
+import type { MaintenanceItemProps } from "@/types";
 
 const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }: MaintenanceItemProps) => {
-  const formattedStart = format(parseISO(periodStart), "yyyy.MM");
-  const formattedEnd = periodEnd ? format(parseISO(periodEnd), "yyyy.MM") : "현재";
+  const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "현재");
 
   return (
     <Tooltip>
@@ -20,7 +11,14 @@ const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }:
         <div className="flex items-center justify-center">
           {logoUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logoUrl} alt={name} className="h-12 w-auto rounded-sm bg-white object-contain p-2" />
+            <img
+              src={logoUrl}
+              alt={name}
+              className="h-12 w-auto rounded-sm bg-white object-contain p-2"
+              loading="lazy"
+              width="96"
+              height="48"
+            />
           ) : (
             <div className="flex h-12 min-w-20 items-center justify-center rounded-md bg-muted px-4">
               <span className="text-sm font-medium text-muted-foreground">{name}</span>

@@ -1,8 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn } from "@/shared/utils";
-
-import type { SkillCategoryProps } from "./types";
+import type { SkillCategoryProps } from "@/types";
 
 /**
  * SkillCategory Component

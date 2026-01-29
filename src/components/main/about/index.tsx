@@ -6,7 +6,12 @@ import FadeInView from "@/shared/components/motion/FadeInView";
 import IntroCard from "./IntroCard";
 import ProfileCard from "./ProfileCard";
 
-const About = () => {
+interface AboutProps {
+  projectsCount: number;
+  maintenanceCount: number;
+}
+
+const About = ({ projectsCount, maintenanceCount }: AboutProps) => {
   return (
     <Container>
       <h2 className="sr-only">About</h2>
@@ -15,7 +20,11 @@ const About = () => {
           <IntroCard className="h-full" />
         </FadeInView>
         <FadeInView className="lg:basis-3/5" delay={0.2}>
-          <ProfileCard className="h-full" />
+          <ProfileCard
+            className="h-full"
+            projectsCount={projectsCount}
+            maintenanceCount={maintenanceCount}
+          />
         </FadeInView>
       </div>
     </Container>

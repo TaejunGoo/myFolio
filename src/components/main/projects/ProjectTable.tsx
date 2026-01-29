@@ -9,8 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import TechBadge from "@/shared/components/tech/TechBadge";
-
-import type { ProjectCardProps } from "./types";
+import type { ProjectCardProps } from "@/types";
 
 interface ProjectTableProps {
   projects: ProjectCardProps[];
@@ -30,8 +29,8 @@ const ProjectTable = ({ projects }: ProjectTableProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {projects.map((project, index) => (
-            <TableRow key={project.title + index}>
+          {projects.map((project) => (
+            <TableRow key={project.title}>
               <TableCell className="font-medium">
                 {project.projectLink ? (
                   <Link

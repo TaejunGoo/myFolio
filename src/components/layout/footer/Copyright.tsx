@@ -1,4 +1,4 @@
-import { footerInfo } from "./footerData";
+import { footerInfo } from "@/data/shared/footer";
 
 interface CopyrightProps {
   className?: string;

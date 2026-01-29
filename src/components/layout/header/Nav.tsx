@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { getProjectBySlug } from "@/data/projectDetailData";
+import { getProjectBySlug } from "@/data/projects";
 import { cn } from "@/shared/utils/cn";
 
 import { mainSitemap, detailSitemap } from "./sitemap";

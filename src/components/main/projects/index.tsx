@@ -4,15 +4,17 @@ import { motion } from "framer-motion";
 import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
+import type { ProjectCardProps } from "@/types";
 
 import ProjectCard from "./ProjectCard";
-import { projectsData } from "./projectsData";
 import ProjectTable from "./ProjectTable";
 
-const Projects = () => {
-  // slug가 있는 프로젝트와 없는 프로젝트 분리
-  const featuredProjects = projectsData.filter((project) => project.slug);
-  const otherProjects = projectsData.filter((project) => !project.slug);
+interface ProjectsProps {
+  featuredProjects: ProjectCardProps[];
+  otherProjects: ProjectCardProps[];
+}
+
+const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
 
   return (
     <Container>
@@ -23,7 +25,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
             <motion.div
-              key={project.title + index}
+              key={project.slug}
               className="size-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

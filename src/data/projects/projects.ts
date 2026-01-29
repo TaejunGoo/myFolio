@@ -1,10 +1,11 @@
-import type { ProjectCardProps } from "./types";
+import { PROJECT_SLUGS } from "@/constants/projectSlugs";
+import type { ProjectCardProps } from "@/types";
 
 export const projectsData: ProjectCardProps[] = [
   {
     title: "JTBC 뉴스 플랫폼 구축",
     projectLink: "https://news.jtbc.co.kr/",
-    slug: "jtbc-news-renewal",
+    slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
     category: "Media",
     client: "JTBC",
     description:
@@ -16,34 +17,31 @@ export const projectsData: ProjectCardProps[] = [
   },
   {
     title: "바이브 코딩 토이 프로젝트",
-    slug: "vibe-coding-projects",
+    slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     category: "Personal",
     client: "Personal",
     description:
       "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 크롤러 및 대시보드 개발",
     periodStart: "2026-01",
     periodEnd: "2026-02",
-    stack: [
-      "Claude Code",
-      "GitHub Copilot",
-    ],
+    stack: ["Claude Code", "GitHub Copilot"],
   },
   {
     title: "CJ 식자재 B2B eCommerce 구축",
     projectLink: "https://www.cjschoolfood.com/",
-    slug: "cj-schoolfood",
+    slug: PROJECT_SLUGS.CJ_SCHOOLFOOD,
     category: "eCommerce",
     client: "CJ프레시웨이",
     description:
       "학교 등 교육기관 대상 식자재 B2B 플랫폼 신규 구축, React/TypeScript 기반 반응형 UI 개발",
     periodStart: "2025-06",
     periodEnd: "2025-08",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Styled-Components", "반응형"],
+    stack: ["React", "TypeScript", "Tailwind CSS", "Styled-Components", "Headless UI", "반응형"],
   },
   {
     title: "CJ 대한통운 임직원 커뮤니티 구축",
     category: "Community",
-    slug: "cj-the-square",
+    slug: PROJECT_SLUGS.CJ_THE_SQUARE,
     client: "CJ대한통운",
     description:
       "대한통운 임직원을 위한 사내 커뮤니티 플랫폼 신규 구축, React/TypeScript 기반 모바일 최적화 UI 개발",
@@ -65,7 +63,7 @@ export const projectsData: ProjectCardProps[] = [
   {
     title: "CJ 맥소노미 홈페이지 구축",
     projectLink: "https://maxonomy.net/",
-    slug: "cj-maxonomy",
+    slug: PROJECT_SLUGS.CJ_MAXONOMY,
     category: "Brand",
     client: "CJ 올리브네트웍스",
     description:
@@ -87,14 +85,14 @@ export const projectsData: ProjectCardProps[] = [
   {
     title: "KBS 방송 참여 플랫폼 구축",
     projectLink: "https://new-tvut.kbs.co.kr/",
-    slug: "kbs-tvut",
+    slug: PROJECT_SLUGS.KBS_TVUT,
     category: "Media",
     client: "KBS",
     description:
       "KBS 방송 참여 플랫폼 신규 구축, HTML/SASS 기반 모바일 최적화 UI 개발 및 SASS 도입 주도",
     periodStart: "2023-01",
     periodEnd: "2023-07",
-    stack: ["HTML", "CSS", "Sass", "JavaScript", "jQuery"],
+    stack: ["HTML", "CSS", "Sass", "jQuery", "모바일"],
   },
   {
     title: "투비소프트 홈페이지 구축",
@@ -169,7 +167,7 @@ export const projectsData: ProjectCardProps[] = [
       "아동 패션 플랫폼 구축을 위한 HTML/CSS 반응형 웹 퍼블리싱 및 jQuery 인터랙션 개발",
     periodStart: "2020-02",
     periodEnd: "2020-05",
-    stack: ["HTML", "CSS", "jQuery", "반응형", "Photoshop"],
+    stack: ["HTML", "CSS", "jQuery", "반응형"],
   },
   {
     title: "글로벌 eSports 대회 공식 웹사이트 구축",

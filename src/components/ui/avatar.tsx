@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import Image from "next/image";
 
 import { cn } from "@/shared/utils/index";
 

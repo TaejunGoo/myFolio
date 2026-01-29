@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import type { CustomSection } from "@/components/main/projects/types";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import type { CustomSection } from "@/types";
 
 import ProjectSection from "./ProjectSection";
 

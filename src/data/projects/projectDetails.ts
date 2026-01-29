@@ -1,8 +1,11 @@
-import { projectsData } from "@/components/main/projects/projectsData";
-import type { ProjectDetailData } from "@/components/main/projects/types";
+import type { ProjectSlug } from "@/constants/projectSlugs";
+import { PROJECT_SLUGS } from "@/constants/projectSlugs";
+import type { ProjectDetailData } from "@/types";
+
+import { projectsData } from "./projects";
 
 // projectsData에서 기본 정보를 찾아서 확장하는 헬퍼 함수
-const getBaseProject = (slug: string) => {
+const getBaseProject = (slug: ProjectSlug) => {
   const base = projectsData.find((p) => p.slug === slug);
   if (!base) {
     throw new Error(`Project with slug "${slug}" not found in projectsData`);
@@ -12,13 +15,8 @@ const getBaseProject = (slug: string) => {
 
 export const projectDetailData: ProjectDetailData[] = [
   {
-    ...getBaseProject("jtbc-news-renewal"),
-    slug: "jtbc-news-renewal",
-    stack: [
-      ...getBaseProject("jtbc-news-renewal").stack,
-      "Git",
-      "Figma",
-    ],
+    ...getBaseProject(PROJECT_SLUGS.JTBC_NEWS_RENEWAL),
+    slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
     overview:
       "JTBC 뉴스는 텍스트 기사뿐만 아니라 라이브, 숏폼, 영상뉴스 등 다양한 형태의 미디어를 제공하는 종합 미디어 서비스입니다. Next.js, TypeScript, MUI, Emotion 기반의 환경에서 UI 개발을 진행했습니다. 다양한 계층과 디바이스에 노출되는 서비스 특성상 정교한 반응형 처리 작업을 수행했으며, 비교적 규모가 큰 서비스로서 복잡하고 다양한 형태의 컴포넌트들을 관리하기 위해 Storybook을 활용했습니다.",
     role: [
@@ -55,8 +53,8 @@ export const projectDetailData: ProjectDetailData[] = [
     ],
   },
   {
-    ...getBaseProject("vibe-coding-projects"),
-    slug: "vibe-coding-projects",
+    ...getBaseProject(PROJECT_SLUGS.VIBE_CODING_PROJECTS),
+    slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     overview:
       "실무에서 얻은 기술 스택을 활용하여 실생활의 불편함을 해결하는 두 가지 토이 프로젝트를 개발했습니다. 완성도보다는 빠른 개발과 실용성에 초점을 맞춘 '바이브 코딩' 방식으로 진행했으며, 각 프로젝트는 특정 문제를 해결하는 명확한 목적을 가지고 있습니다.",
     role: [
@@ -106,8 +104,8 @@ export const projectDetailData: ProjectDetailData[] = [
     ],
   },
   {
-    ...getBaseProject("cj-maxonomy"),
-    slug: "cj-maxonomy",
+    ...getBaseProject(PROJECT_SLUGS.CJ_MAXONOMY),
+    slug: PROJECT_SLUGS.CJ_MAXONOMY,
     overview:
       "Team MAXONOMY는 CJ 올리브네트웍스의 디지털 마케팅 솔루션 전문 팀의 공식 홈페이지로, 팀의 서비스와 솔루션을 소개하고 고객과의 접점을 제공하는 브랜드 사이트입니다. 외주 개발사가 Next.js, TypeScript, Tailwind CSS, shadcn/ui 기반으로 개발을 진행했으며, 본인은 클라이언트측 기술 담당자로서 품질 관리 및 기술 커뮤니케이션을 담당했습니다.",
     role: [
@@ -145,8 +143,8 @@ export const projectDetailData: ProjectDetailData[] = [
     ],
   },
   {
-    ...getBaseProject("cj-the-square"),
-    slug: "cj-the-square",
+    ...getBaseProject(PROJECT_SLUGS.CJ_THE_SQUARE),
+    slug: PROJECT_SLUGS.CJ_THE_SQUARE,
     overview:
       "CJ The Square는 대한통운 임직원을 위한 사내 커뮤니티로, 글 작성, 열람, 댓글, 포인트 획득 및 교환 기능 등을 제공합니다. React 및 Tailwind CSS, Styled-components를 기반으로 모바일에 최적화된 UI를 구현했습니다. 심플한 형태의 커뮤니티 기능이 주된 서비스인 점을 고려해 별도의 UI 라이브러리를 사용하지 않고 대부분의 컴포넌트를 직접 구현했습니다.",
     role: [
@@ -185,9 +183,8 @@ export const projectDetailData: ProjectDetailData[] = [
     ],
   },
   {
-    ...getBaseProject("cj-schoolfood"),
-    slug: "cj-schoolfood",
-    stack: [...getBaseProject("cj-schoolfood").stack, "Headless UI"],
+    ...getBaseProject(PROJECT_SLUGS.CJ_SCHOOLFOOD),
+    slug: PROJECT_SLUGS.CJ_SCHOOLFOOD,
     overview:
       "CJ 튼튼스쿨은 학교 등 교육기관을 대상으로 하는 식자재 B2B 플랫폼으로, 커머스 기능에 더해 급식자랑, 팁 공유 등 커뮤니티 기능을 제공하는 서비스입니다. React 및 Tailwind CSS, Styled-components를 기반으로 반응형 서비스 UI를 구현했습니다. 심플하고 요구조건이 복잡하지 않은 서비스 특성상 무거운 UI 라이브러리 대신 대부분 직접 구현한 컴포넌트로 화면을 구성했으며, 모달과 같은 부분은 HeadlessUI를 사용하여 구현했습니다.",
     role: [
@@ -225,9 +222,8 @@ export const projectDetailData: ProjectDetailData[] = [
     ],
   },
   {
-    ...getBaseProject("kbs-tvut"),
-    slug: "kbs-tvut",
-    stack: [...getBaseProject("kbs-tvut").stack, "모바일"],
+    ...getBaseProject(PROJECT_SLUGS.KBS_TVUT),
+    slug: PROJECT_SLUGS.KBS_TVUT,
     overview:
       "KBS 티벗은 KBS 방송 참여 플랫폼으로, 실시간 방송과 연동되어 방송 중 댓글 전송, 투표 등 시청자 참여 기능을 제공하는 서비스입니다. HTML, SASS 기반으로 모바일에 최적화된 서비스를 구현했으며, 고연령층 사용자가 많은 서비스 특성을 고려해 SASS와 CSS variable을 활용한 폰트 크기 테마 기능을 구현하여 접근성을 향상시켰습니다.",
     role: [

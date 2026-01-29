@@ -1,4 +1,4 @@
-import { mainSitemap } from "../header/sitemap";
+import { mainSitemap } from "@/components/layout/header/sitemap";
 
 export interface FooterSection {
   title: string;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { socialLinks } from "@/data/socialLinks";
+import { socialLinks } from "@/data/shared";
 import { cn } from "@/shared/utils/cn";
 
 interface SocialLinksProps {

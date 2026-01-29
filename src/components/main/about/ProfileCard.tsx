@@ -4,11 +4,11 @@ import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn, getCareerDurationText } from "@/shared/utils";
 
 import ProfileItem from "./ProfileItem";
-import { maintenanceData } from "../maintenance/maintenanceData";
-import { projectsData } from "../projects/projectsData";
 
 interface ProfileCardProps {
   className?: string;
+  projectsCount: number;
+  maintenanceCount: number;
 }
 
 const jobDescription = [
@@ -41,22 +41,21 @@ const subStack: TechName[] = [
   "Claude Code",
 ];
 
-const stats = [
-  {
-    label: "경력",
-    value: getCareerDurationText(),
-  },
-  {
-    label: "프로젝트",
-    value: `${projectsData.length}개`,
-  },
-  {
-    label: "유지보수",
-    value: `${maintenanceData.length}개+`,
-  },
-];
-
-const ProfileCard = ({ className }: ProfileCardProps) => {
+const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCardProps) => {
+  const stats = [
+    {
+      label: "경력",
+      value: getCareerDurationText(),
+    },
+    {
+      label: "프로젝트",
+      value: `${projectsCount}개`,
+    },
+    {
+      label: "유지보수",
+      value: `${maintenanceCount}개+`,
+    },
+  ];
   return (
     <Card className={cn("w-full", className)}>
       <CardContent>
@@ -88,15 +87,15 @@ const ProfileCard = ({ className }: ProfileCardProps) => {
           </div>
           <ProfileItem title="사용하는 기술">
             <div className="flex flex-wrap justify-start gap-2">
-              {mainStack.map((tech, index) => (
-                <TechBadge name={tech} key={tech + index} />
+              {mainStack.map((tech) => (
+                <TechBadge name={tech} key={tech} />
               ))}
             </div>
           </ProfileItem>
           <ProfileItem title="도구 및 기타">
             <div className="flex flex-wrap justify-start gap-2">
-              {subStack.map((tech, index) => (
-                <TechBadge name={tech} key={tech + index} />
+              {subStack.map((tech) => (
+                <TechBadge name={tech} key={tech} />
               ))}
             </div>
           </ProfileItem>
