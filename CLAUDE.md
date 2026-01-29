@@ -22,10 +22,6 @@ pnpm start            # Run production server
 # Code Quality
 pnpm lint             # Run ESLint
 pnpm lint:fix         # Auto-fix ESLint issues
-
-# Testing & Storybook
-pnpm storybook        # Run Storybook (port 6006)
-pnpm build-storybook  # Build Storybook for deployment
 ```
 
 Package manager: **pnpm**
@@ -39,8 +35,8 @@ Package manager: **pnpm**
 - `src/components/layout/` - Header, navigation, containers
 - `src/components/main/` - Page sections (hero, about, projects)
 - `src/shared/` - Utilities, providers, and shared components
-- `src/mocks/` - MSW mock handlers
-- `src/stories/` - Storybook stories
+- `src/data/` - Static data (projects, maintenance, skills, shared)
+- `src/types/` - TypeScript type definitions
 
 ### Key Patterns
 
@@ -50,7 +46,7 @@ Package manager: **pnpm**
 
 **Animation**: Framer Motion for complex animations (hero, about sections). Swiper for image carousels in project cards.
 
-**Data**: Projects and maintenance items are defined as static TypeScript arrays in `src/components/main/projects/projectsData.ts` and `maintenanceData.ts`.
+**Data**: Projects, maintenance items, and skills are defined as static TypeScript arrays in `src/data/` directory and dynamically imported in server components.
 
 **Tech Badges**: Technology icons are mapped in `src/shared/components/tech/tech-config.ts` using the `TechName` type union.
 
@@ -73,7 +69,7 @@ ESLint flat config with Tailwind linting (duplicate class detection, consistent 
 
 ## Adding Content
 
-**New project**: Add entry to `src/components/main/projects/projectsData.ts` with images in `public/images/projects/`.
+**New project**: Add entry to `src/data/projects/projects.ts` with images in `public/images/projects/`. For detailed project pages, add to `src/data/projects/projectDetails.ts`.
 
 **New tech badge**: Add to `TECH_CONFIG` in `src/shared/components/tech/tech-config.ts` with icon, label, and background style.
 

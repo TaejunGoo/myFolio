@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { MSWProvider } from "@/shared/provider/MSWProvider";
 import { cn } from "@/shared/utils/cn";
 
 const pretendard = localFont({
@@ -30,19 +29,17 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       suppressHydrationWarning
     >
       <body className={cn(pretendard.className, "pt-16 antialiased md:pt-20")}>
-        <MSWProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-          >
-            <AnimatedBackground />
-            <Header />
-            {children}
-            <Footer />
-            <Toaster />
-          </ThemeProvider>
-        </MSWProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <AnimatedBackground />
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
