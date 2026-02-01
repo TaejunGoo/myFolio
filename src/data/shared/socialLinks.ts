@@ -1,5 +1,4 @@
-import { FiGithub, FiMail, FiLinkedin } from "react-icons/fi";
-import { SiVelog } from "react-icons/si";
+import { FiGithub, FiMail } from "react-icons/fi";
 
 export interface SocialLink {
   name: string;
@@ -11,25 +10,13 @@ export interface SocialLink {
 export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
-    href: "https://github.com/yourusername",
+    href: "https://github.com/TaejunGoo",
     icon: FiGithub,
     ariaLabel: "GitHub 프로필 방문",
   },
   {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
-    icon: FiLinkedin,
-    ariaLabel: "LinkedIn 프로필 방문",
-  },
-  {
-    name: "Velog",
-    href: "https://velog.io/@yourusername",
-    icon: SiVelog,
-    ariaLabel: "Velog 블로그 방문",
-  },
-  {
     name: "Email",
-    href: "mailto:your.email@example.com",
+    href: "mailto:gtxggle2@gmail.com",
     icon: FiMail,
     ariaLabel: "이메일 보내기",
   },

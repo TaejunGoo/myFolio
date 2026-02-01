@@ -73,22 +73,24 @@ export const projectDetailData: ProjectDetailData[] = [
         title: "네이버 스마트스토어 교집합 찾기",
         type: "list",
         content: [
+          "https://naver-store-intersect-finder.vercel.app/",
+          "https://github.com/TaejunGoo/naver-store-intersect-finder",
           "문제: 여러 상품을 한 곳에서 구매하고 싶을 때 일일이 검색해야 하는 불편함",
           "해결: 여러 키워드 입력 시 모든 상품을 판매하는 스토어만 필터링",
           "기술: Next.js 16 App Router, SWR 데이터 페칭, 5분 TTL 메모리 캐싱",
           "특징: 반응형 UI, 다크모드 지원, shadcn/ui 컴포넌트 활용",
-          "GitHub: https://github.com/TaejunGoo/naver-store-intersect-finder",
         ],
       },
       {
         title: "부동산 가격 트렌드 대시보드 (LandBriefing)",
         type: "list",
         content: [
+          "https://naver-land-scraper.vercel.app/",
+          "https://github.com/TaejunGoo/naver-land-scraper",
           "문제: 아파트 가격 변동 추적을 위한 개인용 도구 필요",
           "해결: 네이버 부동산 데이터 자동 수집 및 시계열 차트 시각화",
           "기술: React + Vite, Express, SQLite, Puppeteer (스텔스 스크래핑), Recharts",
           "특징: 로컬 DB 기반 데이터 관리, .db 파일 import/export, Windows 배치 파일로 원클릭 실행",
-          "GitHub: https://github.com/TaejunGoo/naver-land-scraper",
         ],
       },
       {

@@ -1,5 +1,3 @@
-import { footerInfo } from "@/data/shared/footer";
-
 interface CopyrightProps {
   className?: string;
 }
@@ -8,10 +6,10 @@ export const Copyright = ({ className }: CopyrightProps) => {
   return (
     <div className={className}>
       <p className="text-center text-sm text-foreground/50 dark:text-foreground/60">
-        {footerInfo.copyright}
+        {`© ${new Date().getFullYear()} Taejun Goo. All rights reserved.`}
       </p>
       <p className="mt-1 text-center text-xs text-foreground/40 dark:text-foreground/50">
-        {footerInfo.madeWith}
+        Made with Next.js & TypeScript
       </p>
     </div>
   );

@@ -4,22 +4,18 @@ import Link from "next/link";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import TechBadge from "@/shared/components/tech/TechBadge";
 import { cn, formatPeriod } from "@/shared/utils";
 import type { ProjectCardProps } from "@/types";
 
-import "swiper/css";
-import "swiper/css/pagination";
-
 export type { ProjectCardProps };
 
 const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className }: ProjectCardProps) => {
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
-  
-  return (
-    <Card className={cn(className, "flex flex-col")}>
+
+  const cardContent = (
+    <Card className={cn(className, "group flex flex-col transition-all", slug && "cursor-pointer hover:bg-muted hover:shadow-lg")}>
       <CardContent className="flex h-full flex-col">
         <div className="relative">
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
@@ -47,62 +43,57 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
               </AspectRatio>
             )
           }
-          
+
         </div>
         <div className="mt-4 flex flex-1 flex-col">
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-xl leading-tight font-bold break-keep">
-              {slug ? (
-                <Link href={`/projects/${slug}`} className="decoration-2 underline-offset-4 hover:underline">
-                  {title}
-                </Link>
-              ) : (
-                title
-              )}
+              {title}
             </h3>
             {projectLink && (
-              <a 
-                href={projectLink} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                title="사이트 방문" 
-                className="mt-1 text-muted-foreground transition-colors hover:text-primary"
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(projectLink, "_blank", "noopener,noreferrer");
+                }}
+                title="사이트 방문"
+                className="relative z-10 mt-1 cursor-pointer text-muted-foreground transition-colors hover:text-primary"
               >
                 <ExternalLink className="size-4" />
-              </a>
+              </button>
             )}
           </div>
-          
+
           <div className="mt-1 flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
             <span className="font-medium text-foreground/80">{client}</span>
             <span>·</span>
             <span>{formattedStart} - {formattedEnd}</span>
           </div>
-          
+
           <p className="mt-3 mb-5 min-h-[calc(1.375em*2)] text-sm leading-snug break-keep text-muted-foreground">
             {description}
           </p>
-          
-          <div className="flex flex-wrap gap-x-1 gap-y-2">
+
+          <div className="flex flex-wrap gap-2">
             {
               stack.map((tech) => (
                 <TechBadge key={tech} name={tech} />
               ))
             }
           </div>
-
-          {slug && (
-            <div className="mt-auto pt-4">
-              <Button asChild variant="outline" className="w-full">
-                <Link href={`/projects/${slug}`}>
-                  자세히 보기
-                </Link>
-              </Button>
-            </div>
-          )}
         </div>
       </CardContent>
     </Card>
+  );
+
+  return slug ? (
+    <Link href={`/projects/${slug}`} className="block h-full">
+      {cardContent}
+    </Link>
+  ) : (
+    cardContent
   );
 };
 export default ProjectCard;

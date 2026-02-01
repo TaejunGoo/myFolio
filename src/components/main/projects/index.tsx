@@ -26,7 +26,7 @@ const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.slug}
-              className="size-full"
+              className="flex h-full w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -36,7 +36,7 @@ const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
                 delay: index * 0.1,
               }}
             >
-              <ProjectCard {...project} className="size-full" />
+              <ProjectCard {...project} className="h-full w-full" />
             </motion.div>
           ))}
         </div>

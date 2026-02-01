@@ -19,8 +19,8 @@ const IntroCard = ({ className }: IntroCardProps) => {
         <div className="flex flex-col items-start gap-6">
           <div className="flex items-center gap-4">
             <Avatar className="size-20 shadow-xl md:size-24">
-              <AvatarImage src="/images/profile/cat.jpg" alt="우리집 고양이 감자" sizes="(max-width: 768px) 80px, 96px" />
-              <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white">
+              <AvatarImage src="/images/profile/cat.webp" alt="우리집 고양이 감자" sizes="(max-width: 768px) 80px, 96px" />
+              <AvatarFallback className="bg-linear-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white">
                 구태준
               </AvatarFallback>
             </Avatar>

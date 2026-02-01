@@ -13,7 +13,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2024-01",
     periodEnd: "2024-12",
     stack: ["Next.js", "TypeScript", "MUI", "Recoil", "Emotion", "Storybook", "Framer Motion", "반응형"],
-    imageUrlAry: ["/images/projects/jtbc_1.png", "/images/projects/jtbc_2.jpg"],
+    imageUrlAry: ["/images/projects/jtbc_1.webp", "/images/projects/jtbc_2.webp"],
   },
   {
     title: "바이브 코딩 토이 프로젝트",
@@ -25,6 +25,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2026-01",
     periodEnd: "2026-02",
     stack: ["Claude Code", "GitHub Copilot"],
+    imageUrlAry: ["/images/projects/vibe_1.webp", "/images/projects/vibe_2.webp", "/images/projects/vibe_3.webp"],
   },
   {
     title: "CJ 식자재 B2B eCommerce 구축",
@@ -37,6 +38,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2025-06",
     periodEnd: "2025-08",
     stack: ["React", "TypeScript", "Tailwind CSS", "Styled-Components", "Headless UI", "반응형"],
+    imageUrlAry: ["/images/projects/school_1.webp"],
   },
   {
     title: "CJ 대한통운 임직원 커뮤니티 구축",
@@ -48,7 +50,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2025-03",
     periodEnd: "2025-06",
     stack: ["React", "TypeScript", "Tailwind CSS", "Styled-Components", "모바일"],
-    imageUrlAry: ["/images/projects/cjthesquare_1.jpg", "/images/projects/cjthesquare_2.jpg"],
+    imageUrlAry: ["/images/projects/cjthesquare_1.webp", "/images/projects/cjthesquare_2.webp"],
   },
   {
     title: "아워홈 품질관리시스템 고도화",
@@ -71,6 +73,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2025-01",
     periodEnd: "2025-02",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "반응형"],
+    imageUrlAry: ["/images/projects/maxonomy_1.webp"],
   },
   {
     title: "CJ 오클라우드 관리 플랫폼 구축",
