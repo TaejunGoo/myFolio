@@ -67,9 +67,22 @@ Package manager: **pnpm**
 
 ESLint flat config with Tailwind linting (duplicate class detection, consistent ordering).
 
+## Page Sections
+
+### Skills Section
+
+The Skills section displays professional capabilities in two categories:
+
+- **Core Skills**: Technical competencies (UI component development, responsive design, styling systems, accessibility, etc.)
+- **Professional Skills**: Practical work skills (tech stack selection, collaboration, project leadership, etc.)
+
+Tech stack information is displayed in the About section, not in Skills section, to avoid duplication.
+
 ## Adding Content
 
 **New project**: Add entry to `src/data/projects/projects.ts` with images in `public/images/projects/`. For detailed project pages, add to `src/data/projects/projectDetails.ts`.
+
+**New skill**: Add to `src/data/skills/skills.ts` under the appropriate category (core or professional).
 
 **New tech badge**: Add to `TECH_CONFIG` in `src/shared/components/tech/tech-config.ts` with icon, label, and background style.
 

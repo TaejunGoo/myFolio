@@ -17,8 +17,8 @@ interface ProjectTableProps {
 
 const ProjectTable = ({ projects }: ProjectTableProps) => {
   return (
-    <div className="mt-8">
-      <h3 className="mb-4 text-lg font-semibold">이외 프로젝트</h3>
+    <div className="mt-24">
+      <h3 className="mb-4 text-xl font-semibold">이외 프로젝트</h3>
       <Table>
         <TableHeader>
           <TableRow>
