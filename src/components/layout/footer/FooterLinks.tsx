@@ -1,7 +1,7 @@
 "use client";
 
 import { footerNavLinks } from "@/data/shared/footer";
-import { cn } from "@/shared/utils/cn";
+import { cn, scrollToSection } from "@/shared/utils";
 
 interface FooterLinksProps {
   className?: string;
@@ -12,14 +12,7 @@ export const FooterLinks = ({ className }: FooterLinksProps) => {
     if (href.startsWith("#")) {
       e.preventDefault();
       const targetId = href.replace("#", "");
-      const element = document.getElementById(targetId);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+      scrollToSection(targetId);
     }
   };
 

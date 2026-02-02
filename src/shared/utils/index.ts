@@ -3,3 +3,4 @@ export * from "./sleep";
 export * from "./career";
 export * from "./clipboard";
 export * from "./date";
+export * from "./scroll";

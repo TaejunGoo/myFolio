@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { getProjectBySlug } from "@/data/projects";
-import { cn } from "@/shared/utils/cn";
+import { cn, scrollToSection } from "@/shared/utils";
 
 import { mainSitemap, detailSitemap } from "./sitemap";
 
@@ -70,14 +70,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
     if (isMainPage && href.startsWith("#")) {
       e.preventDefault();
       const targetId = href.replace("#", "");
-      const element = document.getElementById(targetId);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }
+      scrollToSection(targetId);
     }
 
     onNavigate?.();

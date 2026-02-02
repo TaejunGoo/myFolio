@@ -50,6 +50,10 @@ Package manager: **pnpm**
 
 **Tech Badges**: Technology icons are mapped in `src/shared/components/tech/tech-config.ts` using the `TechName` type union.
 
+**Scroll Utility**: Custom scroll functions in `src/shared/utils/scroll.ts` handle smooth scrolling with header offset. Use `scrollToSection(targetId)` instead of native `scrollIntoView` for section navigation.
+
+**Section Spacing**: All main page sections use consistent spacing of `my-16 md:my-20` between sections. Individual section components should not add their own padding to maintain uniform spacing.
+
 ### Path Aliases
 
 - `@/*` → `./src/*`
@@ -71,12 +75,18 @@ ESLint flat config with Tailwind linting (duplicate class detection, consistent 
 
 ### Skills Section
 
-The Skills section displays professional capabilities in two categories:
+The Skills section displays professional capabilities in two categories with checklist-style presentation:
 
-- **Core Skills**: Technical competencies (UI component development, responsive design, styling systems, accessibility, etc.)
-- **Professional Skills**: Practical work skills (tech stack selection, collaboration, project leadership, etc.)
+- **Core Skills**: Technical competencies (UI component development, responsive design, styling systems, accessibility, etc.) - Blue theme with Code icon
+- **Professional Skills**: Practical work skills (tech stack selection, collaboration, project leadership, etc.) - Purple theme with Users icon
 
-Tech stack information is displayed in the About section, not in Skills section, to avoid duplication.
+Each category is a card component with:
+- Category-specific icon and color theme
+- Hover animation effects
+- Checklist items with check icons
+- Responsive 2-column layout (1 column on mobile)
+
+Type: Only `"Core"` and `"Professional"` categories are supported. Tech stack information is displayed in the About section to avoid duplication.
 
 ## Adding Content
 

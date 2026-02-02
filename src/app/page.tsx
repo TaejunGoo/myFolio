@@ -25,25 +25,25 @@ const Home = async () => {
           maintenanceCount={maintenanceData.length}
         />
       </section>
-      <Container className="my-20">
+      <Container className="my-16 md:my-20">
         <Separator />
       </Container>
-      <section id="projects" className="mb-20">
+      <section id="projects">
         <Projects
           featuredProjects={featuredProjects}
           otherProjects={otherProjects}
         />
       </section>
-      <Container className="my-20">
+      <Container className="my-16 md:my-20">
         <Separator />
       </Container>
-      <section id="maintenance" className="mb-20">
+      <section id="maintenance">
         <Maintenance items={maintenanceData} />
       </section>
-      <Container className="my-20">
+      <Container className="my-16 md:my-20">
         <Separator />
       </Container>
-      <section id="skills" className="mb-40">
+      <section id="skills" className="mb-16 md:mb-20">
         <Skills data={skillsData} />
       </section>
     </main>

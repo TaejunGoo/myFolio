@@ -31,7 +31,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       <body className={cn(pretendard.className, "pt-16 antialiased md:pt-20")}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
         >
           <AnimatedBackground />

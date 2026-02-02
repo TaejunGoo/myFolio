@@ -15,7 +15,7 @@ const Maintenance = ({ items }: MaintenanceProps) => {
   return (
     <FadeInView delay={0.3}>
       <Container>
-        <SubTitle title="운영 및 유지보수" desc="Service Operations & Continuous Maintenance" />
+        <SubTitle title="운영 및 유지보수" desc="Service Operations" />
         <MaintenanceList items={items} />
       </Container>
     </FadeInView>

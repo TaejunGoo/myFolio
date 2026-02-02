@@ -31,14 +31,14 @@ const IntroCard = ({ className }: IntroCardProps) => {
               </p>
             </div>
           </div>
-          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+          <p className="text-sm leading-relaxed break-keep text-muted-foreground md:text-base">
             다양한 환경에서 검증된 기술력과 협업 능력으로 프로젝트를 성공으로 이끕니다.
           </p>
         </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <PointItem text="React, Next.js 등 최신 프론트엔드 환경부터 Table기반의 레거시 웹까지 폭넓은 경험" />
+          <PointItem text="최신 프론트엔드 환경부터 레거시 웹까지 폭넓은 경험" />
           <PointItem text="이커머스, 관리 시스템, 미디어 등 다양한 도메인에서 UI 구축" />
           <PointItem text="팀 내 기술 도입과 스터디 운영 등 주도적인 성장과 팀 기여" />
         </div>

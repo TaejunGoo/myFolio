@@ -20,8 +20,6 @@ const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
     <Container>
       <FadeInView>
         <SubTitle title="프로젝트" desc="Selected Works & Project Archive" />
-      </FadeInView>
-      <FadeInView delay={0.1}>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
             <motion.div

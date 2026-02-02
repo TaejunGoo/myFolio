@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { scrollToSection } from "@/shared/utils";
 
 export const NameCard = () => {
   const pathname = usePathname();
@@ -33,13 +34,6 @@ export const NameCard = () => {
       <a
         href="#about"
         className="flex items-center gap-3 transition-all hover:opacity-80"
-        onClick={(e) => {
-          e.preventDefault();
-          const element = document.getElementById("about");
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-        }}
       >
         {CardContent}
       </a>
