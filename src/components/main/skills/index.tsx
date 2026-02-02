@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
 import { cn } from "@/shared/utils";
@@ -44,7 +45,7 @@ import SkillCategory from "./SkillCategory";
 const SkillsSection = ({ data, className }: SkillsSectionProps & { data: SkillsData }) => {
   return (
     <section className={cn("py-16 md:py-24", className)}>
-      <div className="container mx-auto px-4">
+      <Container>
         {/* 섹션 제목 */}
         <SubTitle title={data.title} desc={data.description} className="mb-10 md:mb-14" />
 
@@ -61,7 +62,7 @@ const SkillsSection = ({ data, className }: SkillsSectionProps & { data: SkillsD
             </FadeInView>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

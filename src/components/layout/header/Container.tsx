@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container = ({ children, className }: ContainerProps) => {
   return (
-    <div className={cn(className, "container mx-auto px-5")}>{children}</div>
+    <div className={cn("container mx-auto max-w-7xl px-5", className)}>{children}</div>
   );
 };
 export default Container;
