@@ -5,6 +5,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import ImagePlaceholder from "@/shared/components/ui/ImagePlaceholder";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,12 +20,7 @@ const ProjectHeroImage = ({ imageUrlAry, title }: ProjectHeroImageProps) => {
   if (!imageUrlAry || imageUrlAry.length === 0) {
     return (
       <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg bg-muted">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://placehold.co/1280x720?text=no-image"
-          alt={title}
-          className="size-full object-cover"
-        />
+        <ImagePlaceholder text={title} />
       </AspectRatio>
     );
   }

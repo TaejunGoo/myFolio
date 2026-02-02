@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-import { Grip, X } from "lucide-react";
+import { ArrowLeft, Grip, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,50 +21,111 @@ import Container from "./Container";
 import HeaderActions from "./HeaderActions";
 import NameCard from "./NameCard";
 import Nav from "./Nav";
+import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [pageTitle, setPageTitle] = useState("페이지");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isMainPage = pathname === "/";
+
+  // 페이지 제목 결정
+  useEffect(() => {
+    const getPageTitle = async () => {
+      if (pathname.startsWith("/projects/")) {
+        const slug = pathname.split("/projects/")[1];
+        if (slug) {
+          try {
+            const { projectsData } = await import("@/data/projects");
+            const project = projectsData.find((p) => p.slug === slug);
+            setPageTitle(project?.title || "프로젝트 상세");
+          } catch {
+            setPageTitle("프로젝트 상세");
+          }
+        } else {
+          setPageTitle("프로젝트");
+        }
+      } else {
+        setPageTitle("페이지");
+      }
+    };
+
+    if (!isMainPage) {
+      getPageTitle();
+    }
+  }, [pathname, isMainPage]);
 
   return (
     <div className="block md:hidden">
       <Container>
         <div className="flex w-full items-center justify-between py-4">
-          <NameCard />
-          <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
-            <DrawerTrigger asChild>
-              <Button variant="ghost">
-                <Grip className="size-6" />
-                <span className="sr-only">Open menu</span>
+          {isMainPage ? (
+            <NameCard />
+          ) : (
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.back()}
+                className="shrink-0"
+              >
+                <ArrowLeft className="size-5" />
+                <span className="sr-only">Go back</span>
               </Button>
-            </DrawerTrigger>
+              <h1 className="text-lg font-bold truncate">{pageTitle}</h1>
+            </div>
+          )}
 
-            <DrawerContent>
-              <DrawerHeader>
-                <div className="flex w-full items-center justify-between">
-                  <div>
-                    <DrawerTitle>Menu</DrawerTitle>
-                    <DrawerDescription>Navigation</DrawerDescription>
-                  </div>
-                  <DrawerClose asChild>
+          <div className="flex items-center gap-2 shrink-0">
+            {isMainPage ? (
+              <>
+                {/* 메인 페이지: 다크모드 토글 + 드로워 버튼 */}
+                <ThemeToggleBtn />
+                <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
+                  <DrawerTrigger asChild>
                     <Button variant="ghost">
-                      <X className="size-6" />
-                      <span className="sr-only">Close menu</span>
+                      <Grip className="size-6" />
+                      <span className="sr-only">Open menu</span>
                     </Button>
-                  </DrawerClose>
-                </div>
-              </DrawerHeader>
+                  </DrawerTrigger>
 
-              <div className="px-4">
-                <Nav direction="vertical" onNavigate={() => setIsOpen(false)} />
-              </div>
+                  <DrawerContent>
+                    <DrawerHeader>
+                      <div className="flex w-full items-center justify-between">
+                        <div>
+                          <DrawerTitle>Menu</DrawerTitle>
+                          <DrawerDescription>Navigation</DrawerDescription>
+                        </div>
+                        <DrawerClose asChild>
+                          <Button variant="ghost">
+                            <X className="size-6" />
+                            <span className="sr-only">Close menu</span>
+                          </Button>
+                        </DrawerClose>
+                      </div>
+                    </DrawerHeader>
 
-              <DrawerFooter>
-                <div className="flex w-full items-center justify-center">
-                  <HeaderActions />
-                </div>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+                    <div className="px-4">
+                      <Nav direction="vertical" onNavigate={() => setIsOpen(false)} />
+                    </div>
+
+                    <DrawerFooter>
+                      <div className="flex w-full items-center justify-center">
+                        <HeaderActions />
+                      </div>
+                    </DrawerFooter>
+                  </DrawerContent>
+                </Drawer>
+              </>
+            ) : (
+              <>
+                {/* 서브 페이지: 다크모드 토글만 */}
+                <ThemeToggleBtn />
+              </>
+            )}
+          </div>
         </div>
       </Container>
     </div>

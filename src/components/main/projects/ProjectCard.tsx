@@ -6,6 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import TechBadge from "@/shared/components/tech/TechBadge";
+import ImagePlaceholder from "@/shared/components/ui/ImagePlaceholder";
 import { cn, formatPeriod } from "@/shared/utils";
 import type { ProjectCardProps } from "@/types";
 
@@ -15,7 +16,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
 
   const cardContent = (
-    <Card className={cn(className, "group flex flex-col transition-all", slug && "cursor-pointer hover:bg-muted hover:shadow-lg")}>
+    <Card className={cn(className, "group flex flex-col transition-all", slug && "cursor-pointer hover:bg-muted/50 hover:shadow-lg")}>
       <CardContent className="flex h-full flex-col">
         <div className="relative">
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
@@ -33,13 +34,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
               </AspectRatio>
             ) : (
               <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={"https://placehold.co/960x540?text=no-image"}
-                  alt={title}
-                  className="size-full object-cover"
-                  loading="lazy"
-                />
+                <ImagePlaceholder />
               </AspectRatio>
             )
           }
