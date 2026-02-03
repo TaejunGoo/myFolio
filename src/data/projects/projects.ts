@@ -96,6 +96,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2023-01",
     periodEnd: "2023-07",
     stack: ["HTML", "CSS", "Sass", "jQuery", "모바일"],
+    imageUrlAry: ["/images/projects/tvut_1.webp"],
   },
   {
     title: "투비소프트 홈페이지 구축",
