@@ -94,9 +94,11 @@ export const MobileHeader = () => {
                     <DrawerHeader>
                       <div className="flex w-full items-center justify-between">
                         <div>
-                          <DrawerTitle>
-                            <NameCard />
-                          </DrawerTitle>
+                          <div className="sr-only">
+                            <DrawerTitle>메뉴</DrawerTitle>
+                            <DrawerDescription>네비게이션 메뉴입니다.</DrawerDescription>
+                          </div>
+                          <NameCard />
                         </div>
                         <DrawerClose asChild>
                           <Button variant="ghost" size="icon">
