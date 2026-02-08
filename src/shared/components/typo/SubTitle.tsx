@@ -1,17 +1,23 @@
 
+import type { ElementType } from "react";
+
 import { cn } from "@/shared/utils";
 
 interface SubTitleProps {
   title: string;
   desc?: string;
-  // hLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  hLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
 }
 
-const SubTitle = ({ title, desc, className }: SubTitleProps) => {
+const SubTitle = ({ title, desc, hLevel = 2, className }: SubTitleProps) => {
+  const HeadingTag: ElementType = `h${hLevel}`;
+
   return (
     <div className={cn("mb-5", className)}>
-      <h2 className="text-2xl font-bold text-foreground md:text-4xl">{title}</h2>
+      <HeadingTag className="text-foreground text-2xl font-bold md:text-4xl">
+        {title}
+      </HeadingTag>
       {desc && <p className="mt-1 text-base text-gray-500">{desc}</p>}
     </div>
   );

@@ -19,7 +19,7 @@ export const FooterLinks = ({ className }: FooterLinksProps) => {
   return (
     <nav
       className={cn("flex flex-wrap items-center justify-center gap-6", className)}
-      aria-label="Footer navigation"
+      aria-label="푸터 내비게이션"
     >
       {footerNavLinks.map((link) => (
         <a

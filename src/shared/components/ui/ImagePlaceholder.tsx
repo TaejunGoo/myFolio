@@ -15,7 +15,7 @@ const ImagePlaceholder = ({ className, iconClassName, text }: ImagePlaceholderPr
         "flex size-full flex-col items-center justify-center gap-2 bg-muted text-muted-foreground",
         className,
       )}
-      aria-label="Image placeholder"
+      aria-label="대체 이미지"
     >
       <ImageIcon className={cn("size-10 opacity-20", iconClassName)} />
       {text && <span className="text-sm font-medium opacity-40">{text}</span>}

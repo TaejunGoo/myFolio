@@ -14,7 +14,7 @@ interface AboutProps {
 const About = ({ projectsCount, maintenanceCount }: AboutProps) => {
   return (
     <Container>
-      <h2 className="sr-only">About</h2>
+      <h2 className="sr-only">소개</h2>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
         <FadeInView className="lg:basis-2/5" delay={0.1}>
           <IntroCard className="h-full" />

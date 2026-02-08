@@ -72,7 +72,7 @@ export const MobileHeader = () => {
                 className="shrink-0"
               >
                 <ArrowLeft className="size-5" />
-                <span className="sr-only">Go back</span>
+                <span className="sr-only">뒤로 가기</span>
               </Button>
               <h1 className="truncate text-lg font-bold">{pageTitle}</h1>
             </div>
@@ -87,7 +87,7 @@ export const MobileHeader = () => {
                   <DrawerTrigger asChild>
                     <Button variant="ghost" size="icon">
                       <Grip className="size-5" />
-                      <span className="sr-only">Open menu</span>
+                      <span className="sr-only">메뉴 열기</span>
                     </Button>
                   </DrawerTrigger>
                   <DrawerContent>
@@ -103,7 +103,7 @@ export const MobileHeader = () => {
                         <DrawerClose asChild>
                           <Button variant="ghost" size="icon">
                             <X className="size-5" />
-                            <span className="sr-only">Close menu</span>
+                            <span className="sr-only">메뉴 닫기</span>
                           </Button>
                         </DrawerClose>
                       </div>

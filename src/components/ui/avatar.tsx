@@ -25,7 +25,7 @@ const Avatar = ({
 
 const AvatarImage = ({
   className,
-  alt = "avatar",
+  alt = "프로필 이미지",
   sizes,
   ...props
 }: Omit<React.ComponentProps<typeof Image>, "width" | "height" | "fill"> & {
@@ -52,7 +52,7 @@ const AvatarFallback = ({
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        "flex size-full items-center justify-center rounded-full bg-muted",
+        "bg-muted flex size-full items-center justify-center rounded-full",
         className,
       )}
       {...props}

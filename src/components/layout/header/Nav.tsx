@@ -91,7 +91,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
         "flex gap-6",
         direction === "horizontal" ? "flex-row items-center" : "flex-col items-start",
       )}
-      aria-label="Main navigation"
+      aria-label="메인 내비게이션"
     >
       {isDetailPage && currentProject ? (
         // 프로젝트 상세 페이지: 프로젝트 제목 표시
@@ -117,7 +117,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
             >
               {item.label}
               {active && (
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
               )}
             </a>
           ) : (
@@ -134,7 +134,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
             >
               {item.label}
               {active && (
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500" />
               )}
             </Link>
           );

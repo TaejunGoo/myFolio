@@ -7,7 +7,7 @@ export const AnimatedBackground = () => {
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {/* Blob 1 */}
       <motion.div
-        className="absolute -top-20 -left-20 size-96 rounded-full bg-gradient-to-br from-sky-200/18 to-violet-300/18 blur-3xl dark:from-blue-600/18 dark:to-purple-700/18"
+        className="absolute -top-20 -left-20 size-96 rounded-full bg-linear-to-br from-sky-200/18 to-violet-300/18 blur-3xl dark:from-blue-600/18 dark:to-purple-700/18"
         animate={{
           x: [0, 100, 0],
           y: [0, 150, 0],
@@ -22,7 +22,7 @@ export const AnimatedBackground = () => {
 
       {/* Blob 2 */}
       <motion.div
-        className="absolute top-1/4 right-0 size-112 rounded-full bg-gradient-to-br from-cyan-200/15 to-blue-300/15 blur-3xl dark:from-cyan-600/15 dark:to-blue-700/15"
+        className="absolute top-1/4 right-0 size-112 rounded-full bg-linear-to-br from-cyan-200/15 to-blue-300/15 blur-3xl dark:from-cyan-600/15 dark:to-blue-700/15"
         animate={{
           x: [0, -80, 0],
           y: [0, 100, 0],
@@ -38,7 +38,7 @@ export const AnimatedBackground = () => {
 
       {/* Blob 3 */}
       <motion.div
-        className="absolute bottom-20 left-1/3 size-80 rounded-full bg-gradient-to-br from-purple-200/15 to-pink-300/15 blur-3xl dark:from-purple-600/15 dark:to-pink-700/15"
+        className="absolute bottom-20 left-1/3 size-80 rounded-full bg-linear-to-br from-purple-200/15 to-pink-300/15 blur-3xl dark:from-purple-600/15 dark:to-pink-700/15"
         animate={{
           x: [0, -120, 0],
           y: [0, -80, 0],
@@ -54,7 +54,7 @@ export const AnimatedBackground = () => {
 
       {/* Blob 4 */}
       <motion.div
-        className="absolute -right-32 bottom-0 size-128 rounded-full bg-gradient-to-br from-indigo-200/16 to-purple-300/16 blur-3xl dark:from-indigo-600/16 dark:to-purple-800/16"
+        className="absolute -right-32 bottom-0 size-128 rounded-full bg-linear-to-br from-indigo-200/16 to-purple-300/16 blur-3xl dark:from-indigo-600/16 dark:to-purple-800/16"
         animate={{
           x: [0, 60, 0],
           y: [0, -100, 0],
