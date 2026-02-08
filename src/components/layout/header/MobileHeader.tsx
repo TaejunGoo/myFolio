@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 import { ArrowLeft, Grip, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -74,11 +74,11 @@ export const MobileHeader = () => {
                 <ArrowLeft className="size-5" />
                 <span className="sr-only">Go back</span>
               </Button>
-              <h1 className="text-lg font-bold truncate">{pageTitle}</h1>
+              <h1 className="truncate text-lg font-bold">{pageTitle}</h1>
             </div>
           )}
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             {isMainPage ? (
               <>
                 {/* 메인 페이지: 다크모드 토글 + 드로워 버튼 */}

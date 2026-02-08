@@ -13,7 +13,7 @@ const ImagePlaceholder = ({ className, iconClassName, text }: ImagePlaceholderPr
     <div
       className={cn(
         "flex size-full flex-col items-center justify-center gap-2 bg-muted text-muted-foreground",
-        className
+        className,
       )}
       aria-label="Image placeholder"
     >

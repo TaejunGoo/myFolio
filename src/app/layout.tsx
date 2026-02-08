@@ -1,4 +1,5 @@
 
+import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 
@@ -68,6 +69,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
           {children}
           <Footer />
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
