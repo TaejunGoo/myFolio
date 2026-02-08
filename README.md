@@ -1,4 +1,4 @@
-# Gyeol Portfolio
+# myFolio Portfolio
 
 Next.js 16 기반의 개인 포트폴리오 웹사이트입니다. React 19, TypeScript, Tailwind CSS v4를 사용하여 구축되었으며, 애니메이션 효과와 반응형 디자인, 다크모드를 지원합니다.
 
@@ -44,7 +44,7 @@ pnpm lint:fix     # ESLint 자동 수정
 ## Project Structure
 
 ```
-gyeol/
+myFolio/
 ├── src/
 │   ├── app/              # Next.js App Router 페이지
 │   ├── components/

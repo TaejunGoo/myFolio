@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Gyeol is a Next.js 16 portfolio website built with React 19, TypeScript, and Tailwind CSS v4. It features animated hero sections, project showcases, and a responsive design with dark mode support.
+myFolio is a Next.js 16 portfolio website built with React 19, TypeScript, and Tailwind CSS v4. It features animated hero sections, project showcases, and a responsive design with dark mode support.
 
 ## Commands
 
