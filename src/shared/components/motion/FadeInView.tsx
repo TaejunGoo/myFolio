@@ -62,7 +62,7 @@ const FadeInView = ({
   duration = 0.4,
   yOffset = 20,
   viewportMargin = "0px",
-  viewportAmount = 0.2,
+  viewportAmount = 0.05,
   once =  true,
   className,
   ...props

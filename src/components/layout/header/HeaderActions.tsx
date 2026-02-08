@@ -18,45 +18,41 @@ export const HeaderActions = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={copyEmailToClipboard}
-              className="hover:bg-accent"
-            >
-              <Mail className="size-5" />
-              <span className="sr-only">이메일 복사</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>이메일 복사</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={copyEmailToClipboard}
+            className="hover:bg-accent"
+          >
+            <Mail className="size-5" />
+            <span className="sr-only">이메일 복사</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>이메일 복사</p>
+        </TooltipContent>
+      </Tooltip>
 
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              asChild
-              className="hover:bg-accent"
-            >
-              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-5" />
-                <span className="sr-only">이력서 보기</span>
-              </a>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>이력서 보기</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      {/* <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            asChild
+            className="hover:bg-accent"
+          >
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="size-5" />
+              <span className="sr-only">이력서 보기</span>
+            </a>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>이력서 보기</p>
+        </TooltipContent>
+      </Tooltip> */}
 
       <ThemeToggleBtn />
     </div>

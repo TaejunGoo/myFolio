@@ -25,7 +25,7 @@ const ScrollIndicator = () => {
   // Apply smooth spring animation
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 25,
     restDelta: 0.001,
   });
 
@@ -72,7 +72,6 @@ const ScrollIndicator = () => {
   return (
     <div className="pointer-events-none absolute top-0 left-0 h-[3px] w-full bg-transparent">
       <motion.div
-        // className="h-full origin-left bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
         className="h-full origin-left bg-foreground/30"
         style={{ scaleX }}
       />

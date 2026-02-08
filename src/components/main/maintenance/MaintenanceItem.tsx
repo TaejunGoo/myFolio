@@ -32,7 +32,7 @@ const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }:
             <span className="text-lg font-bold">{name}</span>
             <span className="text-xs text-muted-foreground">{formattedStart} - {formattedEnd}</span>
           </div>
-          <p className="mt-2 leading-relaxed break-keep">{description}</p>
+          <p className="mt-2 leading-relaxed text-wrap break-keep">{description}</p>
         </div>
       </TooltipContent>
     </Tooltip>

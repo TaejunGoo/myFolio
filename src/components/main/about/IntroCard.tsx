@@ -32,7 +32,8 @@ const IntroCard = ({ className }: IntroCardProps) => {
             </div>
           </div>
           <p className="text-sm leading-relaxed break-keep text-muted-foreground md:text-base">
-            다양한 환경에서 검증된 기술력과 협업 능력으로 프로젝트를 성공으로 이끕니다.
+            {/* 다양한 환경에서 검증된 기술력과 협업 능력으로 프로젝트를 성공으로 이끕니다. */}
+            주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.
           </p>
         </div>
       </CardHeader>
@@ -45,10 +46,10 @@ const IntroCard = ({ className }: IntroCardProps) => {
       </CardContent>
       <CardFooter>
         <div className="flex w-full flex-col gap-2 sm:flex-row">
-          <Button className="flex-1">
+          {/* <Button className="flex-1">
             <ExternalLink className="size-4" />
             이력서 보기
-          </Button>
+          </Button> */}
           <Button variant="outline" className="flex-1" onClick={copyEmailToClipboard}>
             <Mail className="size-4" />
             이메일 복사

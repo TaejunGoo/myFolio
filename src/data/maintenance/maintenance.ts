@@ -2,6 +2,18 @@ import type { MaintenanceItemProps } from "@/types";
 
 export const maintenanceData:MaintenanceItemProps[] = [
   {
+    name: "아워홈몰",
+    logoUrl: "/images/maintenance/edited_ourhomemall.png",
+    periodStart: "2025-11",
+    description: "아워홈몰 메인 개편, 아워홈즈 체험단 등 주요 기능 개발 수행",
+  },
+  {
+    name: "CJ 튼튼스쿨",
+    logoUrl: "/images/maintenance/edited_school.png",
+    periodStart: "2026-01",
+    description: "CJ 튼튼스쿨 웹사이트 고도화 및 유지보수 수행",
+  },
+  {
     name: "뉴발란스",
     logoUrl: "/images/maintenance/edited_nb.png",
     periodStart: "2019-03",
@@ -16,22 +28,10 @@ export const maintenanceData:MaintenanceItemProps[] = [
     description: "폴더 공식 온라인 스토어 유지보수, 기획전 및 이벤트 페이지 제작 수행",
   },
   {
-    name: "CJ 튼튼스쿨",
-    logoUrl: "/images/maintenance/edited_school.png",
-    periodStart: "2026-01",
-    description: "CJ 튼튼스쿨 웹사이트 고도화 및 유지보수 수행",
-  },
-  {
     name: "이랜드그룹",
     logoUrl: "/images/maintenance/edited_eland.png",
     periodStart: "2021-06",
     description: "이랜드그룹 공식 홈페이지 구축 후 유지보수 수행",
-  },
-  {
-    name: "아워홈몰",
-    logoUrl: "/images/maintenance/edited_ourhomemall.png",
-    periodStart: "2025-11",
-    description: "아워홈몰 메인 개편, 아워홈즈 체험단 등 주요 기능 개발 수행",
   },
   {
     name: "이랜드리테일",

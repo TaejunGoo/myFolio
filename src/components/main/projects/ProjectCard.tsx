@@ -16,7 +16,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
 
   const cardContent = (
-    <Card className={cn(className, "group flex flex-col bg-muted/50 transition-all", slug && "cursor-pointer hover:bg-muted/80 hover:shadow-lg")}>
+    <Card className={cn(className, "group flex flex-col transition-all dark:bg-muted/50", slug && "cursor-pointer hover:bg-muted/80 hover:shadow-lg")}>
       <CardContent className="flex h-full flex-col">
         <div className="relative">
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>

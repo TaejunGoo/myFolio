@@ -78,29 +78,29 @@ export const MobileHeader = () => {
             </div>
           )}
 
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1">
             {isMainPage ? (
               <>
                 {/* 메인 페이지: 다크모드 토글 + 드로워 버튼 */}
                 <ThemeToggleBtn />
                 <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
                   <DrawerTrigger asChild>
-                    <Button variant="ghost">
-                      <Grip className="size-6" />
+                    <Button variant="ghost" size="icon">
+                      <Grip className="size-5" />
                       <span className="sr-only">Open menu</span>
                     </Button>
                   </DrawerTrigger>
-
                   <DrawerContent>
                     <DrawerHeader>
                       <div className="flex w-full items-center justify-between">
                         <div>
-                          <DrawerTitle>Menu</DrawerTitle>
-                          <DrawerDescription>Navigation</DrawerDescription>
+                          <DrawerTitle>
+                            <NameCard />
+                          </DrawerTitle>
                         </div>
                         <DrawerClose asChild>
-                          <Button variant="ghost">
-                            <X className="size-6" />
+                          <Button variant="ghost" size="icon">
+                            <X className="size-5" />
                             <span className="sr-only">Close menu</span>
                           </Button>
                         </DrawerClose>

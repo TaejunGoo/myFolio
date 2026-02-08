@@ -20,6 +20,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "구태준 | 웹 포트폴리오",
   description: "퍼블리셔ꞏUI 엔지니어 구태준 입니다.",
   openGraph: {
@@ -58,7 +59,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       `}
       suppressHydrationWarning
     >
-      <body className={cn(pretendard.className, "pt-16 antialiased md:pt-20")}>
+      <body className={cn(pretendard.className, "pt-[72px]! antialiased md:pt-[75px]!")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

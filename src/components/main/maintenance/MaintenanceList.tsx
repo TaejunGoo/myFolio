@@ -13,7 +13,7 @@ const MaintenanceList = ({ items }: MaintenanceListProps) => {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
       {items.map((item, index) => (
-        <FadeInView key={item.name} delay={index * 0.05}>
+        <FadeInView key={item.name} delay={index * 0.02}>
           <MaintenanceItem {...item} />
         </FadeInView>
       ))}

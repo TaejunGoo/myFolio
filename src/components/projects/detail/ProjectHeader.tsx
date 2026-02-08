@@ -27,7 +27,7 @@ const ProjectHeader = ({
 
   return (
     <header className="space-y-4">
-      <div className="flex items-center gap-2">
+      <div className="hidden items-center gap-2 md:flex">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/#projects">
             <ArrowLeft className="mr-1 size-4" />
