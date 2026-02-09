@@ -83,7 +83,7 @@ export const MobileHeader = () => {
               <>
                 {/* 메인 페이지: 다크모드 토글 + 드로워 버튼 */}
                 <ThemeToggleBtn />
-                <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
+                <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen} autoFocus={true}>
                   <DrawerTrigger asChild>
                     <Button variant="ghost" size="icon">
                       <Grip className="size-5" />
