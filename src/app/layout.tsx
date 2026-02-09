@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "구태준 | 웹 포트폴리오",
     images: [
       {
-        url: "/images/profile/og.jpg",
+        url: "https://taejun-my-folio.vercel.app/images/profile/og.jpg",
         width: 1200,
         height: 630,
         alt: "구태준 | 웹 포트폴리오",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "구태준 | 웹 포트폴리오",
     description: "퍼블리셔ꞏUI 엔지니어 구태준 입니다.",
-    images: ["/images/profile/og.jpg"],
+    images: ["https://taejun-my-folio.vercel.app/images/profile/og.jpg"],
   },
 };
 
