@@ -58,9 +58,9 @@ export const MobileHeader = () => {
   }, [pathname, isMainPage]);
 
   return (
-    <div className="block md:hidden">
-      <Container>
-        <div className="flex w-full items-center justify-between py-4">
+    <div className="block h-16 md:hidden">
+      <Container className="h-full">
+        <div className="flex size-full items-center justify-between">
           {isMainPage ? (
             <NameCard />
           ) : (

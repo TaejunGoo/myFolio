@@ -16,7 +16,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
 
   const cardContent = (
-    <Card className={cn(className, "group flex flex-col transition-all dark:bg-muted/50", slug && "cursor-pointer hover:bg-muted/80 hover:shadow-lg")}>
+    <Card className={cn(className, "group flex cursor-pointer flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-black/40")}>
       <CardContent className="flex h-full flex-col">
         <div className="relative">
           <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
@@ -28,7 +28,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
                   alt={title}
                   fill
                   className="object-cover"
-                  loading="lazy"
+                  loading="eager"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </AspectRatio>
@@ -83,12 +83,10 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
     </Card>
   );
 
-  return slug ? (
+  return (
     <Link href={`/projects/${slug}`} className="block h-full">
       {cardContent}
     </Link>
-  ) : (
-    cardContent
   );
 };
 export default ProjectCard;

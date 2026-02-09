@@ -72,7 +72,7 @@ const ScrollIndicator = () => {
   return (
     <div className="pointer-events-none absolute top-0 left-0 h-[3px] w-full bg-transparent">
       <motion.div
-        className="h-full origin-left bg-foreground/30"
+        className="h-full origin-left bg-foreground/10 dark:bg-foreground/30"
         style={{ scaleX }}
       />
     </div>

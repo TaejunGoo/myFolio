@@ -5,9 +5,9 @@ import Nav from "./Nav";
 
 export const DesktopHeader = () => {
   return (
-    <div className="relative hidden md:block">
-      <Container>
-        <div className="grid w-full grid-cols-3 items-center py-4">
+    <div className="relative hidden h-[72px] md:block">
+      <Container className="h-full">
+        <div className="grid size-full grid-cols-3 items-center">
           <div className="flex justify-start">
             <NameCard />
           </div>

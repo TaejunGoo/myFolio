@@ -59,7 +59,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
       `}
       suppressHydrationWarning
     >
-      <body className={cn(pretendard.className, "pt-[72px]! antialiased md:pt-[75px]!")}>
+      <body className={cn(pretendard.className, "pt-[67px]! antialiased md:pt-[75px]!")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

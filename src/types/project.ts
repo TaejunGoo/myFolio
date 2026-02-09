@@ -8,7 +8,7 @@ export interface ProjectCardProps {
   description: string;
   imageUrlAry?: string[];
   projectLink?: string;
-  slug?: string;
+  slug: string;
   periodStart: string;
   periodEnd?: string;
   stack: StackItem[];

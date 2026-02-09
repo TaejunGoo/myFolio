@@ -15,7 +15,7 @@ const SubTitle = ({ title, desc, hLevel = 2, className }: SubTitleProps) => {
 
   return (
     <div className={cn("mb-5", className)}>
-      <HeadingTag className="text-foreground text-2xl font-bold md:text-4xl">
+      <HeadingTag className="text-2xl font-bold text-foreground md:text-4xl">
         {title}
       </HeadingTag>
       {desc && <p className="mt-1 text-base text-gray-500">{desc}</p>}
