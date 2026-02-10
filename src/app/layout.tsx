@@ -13,6 +13,8 @@ import { cn } from "@/shared/utils/cn";
 
 import type { Metadata } from "next";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 const pretendard = localFont({
   src: "../../public/fonts/pretendard/PretendardVariable.woff2",
   display: "swap",
@@ -47,6 +49,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
           <Footer />
           <Toaster />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
