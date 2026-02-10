@@ -16,7 +16,7 @@ const IntroCard = ({ className }: IntroCardProps) => {
   return (
     <Card className={cn("w-full border-white/20 bg-white/60 shadow-xl backdrop-blur-lg dark:border-white/10 dark:bg-black/40", className)}>
       <CardHeader className="space-y-6">
-        <div className="flex flex-col items-start gap-6">
+        <div className="flex flex-col items-start gap-4">
           <div className="flex items-center gap-4">
             <Avatar className="size-20 shadow-xl md:size-24">
               <AvatarImage src="/images/profile/cat.webp" alt="우리집 고양이 감자" sizes="(max-width: 768px) 80px, 96px" />
@@ -26,13 +26,12 @@ const IntroCard = ({ className }: IntroCardProps) => {
             </Avatar>
             <div>
               <h2 className="text-2xl font-bold md:text-3xl">구태준</h2>
-              <p className="mt-1 text-sm text-muted-foreground md:text-base">
+              <p className="text-muted-foreground mt-1 text-sm md:text-base">
                 퍼블리셔 &middot; UI Engineer
               </p>
             </div>
           </div>
-          <p className="text-sm leading-relaxed break-keep text-muted-foreground md:text-base">
-            {/* 다양한 환경에서 검증된 기술력과 협업 능력으로 프로젝트를 성공으로 이끕니다. */}
+          <p className="text-muted-foreground text-sm leading-relaxed break-keep md:text-base">
             주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.
           </p>
         </div>

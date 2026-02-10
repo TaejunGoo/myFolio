@@ -17,6 +17,9 @@ const parseTextWithLinks = (text: string) => {
   const parts = text.split(urlPattern);
 
   return parts.map((part, index) => {
+    // 빈 문자열인 경우 렌더링하지 않음
+    if (!part) return null;
+
     // URL인 경우
     if (part.match(urlPattern)) {
       return (
@@ -25,10 +28,10 @@ const parseTextWithLinks = (text: string) => {
           href={part}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
+          className="text-primary inline-flex max-w-full items-center gap-1 underline-offset-4 hover:underline"
         >
-          <ExternalLink className="size-4" />
-          <span>{part}</span>
+          <ExternalLink className="size-4 shrink-0" />
+          <span className="truncate">{part}</span>
         </a>
       );
     }
@@ -43,15 +46,15 @@ const ProjectCustomSection = ({ section }: ProjectCustomSectionProps) => {
   return (
     <ProjectSection title={title}>
       {type === "text" && typeof content === "string" && (
-        <p className="leading-relaxed text-muted-foreground">{content}</p>
+        <p className="text-muted-foreground leading-relaxed">{content}</p>
       )}
 
       {type === "list" && Array.isArray(content) && (
         <ul className="space-y-2">
           {content.map((item, index) => (
-            <li key={index} className="flex items-start gap-2 text-muted-foreground">
-              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-              <span className="leading-relaxed">{parseTextWithLinks(item)}</span>
+            <li key={index} className="text-muted-foreground flex items-start gap-2">
+              <span className="bg-primary mt-[0.6rem] size-1.5 shrink-0 rounded-full" />
+              <span className="min-w-0 leading-relaxed">{parseTextWithLinks(item)}</span>
             </li>
           ))}
         </ul>
@@ -60,7 +63,7 @@ const ProjectCustomSection = ({ section }: ProjectCustomSectionProps) => {
       {type === "gallery" && Array.isArray(content) && (
         <div className="grid gap-4 sm:grid-cols-2">
           {content.map((url, index) => (
-            <AspectRatio key={index} ratio={16 / 9} className="overflow-hidden rounded-lg bg-muted">
+            <AspectRatio key={index} ratio={16 / 9} className="bg-muted overflow-hidden rounded-lg">
               <Image
                 src={url}
                 alt={`${title} - ${index + 1}`}
