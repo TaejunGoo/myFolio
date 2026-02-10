@@ -41,22 +41,6 @@ const subStack: TechName[] = [
   "Claude Code",
 ];
 
-/**
- * 통계 값에서 단위(년, 개월, 개 등)를 분리하여 스타일을 적용하는 헬퍼 함수
- */
-const renderStatValue = (value: string) => {
-  return value.split(/(년|개월|개\+?)/g).map((part, index) => {
-    if (["년", "개월", "개", "개+"].includes(part)) {
-      return (
-        <span key={index} className="ml-0.5 text-base font-medium">
-          {part}
-        </span>
-      );
-    }
-    return part;
-  });
-};
-
 const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCardProps) => {
   const stats = [
     {
@@ -96,8 +80,8 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
                 key={stat.label}
                 className="gap-1/2 flex flex-col items-center rounded-lg bg-white/40 p-4 text-center shadow-xs first:col-span-2 md:first:col-span-1 dark:bg-white/5"
               >
-                <span className="text-2xl font-bold tracking-tight md:text-2xl">
-                  {renderStatValue(stat.value)}
+                <span className="text-xl font-bold tracking-tight md:text-2xl">
+                  {stat.value}
                 </span>
                 <span className="text-muted-foreground text-sm font-medium">{stat.label}</span>
               </div>
