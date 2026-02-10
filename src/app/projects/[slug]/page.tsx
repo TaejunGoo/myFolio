@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 
 import Container from "@/components/layout/header/Container";
 import ProjectDetail from "@/components/projects/detail";
+import { createProjectMetadata } from "@/data/shared";
+
+import type { Metadata } from "next";
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -13,6 +16,23 @@ export const generateStaticParams = async () => {
   return projectDetailData.map((project) => ({
     slug: project.slug,
   }));
+};
+
+export const generateMetadata = async ({ params }: ProjectDetailPageProps): Promise<Metadata> => {
+  const { slug } = await params;
+
+  const { getProjectBySlug } = await import("@/data/projects");
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return {};
+  }
+
+  return createProjectMetadata({
+    title: project.title,
+    description: project.description,
+    slug: project.slug,
+  });
 };
 
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {

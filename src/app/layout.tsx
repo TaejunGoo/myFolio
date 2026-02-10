@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { createMetadata } from "@/data/shared";
 import { cn } from "@/shared/utils/cn";
 
 import type { Metadata } from "next";
@@ -19,32 +20,7 @@ const pretendard = localFont({
   weight: "400 700", // 가변 폰트 웨이트 범위
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "구태준 | 웹 포트폴리오",
-  description: "퍼블리셔ꞏUI 엔지니어 구태준 입니다.",
-  openGraph: {
-    title: "구태준 | 웹 포트폴리오",
-    description: "퍼블리셔ꞏUI 엔지니어 구태준 입니다.",
-    type: "website",
-    locale: "ko_KR",
-    siteName: "구태준 | 웹 포트폴리오",
-    images: [
-      {
-        url: "https://taejun-my-folio.vercel.app/images/profile/og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "구태준 | 웹 포트폴리오",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "구태준 | 웹 포트폴리오",
-    description: "퍼블리셔ꞏUI 엔지니어 구태준 입니다.",
-    images: ["https://taejun-my-folio.vercel.app/images/profile/og.jpg"],
-  },
-};
+export const metadata: Metadata = createMetadata();
 
 interface RootLayoutProps {
   children: React.ReactNode;
