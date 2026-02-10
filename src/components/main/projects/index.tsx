@@ -20,10 +20,9 @@ const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
       </FadeInView>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featuredProjects.map((project, index) => (
+        {featuredProjects.map((project) => (
           <FadeInView
             key={project.slug}
-            delay={index * 0.1}
             className="flex size-full"
           >
             <ProjectCard {...project} className="size-full" />
