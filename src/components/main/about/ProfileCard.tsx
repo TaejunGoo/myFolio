@@ -90,13 +90,13 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
               </div>
             </ProfileItem>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center gap-1 rounded-lg bg-white/40 p-4 text-center shadow-xs dark:bg-white/5"
+                className="gap-1/2 flex flex-col items-center rounded-lg bg-white/40 p-4 text-center shadow-xs first:col-span-2 md:first:col-span-1 dark:bg-white/5"
               >
-                <span className="text-lg font-bold tracking-tight md:text-2xl">
+                <span className="text-2xl font-bold tracking-tight md:text-2xl">
                   {renderStatValue(stat.value)}
                 </span>
                 <span className="text-muted-foreground text-sm font-medium">{stat.label}</span>

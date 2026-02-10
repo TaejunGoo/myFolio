@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-
 import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
@@ -15,30 +13,24 @@ interface ProjectsProps {
 }
 
 const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
-
   return (
     <Container>
       <FadeInView>
         <SubTitle title="프로젝트" desc="Selected Works & Project Archive" />
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={project.slug}
-              className="flex size-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.25, 0.1, 0.25, 1],
-                delay: index * 0.1,
-              }}
-            >
-              <ProjectCard {...project} className="size-full" />
-            </motion.div>
-          ))}
-        </div>
       </FadeInView>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {featuredProjects.map((project, index) => (
+          <FadeInView
+            key={project.slug}
+            delay={index * 0.1}
+            className="flex size-full"
+          >
+            <ProjectCard {...project} className="size-full" />
+          </FadeInView>
+        ))}
+      </div>
+
       <FadeInView>
         {otherProjects.length > 0 && <ProjectTable projects={otherProjects} />}
       </FadeInView>
