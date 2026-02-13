@@ -48,7 +48,7 @@ const ProjectTable = ({ projects }: ProjectTableProps) => {
               <TableCell>{project.client}</TableCell>
               <TableCell>
                 {project.periodStart}
-                {project.periodEnd && ` ~ ${project.periodEnd}`}
+                {project.periodEnd ? ` ~ ${project.periodEnd}` : " - 진행중"}
               </TableCell>
               <TableCell>
                 <div className="flex gap-2">

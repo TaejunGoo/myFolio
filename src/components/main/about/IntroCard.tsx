@@ -26,12 +26,12 @@ const IntroCard = ({ className }: IntroCardProps) => {
             </Avatar>
             <div>
               <h2 className="text-2xl font-bold md:text-3xl">구태준</h2>
-              <p className="text-muted-foreground mt-1 text-sm md:text-base">
+              <p className="mt-1 text-sm text-muted-foreground md:text-base">
                 퍼블리셔 &middot; UI Engineer
               </p>
             </div>
           </div>
-          <p className="text-muted-foreground text-sm leading-relaxed break-keep md:text-base">
+          <p className="text-sm leading-relaxed break-keep text-muted-foreground md:text-base">
             주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.
           </p>
         </div>

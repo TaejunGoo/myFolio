@@ -64,10 +64,10 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
             className="rounded-lg bg-white/40 p-4 text-center shadow-xs dark:bg-white/5"
           >
             <ProfileItem title="주요 업무 및 역할">
-              <div className="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
                 {jobDescription.map((desc) => (
                   <span key={desc} className="text-left break-keep">
-                    <span className="text-primary mr-1">#</span>
+                    <span className="mr-1 text-primary">#</span>
                     <span>{desc}</span>
                   </span>
                 ))}
@@ -83,7 +83,7 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
                 <span className="text-xl font-bold tracking-tight md:text-2xl">
                   {stat.value}
                 </span>
-                <span className="text-muted-foreground text-sm font-medium">{stat.label}</span>
+                <span className="text-sm font-medium text-muted-foreground">{stat.label}</span>
               </div>
             ))}
           </div>

@@ -64,7 +64,7 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
           <div className="mt-1 flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
             <span className="font-medium text-foreground/80">{client}</span>
             <span>·</span>
-            <span>{formattedStart} - {formattedEnd}</span>
+            <span>{formattedStart} ~ {formattedEnd}</span>
           </div>
 
           <p className="mt-3 mb-5 min-h-[calc(1.375em*2)] text-sm leading-snug break-keep text-muted-foreground">

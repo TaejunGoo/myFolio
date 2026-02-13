@@ -3,6 +3,15 @@ import type { ProjectCardProps } from "@/types";
 
 export const projectsData: ProjectCardProps[] = [
   {
+    title: "CJ 식자재 쇼핑몰 고도화",
+    category: "eCommerce",
+    client: "CJ프레시웨이",
+    description:
+      "식당 등 B2B 대상 식자재 플랫폼인 CJ 프레시엔의 PC 화면 추가를 위한 React 기반 UI 컴포넌트 개발",
+    periodStart: "2025-02",
+    stack: ["React", "Sass"],
+  },
+  {
     title: "JTBC 뉴스 플랫폼 구축",
     projectLink: "https://news.jtbc.co.kr/",
     slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
@@ -25,7 +34,7 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2026-01",
     periodEnd: "2026-02",
     stack: ["Claude Code", "GitHub Copilot"],
-    imageUrlAry: ["/images/projects/vibe_1.webp", "/images/projects/vibe_2.webp", "/images/projects/vibe_3.webp"],
+    imageUrlAry: ["/images/projects/vibe_1.webp"],
   },
   {
     title: "CJ 식자재 B2B eCommerce 구축",

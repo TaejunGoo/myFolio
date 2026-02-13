@@ -2,16 +2,18 @@ import type { MaintenanceItemProps } from "@/types";
 
 export const maintenanceData:MaintenanceItemProps[] = [
   {
-    name: "아워홈몰",
-    logoUrl: "/images/maintenance/edited_ourhomemall.png",
-    periodStart: "2025-11",
-    description: "아워홈몰 메인 개편, 아워홈즈 체험단 등 주요 기능 개발 수행",
-  },
-  {
     name: "CJ 튼튼스쿨",
     logoUrl: "/images/maintenance/edited_school.png",
     periodStart: "2026-01",
+    periodEnd: "2026-02",
     description: "CJ 튼튼스쿨 웹사이트 고도화 및 유지보수 수행",
+  },
+  {
+    name: "아워홈몰",
+    logoUrl: "/images/maintenance/edited_ourhomemall.png",
+    periodStart: "2025-11",
+    periodEnd: "2025-12",
+    description: "아워홈몰 메인 개편, 아워홈즈 체험단 등 주요 기능 개발 수행",
   },
   {
     name: "뉴발란스",

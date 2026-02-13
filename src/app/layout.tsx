@@ -1,5 +1,5 @@
-
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 
@@ -12,8 +12,6 @@ import { createMetadata } from "@/data/shared";
 import { cn } from "@/shared/utils/cn";
 
 import type { Metadata } from "next";
-
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const pretendard = localFont({
   src: "../../public/fonts/pretendard/PretendardVariable.woff2",
