@@ -53,7 +53,7 @@ export const projectDetailData: ProjectDetailData[] = [
       {
         title: "갤러리",
         type: "gallery",
-        content: ["/images/projects/jtbc_3.webp"],
+        content: ["/images/projects/jtbc_3.webp", "/images/projects/jtbc_4.webp"],
       },
     ],
   },
@@ -202,8 +202,6 @@ export const projectDetailData: ProjectDetailData[] = [
         content: [
           "/images/projects/cjthesquare_3.webp",
           "/images/projects/cjthesquare_4.webp",
-          "/images/projects/cjthesquare_5.webp",
-          "/images/projects/cjthesquare_6.webp",
         ],
       },
     ],
