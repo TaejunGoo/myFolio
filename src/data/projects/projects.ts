@@ -104,7 +104,7 @@ export const projectsData: ProjectCardProps[] = [
       "KBS 방송 참여 플랫폼 신규 구축, HTML/SASS 기반 모바일 최적화 UI 개발 및 SASS 도입 주도",
     periodStart: "2023-01",
     periodEnd: "2023-07",
-    stack: ["HTML", "CSS", "Sass", "jQuery", "모바일"],
+    stack: ["HTML", "Sass", "jQuery", "모바일"],
     imageUrlAry: ["/images/projects/tvut_1.webp"],
   },
   {
