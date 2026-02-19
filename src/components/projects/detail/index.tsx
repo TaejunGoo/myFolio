@@ -1,19 +1,23 @@
 import { Separator } from "@/components/ui/separator";
+import type { AdjacentProject } from "@/data/projects/projectDetails";
 import type { ProjectDetailData } from "@/types";
 
 import ProjectCustomSection from "./ProjectCustomSection";
 import ProjectHeader from "./ProjectHeader";
 import ProjectHeroImage from "./ProjectHeroImage";
 import ProjectHighlights from "./ProjectHighlights";
+import ProjectNavigation from "./ProjectNavigation";
 import ProjectOverview from "./ProjectOverview";
 import ProjectRole from "./ProjectRole";
 import ProjectStack from "./ProjectStack";
 
 interface ProjectDetailProps {
   project: ProjectDetailData;
+  prevProject: AdjacentProject | null;
+  nextProject: AdjacentProject | null;
 }
 
-const ProjectDetail = ({ project }: ProjectDetailProps) => {
+const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps) => {
   const {
     title,
     category,
@@ -73,8 +77,13 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           </div>
         ))}
       </div>
+
+      <Separator className="mt-8" />
+
+      <ProjectNavigation prevProject={prevProject} nextProject={nextProject} />
     </article>
   );
 };
 
 export default ProjectDetail;
+

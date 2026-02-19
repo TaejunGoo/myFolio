@@ -39,17 +39,19 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   const { slug } = await params;
 
   // 런타임에도 동적 import (SSG)
-  const { getProjectBySlug } = await import("@/data/projects");
+  const { getProjectBySlug, getAdjacentProjects } = await import("@/data/projects");
   const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();
   }
 
+  const { prev, next } = getAdjacentProjects(slug);
+
   return (
     <main className="py-10">
       <Container>
-        <ProjectDetail project={project} />
+        <ProjectDetail project={project} prevProject={prev} nextProject={next} />
       </Container>
     </main>
   );

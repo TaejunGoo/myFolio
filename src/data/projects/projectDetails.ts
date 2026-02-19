@@ -313,3 +313,30 @@ export const projectDetailData: ProjectDetailData[] = [
 export const getProjectBySlug = (slug: string): ProjectDetailData | undefined => {
   return projectDetailData.find((project) => project.slug === slug);
 };
+
+export interface AdjacentProject {
+  slug: string;
+  title: string;
+}
+
+export const getAdjacentProjects = (
+  slug: string
+): { prev: AdjacentProject | null; next: AdjacentProject | null } => {
+  const index = projectDetailData.findIndex((project) => project.slug === slug);
+
+  if (index === -1) {
+    return { prev: null, next: null };
+  }
+
+  const prev =
+    index > 0
+      ? { slug: projectDetailData[index - 1].slug, title: projectDetailData[index - 1].title }
+      : null;
+
+  const next =
+    index < projectDetailData.length - 1
+      ? { slug: projectDetailData[index + 1].slug, title: projectDetailData[index + 1].title }
+      : null;
+
+  return { prev, next };
+};
