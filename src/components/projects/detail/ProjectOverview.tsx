@@ -7,7 +7,7 @@ interface ProjectOverviewProps {
 const ProjectOverview = ({ overview }: ProjectOverviewProps) => {
   return (
     <ProjectSection title="개요">
-      <p className="leading-relaxed text-muted-foreground">{overview}</p>
+      <p className="text-sm leading-normal text-muted-foreground md:text-base">{overview}</p>
     </ProjectSection>
   );
 };

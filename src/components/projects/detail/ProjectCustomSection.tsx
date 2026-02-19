@@ -57,15 +57,15 @@ const ProjectCustomSection = ({ section }: ProjectCustomSectionProps) => {
   return (
     <ProjectSection title={title}>
       {type === "text" && typeof content === "string" && (
-        <p className="leading-relaxed text-muted-foreground">{content}</p>
+        <p className="text-sm leading-normal text-muted-foreground md:text-base">{content}</p>
       )}
 
       {type === "list" && Array.isArray(content) && (
         <ul className="space-y-2">
           {content.map((item, index) => (
-            <li key={index} className="flex items-start gap-2 text-muted-foreground">
-              <span className="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-primary" />
-              <span className="min-w-0 leading-relaxed">{parseTextWithLinks(item)}</span>
+            <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground md:text-base">
+              <span className="mt-[7px] size-1 shrink-0 rounded-full bg-primary md:mt-[9px] md:size-1.5" />
+              <span className="min-w-0 leading-normal">{parseTextWithLinks(item)}</span>
             </li>
           ))}
         </ul>
