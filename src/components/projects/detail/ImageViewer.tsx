@@ -34,7 +34,7 @@ const ImageViewer = ({ images, initialIndex, open, onOpenChange, title }: ImageV
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="h-screen w-screen max-w-none border-none bg-background p-0 gap-0 shadow-none w-full! md:h-auto md:w-auto md:max-w-[90vw] lg:max-w-[1000px]" showCloseButton={false}>
+      <DialogContent className="h-screen w-screen max-w-none! border-none bg-background/80 p-0 gap-0 shadow-none w-full! lg:h-auto lg:w-auto lg:max-w-[1000px]!" showCloseButton={false}>
         <DialogHeader className="absolute left-0 top-0 z-10 w-full p-0">
           <DialogTitle className="sr-only">자세히 보기</DialogTitle>
           <DialogDescription className="sr-only">이미지를 확대하거나 슬라이드하여 볼 수 있습니다</DialogDescription>

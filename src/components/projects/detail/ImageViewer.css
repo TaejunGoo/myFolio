@@ -13,3 +13,8 @@
   transform: translateX(-50%);
   font-weight: 500;
 }
+
+/* Image Viewer backdrop blur */
+[data-slot="dialog-overlay"]:has(+ [data-slot="dialog-content"] .image-viewer-swiper) {
+  backdrop-filter: blur(8px);
+}
