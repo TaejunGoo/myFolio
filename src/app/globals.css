@@ -120,4 +120,7 @@
   body {
     @apply bg-background text-foreground tracking-tight;
   }
+  section {
+    scroll-margin-top: 80px;
+  }
 }

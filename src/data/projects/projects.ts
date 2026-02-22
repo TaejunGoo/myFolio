@@ -3,40 +3,6 @@ import type { ProjectCardProps } from "@/types";
 
 export const projectsData: ProjectCardProps[] = [
   {
-    title: "CJ 식자재 쇼핑몰 고도화",
-    category: "eCommerce",
-    client: "CJ프레시웨이",
-    description:
-      "식당 등 B2B 대상 식자재 플랫폼인 CJ 프레시엔의 PC 화면 추가를 위한 React 기반 UI 컴포넌트 개발",
-    periodStart: "2025-02",
-    stack: ["React", "Sass"],
-  },
-  {
-    title: "JTBC 뉴스 플랫폼 구축",
-    projectLink: "https://news.jtbc.co.kr/",
-    slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
-    category: "Media",
-    client: "JTBC",
-    description:
-      "JTBC 뉴스 플랫폼 리빌딩을 위한 Next.js 및 MUI 기반의 반응형 UI 컴포넌트 개발, Storybook 구축",
-    periodStart: "2024-01",
-    periodEnd: "2024-12",
-    stack: ["Next.js", "TypeScript", "MUI", "Recoil", "Emotion", "Storybook", "Framer Motion", "반응형"],
-    imageUrlAry: ["/images/projects/jtbc_1.webp", "/images/projects/jtbc_2.webp"],
-  },
-  {
-    title: "바이브 코딩 토이 프로젝트",
-    slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
-    category: "Personal",
-    client: "Personal",
-    description:
-      "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 크롤러 및 대시보드 개발",
-    periodStart: "2026-01",
-    periodEnd: "2026-02",
-    stack: ["Claude Code", "GitHub Copilot"],
-    imageUrlAry: ["/images/projects/vibe_1.webp"],
-  },
-  {
     title: "CJ 식자재 B2B eCommerce 구축",
     projectLink: "https://www.cjschoolfood.com/",
     slug: PROJECT_SLUGS.CJ_SCHOOLFOOD,
@@ -62,6 +28,15 @@ export const projectsData: ProjectCardProps[] = [
     imageUrlAry: ["/images/projects/cjthesquare_1.webp", "/images/projects/cjthesquare_2.webp"],
   },
   {
+    title: "CJ 식자재 쇼핑몰 고도화",
+    category: "eCommerce",
+    client: "CJ프레시웨이",
+    description:
+      "식당 등 B2B 대상 식자재 플랫폼인 CJ 프레시엔의 PC 화면 추가를 위한 React 기반 UI 컴포넌트 개발",
+    periodStart: "2025-02",
+    stack: ["React", "Sass"],
+  },
+  {
     title: "아워홈 품질관리시스템 고도화",
     category: "Service",
     client: "아워홈",
@@ -83,6 +58,19 @@ export const projectsData: ProjectCardProps[] = [
     periodEnd: "2025-02",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "반응형"],
     imageUrlAry: ["/images/projects/maxonomy_1.webp"],
+  },
+  {
+    title: "JTBC 뉴스 플랫폼 구축",
+    projectLink: "https://news.jtbc.co.kr/",
+    slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
+    category: "Media",
+    client: "JTBC",
+    description:
+      "JTBC 뉴스 플랫폼 리빌딩을 위한 Next.js 및 MUI 기반의 반응형 UI 컴포넌트 개발, Storybook 구축",
+    periodStart: "2024-01",
+    periodEnd: "2024-12",
+    stack: ["Next.js", "TypeScript", "MUI", "Recoil", "Emotion", "Storybook", "Framer Motion", "반응형"],
+    imageUrlAry: ["/images/projects/jtbc_1.webp", "/images/projects/jtbc_2.webp"],
   },
   {
     title: "CJ 오클라우드 관리 플랫폼 구축",
@@ -191,5 +179,17 @@ export const projectsData: ProjectCardProps[] = [
     periodStart: "2019-07",
     periodEnd: "2020-02",
     stack: ["HTML", "CSS", "jQuery", "반응형", "다국어"],
+  },
+  {
+    title: "바이브 코딩 토이 프로젝트",
+    slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
+    category: "Personal",
+    client: "Personal",
+    description:
+      "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 크롤러 및 대시보드 개발",
+    periodStart: "2026-01",
+    periodEnd: "2026-02",
+    stack: ["Claude Code", "GitHub Copilot"],
+    imageUrlAry: ["/images/projects/vibe_1.webp"],
   },
 ];
