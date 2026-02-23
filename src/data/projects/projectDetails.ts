@@ -320,7 +320,7 @@ export interface AdjacentProject {
 }
 
 export const getAdjacentProjects = (
-  slug: string
+  slug: string,
 ): { prev: AdjacentProject | null; next: AdjacentProject | null } => {
   const index = projectDetailData.findIndex((project) => project.slug === slug);
 

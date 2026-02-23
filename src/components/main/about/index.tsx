@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 

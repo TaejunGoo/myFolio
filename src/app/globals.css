@@ -124,3 +124,25 @@
     scroll-margin-top: 80px;
   }
 }
+
+/* Image Viewer Swiper Styles */
+@layer utilities {
+  .image-viewer-swiper .swiper-pagination {
+    color: var(--foreground);
+    background: var(--background);
+    opacity: 0.6;
+    backdrop-filter: blur(4px);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 8px;
+    width: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Image Viewer backdrop blur */
+  [data-slot="dialog-overlay"]:has(+ [data-slot="dialog-content"] .image-viewer-swiper) {
+    backdrop-filter: blur(8px);
+  }
+}

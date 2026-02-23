@@ -1,7 +1,6 @@
 import { ChevronLeft, ChevronRight, LayoutGrid } from "lucide-react";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import type { AdjacentProject } from "@/data/projects/projectDetails";
 
 interface ProjectNavigationProps {

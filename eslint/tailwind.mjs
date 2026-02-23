@@ -34,7 +34,7 @@ export default [
       ],
 
       // Enforce official Tailwind class order
-      "better-tailwindcss/enforce-consistent-class-order": "warn",
+      "better-tailwindcss/enforce-consistent-class-order": "off",
 
       // Enforce consistent variable syntax
       "better-tailwindcss/enforce-consistent-variable-syntax": "warn",

@@ -14,6 +14,7 @@ export interface ProjectCardProps {
   stack: StackItem[];
   client: string;
   className?: string;
+  priority?: boolean;
 }
 
 export interface CustomSection {

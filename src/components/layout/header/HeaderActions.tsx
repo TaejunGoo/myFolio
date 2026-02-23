@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,8 +13,6 @@ import { copyEmailToClipboard } from "@/shared/utils";
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const HeaderActions = () => {
-  const resumeUrl = "https://your-resume-link.com"; // 실제 이력서 링크로 변경 필요
-
   return (
     <div className="flex items-center gap-2">
       <Tooltip>
@@ -42,7 +40,7 @@ export const HeaderActions = () => {
             asChild
             className="hover:bg-accent"
           >
-            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+            <a href="https://your-resume-link.com" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="size-5" />
               <span className="sr-only">이력서 보기</span>
             </a>

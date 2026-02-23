@@ -1,3 +1,5 @@
+"use client";
+
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +14,7 @@ import type { ProjectCardProps } from "@/types";
 
 export type { ProjectCardProps };
 
-const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className }: ProjectCardProps) => {
+const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className, priority }: ProjectCardProps) => {
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
 
   const cardContent = (
@@ -28,7 +30,8 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
                   alt={title}
                   fill
                   className="object-cover"
-                  loading="eager"
+                  loading={priority ? undefined : "eager"}
+                  priority={priority}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </AspectRatio>

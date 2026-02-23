@@ -1,4 +1,3 @@
-"use client";
 import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 import SubTitle from "@/shared/components/typo/SubTitle";
@@ -20,12 +19,16 @@ const Projects = ({ featuredProjects, otherProjects }: ProjectsProps) => {
       </FadeInView>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featuredProjects.map((project) => (
+        {featuredProjects.map((project, index) => (
           <FadeInView
             key={project.slug}
             className="flex size-full"
           >
-            <ProjectCard {...project} className="size-full" />
+            <ProjectCard 
+              {...project} 
+              className="size-full" 
+              priority={index < 3}
+            />
           </FadeInView>
         ))}
       </div>

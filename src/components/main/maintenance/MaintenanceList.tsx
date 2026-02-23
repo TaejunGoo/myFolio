@@ -1,5 +1,3 @@
-"use client";
-
 import FadeInView from "@/shared/components/motion/FadeInView";
 import type { MaintenanceItemProps } from "@/types";
 

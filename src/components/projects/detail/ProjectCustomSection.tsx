@@ -1,14 +1,17 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
+
+import { ExternalLink } from "lucide-react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import type { CustomSection } from "@/types";
 
-import ImageViewer from "./ImageViewer";
 import ProjectSection from "./ProjectSection";
+
+const ImageViewer = dynamic(() => import("./ImageViewer"), { ssr: false });
 
 interface ProjectCustomSectionProps {
   section: CustomSection;
