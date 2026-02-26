@@ -1,5 +1,4 @@
 export { socialLinks } from "./socialLinks";
-export { footerNavLinks } from "./footer";
 export {
   SITE_NAME,
   SITE_DESCRIPTION,

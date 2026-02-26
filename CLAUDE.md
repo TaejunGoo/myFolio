@@ -35,7 +35,7 @@ Package manager: **pnpm**
 - `src/components/layout/` - Header, navigation, containers
 - `src/components/main/` - Page sections (hero, about, projects)
 - `src/shared/` - Utilities, providers, and shared components
-- `src/data/` - Static data (projects, maintenance, skills, shared)
+- `src/data/` - Static data (profile, projects, maintenance, skills, navigation)
 - `src/types/` - TypeScript type definitions
 
 ### Key Patterns
@@ -46,7 +46,7 @@ Package manager: **pnpm**
 
 **Animation**: Framer Motion for complex animations (hero, about sections). Swiper for image carousels in project cards.
 
-**Data**: Projects, maintenance items, and skills are defined as static TypeScript arrays in `src/data/` directory and dynamically imported in server components.
+**Data**: All site data is centralized in `src/data/`. Personal info lives in `src/data/profile/profile.ts` — editing this single file updates the entire site (header, about, footer, metadata). Projects, maintenance, and skills are static TypeScript arrays dynamically imported in server components. Navigation data lives in `src/data/navigation/`.
 
 **Tech Badges**: Technology icons are mapped in `src/shared/components/tech/tech-config.ts` using the `TechName` type union.
 
@@ -90,10 +90,16 @@ Type: Only `"Core"` and `"Professional"` categories are supported. Tech stack in
 
 ## Adding Content
 
+**Customize profile**: Edit `src/data/profile/profile.ts` — name, title, email, avatar, career start date, bio, highlights, job descriptions, tech stacks, and social links are all in this single file.
+
 **New project**: Add entry to `src/data/projects/projects.ts` with images in `public/images/projects/`. For detailed project pages, add to `src/data/projects/projectDetails.ts`.
 
 **New skill**: Add to `src/data/skills/skills.ts` under the appropriate category (core or professional).
 
 **New tech badge**: Add to `TECH_CONFIG` in `src/shared/components/tech/tech-config.ts` with icon, label, and background style.
+
+**New social link**: Add to `profile.socialLinks` in `src/data/profile/profile.ts`, then add the icon mapping in `src/data/shared/socialLinks.ts`.
+
+**New navigation item**: Edit `src/data/navigation/navigation.ts`.
 
 **New page**: Create folder in `src/app/` with `page.tsx` following App Router conventions.

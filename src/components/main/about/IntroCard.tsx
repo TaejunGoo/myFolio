@@ -5,6 +5,7 @@ import { Mail } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { profile } from "@/data/profile";
 import { cn, copyEmailToClipboard } from "@/shared/utils";
 
 import PointItem from "./PointItem";
@@ -19,28 +20,28 @@ const IntroCard = ({ className }: IntroCardProps) => {
         <div className="flex flex-col items-start gap-4">
           <div className="flex items-center gap-4">
             <Avatar className="size-20 shadow-xl md:size-24">
-              <AvatarImage src="/images/profile/cat.webp" alt="우리집 고양이 감자" sizes="(max-width: 768px) 80px, 96px" />
+              <AvatarImage src={profile.avatarUrl} alt={profile.avatarAlt} sizes="(max-width: 768px) 80px, 96px" />
               <AvatarFallback className="bg-linear-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white">
-                구태준
+                {profile.name}
               </AvatarFallback>
             </Avatar>
             <div>
-              <h2 className="text-2xl font-bold md:text-3xl">구태준</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{profile.name}</h2>
               <p className="mt-1 text-sm text-muted-foreground md:text-base">
-                퍼블리셔 &middot; UI Engineer
+                {profile.title}
               </p>
             </div>
           </div>
           <p className="text-sm leading-relaxed break-keep text-muted-foreground md:text-base">
-            주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.
+            {profile.bio}
           </p>
         </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <PointItem text="최신 프론트엔드 환경부터 레거시 웹까지 폭넓은 경험" />
-          <PointItem text="이커머스, 관리 시스템, 미디어 등 다양한 도메인에서 UI 구축" />
-          <PointItem text="팀 내 기술 도입과 스터디 운영 등 주도적인 성장과 팀 기여" />
+          {profile.highlights.map((text) => (
+            <PointItem key={text} text={text} />
+          ))}
         </div>
       </CardContent>
       <CardFooter>

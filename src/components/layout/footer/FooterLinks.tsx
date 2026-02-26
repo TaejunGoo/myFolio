@@ -1,6 +1,6 @@
 "use client";
 
-import { footerNavLinks } from "@/data/shared/footer";
+import { mainNavigation } from "@/data/navigation";
 import { cn, scrollToSection } from "@/shared/utils";
 
 interface FooterLinksProps {
@@ -21,7 +21,7 @@ export const FooterLinks = ({ className }: FooterLinksProps) => {
       className={cn("flex flex-wrap items-center justify-center gap-6", className)}
       aria-label="푸터 내비게이션"
     >
-      {footerNavLinks.map((link) => (
+      {mainNavigation.map((link) => (
         <a
           key={link.href}
           href={link.href}

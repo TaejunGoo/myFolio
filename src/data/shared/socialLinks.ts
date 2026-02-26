@@ -1,5 +1,7 @@
 import { FiGithub, FiMail } from "react-icons/fi";
 
+import { profile } from "@/data/profile";
+
 export interface SocialLink {
   name: string;
   href: string;
@@ -7,17 +9,14 @@ export interface SocialLink {
   ariaLabel: string;
 }
 
-export const socialLinks: SocialLink[] = [
-  {
-    name: "GitHub",
-    href: "https://github.com/TaejunGoo",
-    icon: FiGithub,
-    ariaLabel: "GitHub 프로필 방문",
-  },
-  {
-    name: "Email",
-    href: "mailto:gtxggle2@gmail.com",
-    icon: FiMail,
-    ariaLabel: "이메일 보내기",
-  },
-];
+// 소셜 링크 이름 → 아이콘 매핑
+const SOCIAL_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  GitHub: FiGithub,
+  Email: FiMail,
+};
+
+// profile에서 소셜 링크를 가져오고 아이콘을 매핑
+export const socialLinks: SocialLink[] = profile.socialLinks.map((link) => ({
+  ...link,
+  icon: SOCIAL_ICON_MAP[link.name] ?? FiMail,
+}));

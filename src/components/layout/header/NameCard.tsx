@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { profile } from "@/data/profile";
 
 export const NameCard = () => {
   const pathname = usePathname();
@@ -12,17 +13,17 @@ export const NameCard = () => {
   const CardContent = (
     <>
       <Avatar className="size-10">
-        <AvatarImage src="/images/profile/cat.webp" alt="우리집 고양이 감자" sizes="40px" loading="eager" />
+        <AvatarImage src={profile.avatarUrl} alt={profile.avatarAlt} sizes="40px" loading="eager" />
         <AvatarFallback className="bg-linear-to-br from-blue-500 to-purple-600 text-sm font-bold text-white">
-          구태준
+          {profile.name}
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col">
         <span className="text-base leading-tight font-bold text-foreground">
-          구태준
+          {profile.name}
         </span>
         <span className="text-xs leading-tight text-muted-foreground">
-          퍼블리셔 &middot; UI Engineer
+          {profile.title}
         </span>
       </div>
     </>

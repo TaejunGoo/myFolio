@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
+import { profile } from "@/data/profile";
+
 // ========================================
-// 사이트 기본 정보
+// 사이트 기본 정보 (profile에서 파생)
 // ========================================
-export const SITE_NAME = "taejun.goo | 웹 포트폴리오";
-export const SITE_DESCRIPTION = "퍼블리셔ꞏUI 엔지니어 구태준 입니다.";
-export const SITE_AUTHOR = "taejun.goo";
+export const SITE_NAME = `${profile.nameEn} | 웹 포트폴리오`;
+export const SITE_DESCRIPTION = `${profile.title} ${profile.name} 입니다.`;
+export const SITE_AUTHOR = profile.nameEn;
 export const SITE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
