@@ -2,9 +2,11 @@ import { FaCss3Alt, FaFigma, FaGitAlt, FaHtml5, FaJs, FaReact, FaSass, FaVuejs }
 import { MdLanguage, MdOutlineDevices } from "react-icons/md";
 import {
   SiAdobephotoshop,
+  SiAerospike,
   SiAntdesign,
   SiAnthropic,
   SiGithubcopilot,
+  SiGoogle,
   SiJquery,
   SiMui,
   SiNextdotjs,
@@ -53,6 +55,8 @@ export type TechName =
   | "Recharts"
   | "Puppeteer"
   | "SQLite"
+  | "Gemini CLI"
+  | "Antigravity"
   | "반응형"
   | "모바일"
   | "다국어"
@@ -178,5 +182,13 @@ export const techMap: Record<TechName, TechConfig> = {
   SQLite: {
     icon: FaReact,
     className: "bg-gray-500/10 text-gray-600 border-gray-500/20",
+  },
+  "Gemini CLI": {
+    icon: SiGoogle,
+    className: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+  },
+  Antigravity: {
+    icon: SiAerospike,
+    className: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
   },
 };

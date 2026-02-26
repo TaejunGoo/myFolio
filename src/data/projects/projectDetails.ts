@@ -255,19 +255,31 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.VIBE_CODING_PROJECTS),
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     overview:
-      "Claude Code와 GitHub Copilot 등의 AI 도구를 활용하여 실생활의 불편함을 해결하는 두 가지 토이 프로젝트를 개발했습니다. 완성도보다는 빠른 개발과 실용성에 초점을 맞춘 '바이브 코딩' 방식으로 진행했으며, 각 프로젝트는 특정 문제를 해결하는 명확한 목적을 가지고 있습니다.",
+      "Claude Code와 GitHub Copilot, Gemini CLI, Antigravity 등의 AI 도구를 활용하여 기술 실증과 개인 흥미를 위한 시뮬레이터와 실생활의 문제를 해결하는 도구 등 총 세 가지 토이 프로젝트를 개발했습니다. 완성도보다는 빠른 개발과 실용성에 초점을 맞춘 '바이브 코딩' 방식으로 진행했으며, 각 프로젝트는 특정 문제를 해결하거나 새로운 기술을 실험하는 목적을 가지고 있습니다.",
     role: [
       "기획부터 배포까지 전 과정 독립 수행",
       "문제 정의 및 해결 방안 설계",
       "프론트엔드 및 배포",
-      "데이터 수집 및 처리 로직 구현",
+      "데이터 수집 및 시뮬레이션 필터 로직 등 구현",
     ],
     highlights: [
-      "실용적인 문제 해결: 실제 사용 가능한 서비스 개발",
+      "실용적인 문제 해결 및 기술 실증",
       "빠른 프로토타이핑: 최소한의 기능으로 빠르게 MVP 구현",
-      "풀스택 개발 경험: 프론트엔드부터 백엔드, 데이터 수집까지 전체 구현",
+      "에이전틱 코딩 생산성 검증: AI 도구들의 협업을 통한 개발 가속화",
     ],
     customSections: [
+      {
+        title: "Binoculars Simulator (쌍안경 시뮬레이터)",
+        type: "list",
+        content: [
+          "https://binoculars-simulator.vercel.app/",
+          "https://github.com/TaejunGoo/binoculars-simulator",
+          "목적: 쌍안경의 시각적 왜곡 효과를 시뮬레이션하여 제공",
+          "특징: sharp를 활용한 이미지 타일링, Upscayl을 활용한 이미지 업스케일링, OpenSeadragon을 활용한 기가픽셀 이미지 뷰어 구현",
+          "기능: 4x~12x 가변 배율 조정, CSS 및 SVG 필터를 활용한 렌즈 퀄리티 조정, 다국어 지원",
+          "핵심 성과: 기가픽셀 이미지(49537x19429, 575mb)를 브라우저에서 끊김 없이 렌더링",
+        ],
+      },
       {
         title: "네이버 스마트스토어 교집합 찾기",
         type: "list",
@@ -276,7 +288,6 @@ export const projectDetailData: ProjectDetailData[] = [
           "https://github.com/TaejunGoo/naver-store-intersect-finder",
           "문제: 여러 상품을 한 곳에서 구매하고 싶을 때 일일이 검색해야 하는 불편함",
           "해결: 여러 키워드 입력 시 모든 상품을 판매하는 스토어만 필터링",
-          "소요 시간: MVP 구현 기준 8시간 이내",
           "특징: 네이버 오픈 API 활용, Redis를 통한 요청 횟수 제한 관리",
         ],
       },
@@ -288,15 +299,14 @@ export const projectDetailData: ProjectDetailData[] = [
           "https://github.com/TaejunGoo/naver-land-scraper",
           "문제: 아파트 가격 변동 추적을 위한 개인용 도구 필요",
           "해결: 네이버 부동산 데이터 자동 크롤링 및 시계열 차트 시각화",
-          "소요 시간: MVP 구현 기준 16시간 이내",
-          "특징: puppeteer를 통한 스텔스 크롤링, 로컬 DB 기반 데이터 관리, Windows 배치 파일로 원클릭 실행",
+          "특징: puppeteer를 통한 스텔스 크롤링, 로컬 DB 기반 데이터 관리",
         ],
       },
       {
         title: "핵심 경험",
         type: "list",
         content: [
-          "문제 해결 중심 개발: 실제 불편함에서 시작하여 사용 가능한 솔루션 구현",
+          "문제 해결 및 기술 실증 중심 개발: 실제 불편함과 기술적 호기심에서 시작한 솔루션 구현",
           "에이전틱 코딩: 프롬프팅, MCP 등 AI 도구 활용 방법에 따른 생산성 향상 경험",
           "빠른 프로토타이핑: 최소한의 기능으로 빠르게 MVP를 구현하는 프로젝트 경험",
         ],
@@ -304,7 +314,7 @@ export const projectDetailData: ProjectDetailData[] = [
       {
         title: "갤러리",
         type: "gallery",
-        content: ["/images/projects/vibe_2.webp", "/images/projects/vibe_3.webp"],
+        content: ["/images/projects/vibe_2.webp", "/images/projects/vibe_3.webp", "/images/projects/vibe_4.webp"],
       },
     ],
   },

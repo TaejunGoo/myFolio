@@ -186,10 +186,9 @@ export const projectsData: ProjectCardProps[] = [
     category: "Personal",
     client: "Personal",
     description:
-      "실용적인 문제 해결에 집중한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기와 부동산 가격 트렌드 크롤러 및 대시보드 개발",
+      "AI를 활용한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기, 부동산 가격 트렌드 크롤러, 쌍안경 시뮬레이터 개발",
     periodStart: "2026-01",
-    periodEnd: "2026-02",
-    stack: ["Claude Code", "GitHub Copilot"],
+    stack: ["Claude Code", "GitHub Copilot", "Gemini CLI", "Antigravity"],
     imageUrlAry: ["/images/projects/vibe_1.webp"],
   },
 ];
