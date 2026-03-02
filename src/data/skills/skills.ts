@@ -4,8 +4,8 @@ import type { SkillsData } from "@/types";
  * Skills 섹션 데이터
  *
  * 구조:
- * 1. Core (핵심 역량) - 8개 항목
- * 2. Data & UX - 7개 항목
+ * 1. Core (핵심 역량)
+ * 2. Professional (실무 역량)
  *
  * Note: Tech Stack은 About 섹션에서 표시됨
  */
@@ -19,13 +19,13 @@ export const skillsData: SkillsData = {
       type: "Core",
       description: "핵심 기술 역량",
       skills: [
-        "재사용 가능한 UI 컴포넌트 설계 및 개발",
-        "반응형 웹 & 모바일 최적화",
-        "크로스 브라우저 이슈 해결",
-        "스타일링 시스템 구축 (SASS, Tailwind CSS, CSS-in-JS)",
-        "애니메이션 & 인터랙션 구현",
-        "웹 접근성 및 시맨틱 마크업",
-        "디자인 시스템 구축",
+        "재사용 가능한 UI 컴포넌트 설계",
+        "다양한 해상도 및 반응형 웹 대응",
+        "브라우저 예외 상황(Edge-case) 해결",
+        "스타일링 아키텍처 구축 (Sass, Tailwind)",
+        "자연스러운 UI 애니메이션 및 인터랙션",
+        "웹 표준 및 시맨틱 마크업 준수",
+        "확장성 있는 디자인 토큰 시스템 적용",
       ],
     },
     {
@@ -34,12 +34,12 @@ export const skillsData: SkillsData = {
       type: "Professional",
       description: "실무 역량",
       skills: [
-        "기술 스택 선정 및 아키텍처 설계",
-        "디자이너-개발자 협업 및 커뮤니케이션",
-        "UI/UX 문제 해결 및 최적화",
-        "기술 도입 및 팀 내 지식 공유",
-        "프로젝트 기술 리딩",
-        "레거시 코드 유지보수 및 개선",
+        "프론트엔드 환경 설계 및 신기술 도입",
+        "비개발 직군과의 기술적 한계 조율",
+        "UI/UX 문제 분석 및 트러블슈팅",
+        "사내 기술 지식 공유 및 문서화",
+        "레거시 환경의 점진적 모던화",
+        "AI 코딩 도구를 활용한 생산성 향상",
       ],
     },
   ],
