@@ -21,6 +21,8 @@ export interface ProfileData {
   title: string;
   /** 이메일 주소 */
   email: string;
+  /** GitHub URL */
+  githubUrl: string;
   /** 아바타 이미지 경로 */
   avatarUrl: string;
   /** 아바타 이미지 alt 텍스트 */
@@ -51,6 +53,7 @@ export const profile: ProfileData = {
   nameEn: "Taejun Goo",
   title: "퍼블리셔 · UI Engineer",
   email: "gtxggle2@gmail.com",
+  githubUrl: "https://github.com/TaejunGoo",
   avatarUrl: "/images/profile/cat.webp",
   avatarAlt: "우리집 고양이 감자",
   careerStartDate: "2019-03",

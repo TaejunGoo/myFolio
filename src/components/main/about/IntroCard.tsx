@@ -1,6 +1,8 @@
 "use client";
 
 import { Mail } from "lucide-react";
+import Link from "next/link";
+import { FiGithub } from "react-icons/fi";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -45,11 +47,13 @@ const IntroCard = ({ className }: IntroCardProps) => {
         </div>
       </CardContent>
       <CardFooter>
-        <div className="flex w-full flex-col gap-2 sm:flex-row">
-          {/* <Button className="flex-1">
-            <ExternalLink className="size-4" />
-            이력서 보기
-          </Button> */}
+        <div className="w-full grid sm:grid-cols-2 gap-2">
+          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+            <Button variant="outline" className="w-full">
+              <FiGithub className="size-4" />
+              Github 방문
+            </Button>
+          </Link>
           <Button variant="outline" className="flex-1" onClick={copyEmailToClipboard}>
             <Mail className="size-4" />
             이메일 복사
