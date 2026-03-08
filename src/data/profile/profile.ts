@@ -1,15 +1,6 @@
 import type { TechName } from "@/shared/components/tech/tech-config";
 
 // ========================================
-// 프로필 소셜 링크 타입
-// ========================================
-export interface ProfileSocialLink {
-  name: string;
-  href: string;
-  ariaLabel: string;
-}
-
-// ========================================
 // 프로필 데이터 타입
 // ========================================
 export interface ProfileData {
@@ -39,8 +30,6 @@ export interface ProfileData {
   mainStack: TechName[];
   /** 도구 및 기타 기술 */
   subStack: TechName[];
-  /** 소셜 링크 목록 */
-  socialLinks: ProfileSocialLink[];
 }
 
 // ========================================
@@ -90,17 +79,5 @@ export const profile: ProfileData = {
     "Photoshop",
     "GitHub Copilot",
     "Claude Code",
-  ],
-  socialLinks: [
-    {
-      name: "GitHub",
-      href: "https://github.com/TaejunGoo",
-      ariaLabel: "GitHub 프로필 방문",
-    },
-    {
-      name: "Email",
-      href: "mailto:gtxggle2@gmail.com",
-      ariaLabel: "이메일 보내기",
-    },
   ],
 };

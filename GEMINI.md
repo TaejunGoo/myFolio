@@ -90,9 +90,6 @@ Add to `src/data/skills/skills.ts` under the appropriate category (core or profe
 **New tech badge**: 
 Add to `TECH_CONFIG` in `src/shared/components/tech/tech-config.ts` with icon, label, and background style.
 
-**New social link**: 
-Add to `profile.socialLinks` in `src/data/profile/profile.ts`, then add the icon mapping in `src/data/shared/socialLinks.ts`.
-
 **New navigation item**: 
 Edit `src/data/navigation/navigation.ts`.
 

@@ -1,4 +1,3 @@
-export { socialLinks } from "./socialLinks";
 export {
   SITE_NAME,
   SITE_DESCRIPTION,

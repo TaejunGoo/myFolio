@@ -2,7 +2,7 @@
 
 import { Mail } from "lucide-react";
 import Link from "next/link";
-import { FiGithub } from "react-icons/fi";
+import { FiGithub, FiMail } from "react-icons/fi";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -55,7 +55,7 @@ const IntroCard = ({ className }: IntroCardProps) => {
             </Button>
           </Link>
           <Button variant="outline" className="flex-1" onClick={copyEmailToClipboard}>
-            <Mail className="size-4" />
+            <FiMail className="size-4" />
             이메일 복사
           </Button>
         </div>

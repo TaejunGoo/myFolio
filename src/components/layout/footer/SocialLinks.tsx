@@ -1,6 +1,8 @@
+import { Mail } from "lucide-react";
 import Link from "next/link";
+import { FiGithub, FiMail } from "react-icons/fi";
 
-import { socialLinks } from "@/data/shared";
+import { profile } from "@/data/profile";
 import { cn } from "@/shared/utils/cn";
 
 interface SocialLinksProps {
@@ -8,6 +10,21 @@ interface SocialLinksProps {
 }
 
 export const SocialLinks = ({ className }: SocialLinksProps) => {
+  const socialLinks = [
+    {
+      name: "GitHub",
+      href: profile.githubUrl,
+      icon: FiGithub,
+      ariaLabel: "GitHub 프로필 방문",
+    },
+    {
+      name: "Email",
+      href: `mailto:${profile.email}`,
+      icon: FiMail,
+      ariaLabel: "이메일 보내기",
+    },
+  ];
+
   return (
     <div className={cn("flex items-center gap-4", className)}>
       {socialLinks.map((social) => {

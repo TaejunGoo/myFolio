@@ -1,6 +1,7 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import Link from "next/link";
+import { FiGithub, FiMail } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -8,13 +9,32 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { profile } from "@/data";
 import { copyEmailToClipboard } from "@/shared/utils";
 
 import { ThemeToggleBtn } from "./ThemeToggleBtn";
 
 export const HeaderActions = () => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:bg-accent"
+            >
+              <FiGithub className="size-5" />
+              <span className="sr-only">Github 방문</span>
+            </Button>
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Github 방문</p>
+        </TooltipContent>
+      </Tooltip>
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
@@ -23,7 +43,7 @@ export const HeaderActions = () => {
             onClick={copyEmailToClipboard}
             className="hover:bg-accent"
           >
-            <Mail className="size-5" />
+            <FiMail className="size-5" />
             <span className="sr-only">이메일 복사</span>
           </Button>
         </TooltipTrigger>
@@ -31,25 +51,6 @@ export const HeaderActions = () => {
           <p>이메일 복사</p>
         </TooltipContent>
       </Tooltip>
-
-      {/* <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hover:bg-accent"
-          >
-            <a href="https://your-resume-link.com" target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="size-5" />
-              <span className="sr-only">이력서 보기</span>
-            </a>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>이력서 보기</p>
-        </TooltipContent>
-      </Tooltip> */}
 
       <ThemeToggleBtn />
     </div>

@@ -98,8 +98,6 @@ Type: Only `"Core"` and `"Professional"` categories are supported. Tech stack in
 
 **New tech badge**: Add to `TECH_CONFIG` in `src/shared/components/tech/tech-config.ts` with icon, label, and background style.
 
-**New social link**: Add to `profile.socialLinks` in `src/data/profile/profile.ts`, then add the icon mapping in `src/data/shared/socialLinks.ts`.
-
 **New navigation item**: Edit `src/data/navigation/navigation.ts`.
 
 **New page**: Create folder in `src/app/` with `page.tsx` following App Router conventions.
