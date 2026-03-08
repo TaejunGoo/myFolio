@@ -28,15 +28,6 @@ export const projectsData: ProjectCardProps[] = [
     imageUrlAry: ["/images/projects/cjthesquare_1.webp", "/images/projects/cjthesquare_2.webp"],
   },
   {
-    title: "CJ 식자재 쇼핑몰 고도화",
-    category: "eCommerce",
-    client: "CJ프레시웨이",
-    description:
-      "식당 등 B2B 대상 식자재 플랫폼인 CJ 프레시엔의 PC 화면 추가를 위한 React 기반 UI 컴포넌트 개발",
-    periodStart: "2025-02",
-    stack: ["React", "Sass"],
-  },
-  {
     title: "아워홈 품질관리시스템 고도화",
     category: "Service",
     client: "아워홈",
