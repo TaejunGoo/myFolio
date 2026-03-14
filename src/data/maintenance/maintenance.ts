@@ -2,6 +2,12 @@ import type { MaintenanceItemProps } from "@/types";
 
 export const maintenanceData:MaintenanceItemProps[] = [
   {
+    name: "월드비전",
+    logoUrl: "/images/maintenance/edited_worldvision.png",
+    periodStart: "2026-03",
+    description: "월드비전 웹사이트 로그인 개편 및 유지보수 수행",
+  },
+  {
     name: "CJ 튼튼스쿨",
     logoUrl: "/images/maintenance/edited_school.png",
     periodStart: "2026-01",

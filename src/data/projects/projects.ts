@@ -3,6 +3,15 @@ import type { ProjectCardProps } from "@/types";
 
 export const projectsData: ProjectCardProps[] = [
   {
+    title: "CJ 관능평가 및 관리 시스템 구축",
+    category: "system",
+    client: "CJ제일제당",
+    description:
+      "관능평가 및 관리 시스템 구축, React/TypeScript 기반 UI 이슈 해결 및 컴포넌트 개발 지원",
+    periodStart: "2026-03",
+    stack: ["React", "TypeScript", "Sass"],
+  },
+  {
     title: "CJ 식자재 B2B eCommerce 구축",
     projectLink: "https://www.cjschoolfood.com/",
     slug: PROJECT_SLUGS.CJ_SCHOOLFOOD,
@@ -42,9 +51,9 @@ export const projectsData: ProjectCardProps[] = [
     projectLink: "https://maxonomy.net/",
     slug: PROJECT_SLUGS.CJ_MAXONOMY,
     category: "Brand",
-    client: "CJ 올리브네트웍스",
+    client: "CJ올리브네트웍스",
     description:
-      "CJ 올리브네트웍스의 디지털 마케팅 솔루션 팀 홈페이지 구축 프로젝트에서 고객 및 외주 개발사 간 기술 조율 및 UI QA 담당",
+      "CJ올리브네트웍스의 디지털 마케팅 솔루션 팀 홈페이지 구축 프로젝트에서 고객 및 외주 개발사 간 기술 조율 및 UI QA 담당",
     periodStart: "2025-01",
     periodEnd: "2025-02",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "반응형"],
@@ -66,7 +75,7 @@ export const projectsData: ProjectCardProps[] = [
   {
     title: "CJ 오클라우드 관리 플랫폼 구축",
     category: "Service",
-    client: "CJ",
+    client: "CJ올리브네트웍스",
     description:
       "CJ 오클라우드 관리 콘솔의 웹 인터페이스 구축 및 jQuery를 활용한 동적 인터랙션 구현",
     periodStart: "2023-08",

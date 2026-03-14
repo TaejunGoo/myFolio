@@ -104,7 +104,7 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.CJ_MAXONOMY),
     slug: PROJECT_SLUGS.CJ_MAXONOMY,
     overview:
-      "Team MAXONOMY는 CJ 올리브네트웍스의 디지털 마케팅 솔루션 전문 팀의 공식 홈페이지로, 팀의 서비스와 솔루션을 소개하고 고객과의 접점을 제공하는 브랜드 사이트입니다. 클라이언트측 기술 담당자로서 비개발 직군과 외주 개발사 간의 기술적 간극을 조율하고 UI/UX 품질을 검수하는 총괄 역할을 수행했습니다.",
+      "Team MAXONOMY는 CJ올리브네트웍스의 디지털 마케팅 솔루션 전문 팀의 공식 홈페이지로, 팀의 서비스와 솔루션을 소개하고 고객과의 접점을 제공하는 브랜드 사이트입니다. 클라이언트측 기술 담당자로서 비개발 직군과 외주 개발사 간의 기술적 간극을 조율하고 UI/UX 품질을 검수하는 총괄 역할을 수행했습니다.",
     role: [
       "고객사, 디자인팀, 외주 개발사 간 기술 요구사항 커뮤니케이션 조율",
       "외주 개발사 산출물 품질 검수 및 UI QA 총괄",
