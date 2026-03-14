@@ -20,6 +20,8 @@ export interface ProfileData {
   avatarAlt: string;
   /** 경력 시작일 (YYYY-MM 형식) */
   careerStartDate: string;
+  /** 경력 시작일 이전 추가 경력 개월 수 */
+  careerExtraMonths: number;
   /** 자기소개 문구 */
   bio: string;
   /** 핵심 포인트 (About 섹션에 표시) */
@@ -46,6 +48,7 @@ export const profile: ProfileData = {
   avatarUrl: "/images/profile/cat.webp",
   avatarAlt: "우리집 고양이 감자",
   careerStartDate: "2019-03",
+  careerExtraMonths: 9,
   bio: "주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.",
   highlights: [
     "최신 프론트엔드 환경부터 레거시 웹까지 폭넓은 경험",
