@@ -232,7 +232,7 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.VIBE_CODING_PROJECTS),
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     overview:
-      "AI 코딩 보조 도구(Claude Code, GitHub Copilot 등)를 실무 및 개인 프로젝트에 적극 도입하여 업무 방식을 개선하고 있습니다. 기술 실증과 개인적인 문제 해결을 위해 시뮬레이터, 데이터 크롤러 등 실용적인 토이 프로젝트를 기획부터 배포까지 '바이브 코딩' 방식으로 빠르게 구현하며 에이전틱 코딩의 생산성을 검증하였습니다.",
+      "AI 코딩 보조 도구(Claude Code, GitHub Copilot 등)를 실무 및 개인 프로젝트에 적극 도입하여 업무 방식을 개선하고 있습니다. 기술 실증과 개인적인 문제 해결을 위해 시뮬레이터, 데이터 크롤러 등 실용적인 토이 프로젝트를 기획부터 배포까지 빠르게 구현하며 에이전틱 코딩의 생산성을 검증하였습니다.",
     role: [
       "아이디어 기획, 문제 정의 및 요구사항 도출",
       "AI 도구를 활용한 프론트엔드 개발 및 배포 전 과정 수행",
@@ -244,6 +244,17 @@ export const projectDetailData: ProjectDetailData[] = [
       "기가픽셀 이미지 렌더링, 스텔스 크롤링 등 새로운 기술 스택 실증",
     ],
     customSections: [
+      {
+        title: "Img2LD (Product JSON-LD 생성기)",
+        type: "list",
+        content: [
+          "https://img2ld.vercel.app/",
+          "https://github.com/TaejunGoo/img2ld",
+          "목적: 상품 상세 이미지 또는 이미지를 포함한 CSV 데이터셋을 기반으로 Product JSON-LD를 자동 생성해 구조화 데이터 작성 부담을 줄이는 서비스 개발",
+          "구현: 이미지 업로드와 CSV 파싱을 분기 처리하고, Gemini 분석 결과를 Zod로 부분 검증하여 사용 가능한 필드를 최대한 유지하도록 설계",
+          "향후 계획: Gemini Batch API, 결과 DB, 수기 오버라이드 UI를 도입해 대량 처리 효율과 운영 편의성을 높이는 방향으로 확장 예정",
+        ],
+      },
       {
         title: "Binoculars Simulator (쌍안경 시뮬레이터)",
         type: "list",
@@ -280,7 +291,7 @@ export const projectDetailData: ProjectDetailData[] = [
       {
         title: "갤러리",
         type: "gallery",
-        content: ["/images/projects/vibe_2.webp", "/images/projects/vibe_3.webp", "/images/projects/vibe_4.webp"],
+        content: ["/images/projects/vibe_5.webp", "/images/projects/vibe_4.webp", "/images/projects/vibe_3.webp", "/images/projects/vibe_2.webp"],
       },
     ],
   },
