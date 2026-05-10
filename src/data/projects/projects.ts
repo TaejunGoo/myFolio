@@ -181,12 +181,12 @@ export const projectsData: ProjectCardProps[] = [
     stack: ["HTML", "CSS", "jQuery", "반응형", "다국어"],
   },
   {
-    title: "바이브 코딩 토이 프로젝트",
+    title: "토이 프로젝트",
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     category: "Personal",
     client: "Personal",
     description:
-      "AI를 활용한 토이 프로젝트 모음. 네이버 스마트스토어 교집합 검색기, 부동산 가격 트렌드 크롤러, 쌍안경 시뮬레이터 개발",
+      "AI를 활용한 토이 프로젝트 모음. JSON-LD 생성 GEO 도구, 네이버 스마트스토어 교집합 검색기, 부동산 가격 트렌드 크롤러, 쌍안경 시뮬레이터 개발",
     periodStart: "2026-01",
     stack: ["Claude Code", "GitHub Copilot", "Gemini CLI", "Antigravity"],
     imageUrlAry: ["/images/projects/vibe_1.webp"],
