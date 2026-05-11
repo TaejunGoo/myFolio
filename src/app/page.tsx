@@ -1,5 +1,6 @@
 import Container from "@/components/layout/header/Container";
 import About from "@/components/main/about";
+import ChatSection from "@/components/main/chat";
 import Maintenance from "@/components/main/maintenance";
 import Projects from "@/components/main/projects";
 import Skills from "@/components/main/skills";
@@ -19,6 +20,12 @@ const Home = async () => {
 
   return (
     <main>
+      <section id="chat" className="pt-16 md:pt-20">
+        <ChatSection />
+      </section>
+      <Container className="my-16 md:my-20">
+        <Separator />
+      </Container>
       <section id="about" className="pt-16 md:pt-20">
         <About
           projectsCount={projectsData.length}

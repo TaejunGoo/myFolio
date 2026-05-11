@@ -9,6 +9,7 @@ export interface NavigationItem {
 
 /** 메인 페이지 섹션 네비게이션 */
 export const mainNavigation: NavigationItem[] = [
+  { href: "#chat", label: "Chat" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#maintenance", label: "Maintenance" },
