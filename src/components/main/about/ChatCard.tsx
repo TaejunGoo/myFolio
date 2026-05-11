@@ -8,21 +8,39 @@ import { LoaderCircle, SendHorizontal, Square } from "lucide-react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import { toast } from "sonner";
 
-import Container from "@/components/layout/header/Container";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { CHAT_USER_INPUT_MAX_LENGTH } from "@/lib/chatbot/constants";
-import FadeInView from "@/shared/components/motion/FadeInView";
 import { cn } from "@/shared/utils";
 
 const CHAT_CLIENT_ID_STORAGE_KEY = "portfolio-chat-client-id";
 
-const NUDGE_PROMPTS = [
-  "어떤 프로젝트 경험이 가장 강점으로 보이나요?",
-  "주요 기술 스택을 빠르게 요약해줘.",
-  "협업 역량을 보여주는 포인트를 알려줘.",
+const NUDGE_PROMPT_POOL = [
+  // 기술/역량
+  "주요 기술 스택이 뭔가요?",
+  "React와 Next.js 경험이 얼마나 되나요?",
+  "퍼블리싱과 개발, 어느 쪽에 더 강한가요?",
+  // 프로젝트
+  "가장 자신 있는 프로젝트가 뭔가요?",
+  "어떤 규모의 프로젝트를 경험했나요?",
+  "협업 경험이 있나요?",
+  // 커리어
+  "총 경력이 어떻게 되나요?",
+  "어떤 업종 경험이 있나요?",
+  "에이전시 경험이 어떤 강점을 만들었나요?",
+  // 성향/소프트스킬
+  "팀에서 어떤 역할을 주로 맡나요?",
+  "새로운 기술을 어떻게 익히나요?",
+  "어떤 개발자가 되고 싶나요?",
 ];
+
+const NUDGE_DISPLAY_COUNT = 3;
+
+const pickRandomNudgePrompts = () => {
+  const shuffled = [...NUDGE_PROMPT_POOL].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, NUDGE_DISPLAY_COUNT);
+};
 
 interface ParsedChatError {
   message: string;
@@ -233,10 +251,15 @@ const parseChatError = (error: Error | undefined): ParsedChatError | null => {
   }
 };
 
-const ChatSection = () => {
+interface ChatCardProps {
+  className?: string;
+}
+
+const ChatCard = ({ className }: ChatCardProps) => {
   const [clientId, setClientId] = useState("");
   const [input, setInput] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
+  const [nudgePrompts, setNudgePrompts] = useState<string[]>(NUDGE_PROMPT_POOL.slice(0, NUDGE_DISPLAY_COUNT));
   const chatInstanceId = clientId ? `portfolio-chat:${clientId}` : "portfolio-chat:pending";
 
   const { messages, sendMessage, status, stop, error, clearError } = useChat({
@@ -282,6 +305,7 @@ const ChatSection = () => {
 
     startTransition(() => {
       setIsHydrated(true);
+      setNudgePrompts(pickRandomNudgePrompts());
     });
   }, [clientId]);
 
@@ -324,134 +348,129 @@ const ChatSection = () => {
   };
 
   return (
-    <Container>
+    <>
       <h2 className="sr-only">Portfolio Chat</h2>
-      <FadeInView>
-        <Card className="border-white/20 bg-white/60 shadow-xl backdrop-blur-lg dark:border-white/10 dark:bg-black/40">
-          <CardHeader className="gap-3">
-            <CardTitle className="text-xl md:text-2xl">
-              포트폴리오 챗봇
-            </CardTitle>
-            <div className="flex flex-wrap gap-2">
-              {NUDGE_PROMPTS.map((prompt) => (
-                <Button
-                  key={prompt}
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border-white/30 bg-white/60 text-xs shadow-sm backdrop-blur-sm dark:border-white/15 dark:bg-white/5"
-                  onClick={() => void handleNudgeClick(prompt)}
-                  disabled={!isHydrated || isGenerating}
-                >
-                  {prompt}
-                </Button>
-              ))}
-            </div>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <div className="rounded-3xl border border-white/15 bg-white/45 p-3 shadow-inner dark:border-white/10 dark:bg-black/20">
-              <div className="flex max-h-[420px] min-h-80 flex-col gap-3 overflow-y-auto p-1">
-                {messages.length === 0 ? (
-                  <div className="flex flex-1 items-center justify-center rounded-2xl border border-dashed border-white/20 px-6 py-10 text-center text-sm text-muted-foreground dark:border-white/10">
-                    질문 예시를 누르거나 직접 입력해 시작하세요.
-                  </div>
-                ) : null}
-
-                {messages.map((message) => {
-                  const text = getMessageText(message);
-
-                  if (!text) {
-                    return null;
-                  }
-
-                  const isUser = message.role === "user";
-
-                  return (
-                    <div
-                      key={message.id}
-                      className={cn("flex", isUser ? "justify-end" : "justify-start")}
+      <Card className={cn("border-white/20 bg-white/60 shadow-xl backdrop-blur-lg dark:border-white/10 dark:bg-black/40", className)}>
+        <CardHeader className="gap-3">
+          <CardTitle className="text-xl md:text-2xl">
+            무엇이든 물어보세요.
+          </CardTitle>
+          <CardDescription>포트폴리오에 대해 궁금한 점을 자유롭게 물어보세요.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className="flex max-h-[420px] min-h-40 flex-col gap-3 overflow-y-auto">
+            {messages.length === 0 ? (
+              <div className="flex flex-1 items-start rounded-2xl py-2">
+                <div className="flex w-full flex-col items-start gap-2">
+                  {nudgePrompts.map((prompt) => (
+                    <Button
+                      key={prompt}
+                      type="button"
+                      variant="outline"
+                      className="justify-start rounded-full border-white/30 bg-white/60 text-left text-xs shadow-sm backdrop-blur-sm dark:border-white/15 dark:bg-white/5"
+                      onClick={() => void handleNudgeClick(prompt)}
+                      disabled={!isHydrated || isGenerating}
                     >
-                      <div
-                        className={cn(
-                          "max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-sm md:text-[15px]",
-                          isUser
-                            ? "rounded-br-md bg-primary text-primary-foreground"
-                            : "rounded-bl-md border border-white/20 bg-white/80 text-foreground dark:border-white/10 dark:bg-white/8",
-                        )}
-                      >
-                        {isUser ? (
-                          <p className="break-keep whitespace-pre-wrap">{text}</p>
-                        ) : (
-                          <div className="wrap-break-word text-sm leading-relaxed md:text-[15px]">
-                            <ReactMarkdown components={assistantMarkdownComponents}>{text}</ReactMarkdown>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-
-                {isGenerating ? (
-                  <div className="flex justify-start">
-                    <div className="flex items-center gap-2 rounded-3xl rounded-bl-md border border-white/20 bg-white/75 px-4 py-3 text-sm text-muted-foreground dark:border-white/10 dark:bg-white/8">
-                      <LoaderCircle className="size-4 animate-spin" />
-                      답변을 생성하는 중입니다.
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            {parsedError ? (
-              <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-200">
-                <p className="font-medium">{parsedError.message}</p>
-                {parsedError.details?.length ? (
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-xs opacity-90">
-                    {parsedError.details.map((detail) => (
-                      <li key={detail}>{detail}</li>
-                    ))}
-                  </ul>
-                ) : null}
-                {parsedError.retryAfter ? (
-                  <p className="mt-1 text-xs opacity-80">
-                    약 {parsedError.retryAfter}초 후 다시 시도해 주세요.
-                  </p>
-                ) : null}
+                      {prompt}
+                    </Button>
+                  ))}
+                </div>
               </div>
             ) : null}
-          </CardContent>
-          <CardFooter className="flex-col items-stretch gap-3">
-            <form className="grid gap-3" onSubmit={(event) => void handleSubmit(event)}>
-              <Textarea
-                autoResize
-                value={input}
-                onChange={(event) => setInput(event.currentTarget.value)}
-                onKeyDown={(event) => void handleInputKeyDown(event)}
-                placeholder="예: 어떤 프로젝트가 가장 UI 엔지니어 역량을 잘 보여주나요?"
-                maxLength={CHAT_USER_INPUT_MAX_LENGTH}
-                disabled={!isHydrated || isGenerating}
-              />
-              <div className="flex items-center justify-end gap-2">
-                <p className="mr-auto text-xs text-muted-foreground">
-                  {input.length}/{CHAT_USER_INPUT_MAX_LENGTH}
-                </p>
-                {isGenerating ? (
-                  <Button type="button" variant="outline" onClick={stop}>
-                    <Square className="size-4" />
-                    중단
-                  </Button>
-                ) : null}
-                <Button type="submit" disabled={!isHydrated || !input.trim() || isGenerating}>
-                  <SendHorizontal className="size-4" />
-                  보내기
-                </Button>
+
+            {messages.map((message) => {
+              const text = getMessageText(message);
+
+              if (!text) {
+                return null;
+              }
+
+              const isUser = message.role === "user";
+
+              return (
+                <div
+                  key={message.id}
+                  className={cn("flex", isUser ? "justify-end" : "justify-start")}
+                >
+                  <div
+                    className={cn(
+                      "max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-sm md:text-[15px]",
+                      isUser
+                        ? "rounded-br-md bg-primary text-primary-foreground"
+                        : "rounded-bl-md border border-white/20 bg-white/80 text-foreground dark:border-white/10 dark:bg-white/8",
+                    )}
+                  >
+                    {isUser ? (
+                      <p className="break-keep whitespace-pre-wrap">{text}</p>
+                    ) : (
+                      <div className="wrap-break-word text-sm leading-relaxed md:text-[15px]">
+                        <ReactMarkdown components={assistantMarkdownComponents}>{text}</ReactMarkdown>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+
+            {isGenerating ? (
+              <div className="flex justify-start">
+                <div className="flex items-center gap-2 rounded-3xl rounded-bl-md border border-white/20 bg-white/75 px-4 py-3 text-sm text-muted-foreground dark:border-white/10 dark:bg-white/8">
+                  <LoaderCircle className="size-4 animate-spin" />
+                  답변을 생성하는 중입니다.
+                </div>
               </div>
-            </form>
-          </CardFooter>
-        </Card>
-      </FadeInView>
-    </Container>
+            ) : null}
+          </div>
+
+          {parsedError ? (
+            <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-200">
+              <p className="font-medium">{parsedError.message}</p>
+              {parsedError.details?.length ? (
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-xs opacity-90">
+                  {parsedError.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {parsedError.retryAfter ? (
+                <p className="mt-1 text-xs opacity-80">
+                  약 {parsedError.retryAfter}초 후 다시 시도해 주세요.
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+        </CardContent>
+        <CardFooter className="flex-col items-stretch gap-3">
+          <form className="grid gap-3" onSubmit={(event) => void handleSubmit(event)}>
+            <Textarea
+              autoResize
+              value={input}
+              onChange={(event) => setInput(event.currentTarget.value)}
+              onKeyDown={(event) => void handleInputKeyDown(event)}
+              placeholder="질문을 입력해 주세요."
+              maxLength={CHAT_USER_INPUT_MAX_LENGTH}
+              disabled={!isHydrated || isGenerating}
+            />
+            <div className="flex items-center justify-end gap-2">
+              <p className="mr-auto text-xs text-muted-foreground">
+                {input.length}/{CHAT_USER_INPUT_MAX_LENGTH}
+              </p>
+              {isGenerating ? (
+                <Button type="button" variant="outline" onClick={stop}>
+                  <Square className="size-4" />
+                  중단
+                </Button>
+              ) : null}
+              <Button type="submit" disabled={!isHydrated || !input.trim() || isGenerating}>
+                <SendHorizontal className="size-4" />
+                보내기
+              </Button>
+            </div>
+          </form>
+        </CardFooter>
+      </Card>
+    </>
   );
 };
 
-export default ChatSection;
+export default ChatCard;
