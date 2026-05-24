@@ -1,7 +1,7 @@
 import Container from "@/components/layout/header/Container";
 import FadeInView from "@/shared/components/motion/FadeInView";
 
-import ChatCard from "./ChatCard";
+import ChatCTA from "./ChatCTA";
 import IntroCard from "./IntroCard";
 import ProfileCard from "./ProfileCard";
 
@@ -19,16 +19,16 @@ const About = ({ projectsCount, maintenanceCount }: AboutProps) => {
           <FadeInView className="lg:basis-2/5" delay={0.1}>
             <IntroCard className="h-full" />
           </FadeInView>
-          <FadeInView id="chat" className="lg:basis-3/5" delay={0.2}>
-            <ChatCard />
+          <FadeInView className="lg:basis-3/5" delay={0.2}>
+            <ProfileCard
+              className="h-full"
+              projectsCount={projectsCount}
+              maintenanceCount={maintenanceCount}
+            />
           </FadeInView>
         </div>
         <FadeInView delay={0.3}>
-          <ProfileCard
-            className="h-full"
-            projectsCount={projectsCount}
-            maintenanceCount={maintenanceCount}
-          />
+          <ChatCTA />
         </FadeInView>
       </div>
     </Container>

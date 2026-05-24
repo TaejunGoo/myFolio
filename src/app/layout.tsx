@@ -7,8 +7,10 @@ import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
+import FloatingChat from "@/components/chatbot/FloatingChat";
 import { Toaster } from "@/components/ui/sonner";
 import { createMetadata } from "@/data/shared";
+import { FloatingChatProvider } from "@/lib/chatbot/FloatingChatContext";
 import { cn } from "@/shared/utils/cn";
 
 import type { Metadata } from "next";
@@ -41,11 +43,14 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
           defaultTheme="dark"
           enableSystem
         >
-          <AnimatedBackground />
-          <Header />
-          {children}
-          <Footer />
-          <Toaster />
+          <FloatingChatProvider>
+            <AnimatedBackground />
+            <Header />
+            {children}
+            <Footer />
+            <FloatingChat />
+            <Toaster />
+          </FloatingChatProvider>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
