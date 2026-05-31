@@ -11,11 +11,13 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { CHAT_USER_INPUT_MAX_LENGTH } from "@/lib/chatbot/constants";
 import { useFloatingChat } from "@/lib/chatbot/FloatingChatContext";
 import { cn } from "@/shared/utils";
 
 const CHAT_CLIENT_ID_STORAGE_KEY = "portfolio-chat-client-id";
+const FLOATING_CHAT_TOOLTIP_DURATION = 3000;
 
 const NUDGE_PROMPT_POOL = [
   // 기술/역량
@@ -254,7 +256,9 @@ const FloatingChat = () => {
   const [clientId, setClientId] = useState("");
   const [input, setInput] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
+  const [isTooltipPinnedOpen, setIsTooltipPinnedOpen] = useState(false);
   const [nudgePrompts, setNudgePrompts] = useState<string[]>(NUDGE_PROMPT_POOL.slice(0, NUDGE_DISPLAY_COUNT));
+  const hasShownInitialTooltipRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const chatInstanceId = clientId ? `portfolio-chat:${clientId}` : "portfolio-chat:pending";
@@ -297,6 +301,20 @@ const FloatingChat = () => {
     });
   }, [clientId]);
 
+  useEffect(() => {
+    if (!isHydrated || isOpen || hasShownInitialTooltipRef.current) return;
+
+    hasShownInitialTooltipRef.current = true;
+    setIsTooltipPinnedOpen(true);
+    const timeoutId = window.setTimeout(() => {
+      setIsTooltipPinnedOpen(false);
+    }, FLOATING_CHAT_TOOLTIP_DURATION);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [isHydrated, isOpen]);
+
   // 새 메시지 도착 시 스크롤 하단 이동
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -326,6 +344,11 @@ const FloatingChat = () => {
     if (event.key !== "Enter" || event.shiftKey || event.nativeEvent.isComposing) return;
     event.preventDefault();
     await handleSubmit();
+  };
+
+  const handleFloatingButtonClick = () => {
+    setIsTooltipPinnedOpen(false);
+    toggle();
   };
 
   return (
@@ -447,7 +470,7 @@ const FloatingChat = () => {
                 placeholder="질문을 입력해 주세요."
                 maxLength={CHAT_USER_INPUT_MAX_LENGTH}
                 disabled={!isHydrated || isGenerating}
-                className="block min-h-[40px] max-h-[120px] resize-none py-2.5 pl-3 pr-14 text-sm"
+                className="block min-h-10 max-h-[120px] resize-none py-2.5 pl-3 pr-14 text-sm"
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground/60 select-none pointer-events-none">
                 {input.length}/{CHAT_USER_INPUT_MAX_LENGTH}
@@ -458,7 +481,7 @@ const FloatingChat = () => {
                 type="button" 
                 variant="outline" 
                 size="icon" 
-                className="size-10 flex-shrink-0 rounded-xl border-amber-500/30 text-amber-500 hover:bg-amber-500/10" 
+                className="size-10 shrink-0 rounded-xl border-amber-500/30 text-amber-500 hover:bg-amber-500/10" 
                 onClick={stop}
                 aria-label="답변 생성 중단"
               >
@@ -468,7 +491,7 @@ const FloatingChat = () => {
               <Button 
                 type="submit" 
                 size="icon" 
-                className="size-10 flex-shrink-0 rounded-xl transition-all duration-200" 
+                className="size-10 shrink-0 rounded-xl transition-all duration-200" 
                 disabled={!isHydrated || !input.trim() || isGenerating}
                 aria-label="메시지 전송"
               >
@@ -480,19 +503,26 @@ const FloatingChat = () => {
       </div>
 
       {/* 플로팅 버튼: 모바일에서 패널이 열리면 숨김 (패널이 전체화면이므로) */}
-      <Button
-        id="floating-chat-button"
-        onClick={toggle}
-        size="icon"
-        className={cn(
-          "fixed bottom-6 right-4 z-50 size-14 rounded-full shadow-2xl transition-all duration-200",
-          isOpen && "md:rotate-90",
-          isOpen && "max-md:hidden",
-        )}
-        aria-label={isOpen ? "챗 닫기" : "챗 열기"}
-      >
-        {isOpen ? <X className="size-5" /> : <MessageCircle className="size-5" />}
-      </Button>
+      <Tooltip {...(isTooltipPinnedOpen ? { open: true } : {})}>
+        <TooltipTrigger asChild>
+          <Button
+            id="floating-chat-button"
+            onClick={handleFloatingButtonClick}
+            size="icon"
+            className={cn(
+              "fixed bottom-6 right-4 z-50 size-14 rounded-full shadow-2xl transition-all duration-200",
+              isOpen && "md:rotate-90",
+              isOpen && "max-md:hidden",
+            )}
+            aria-label={isOpen ? "챗 닫기" : "챗 열기"}
+          >
+            {isOpen ? <X className="size-5" /> : <MessageCircle className="size-5" />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="left" sideOffset={12}>
+          <p>포트폴리오 챗봇</p>
+        </TooltipContent>
+      </Tooltip>
     </>
   );
 };
