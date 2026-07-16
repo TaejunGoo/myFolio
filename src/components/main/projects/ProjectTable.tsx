@@ -27,6 +27,7 @@ const ProjectTable = ({ projects }: ProjectTableProps) => {
             <TableHead>프로젝트명</TableHead>
             <TableHead>클라이언트</TableHead>
             <TableHead>기간</TableHead>
+            <TableHead className="text-center whitespace-nowrap">참여도</TableHead>
             <TableHead>스택</TableHead>
           </TableRow>
         </TableHeader>
@@ -51,6 +52,9 @@ const ProjectTable = ({ projects }: ProjectTableProps) => {
               <TableCell>
                 {project.periodStart}
                 {project.periodEnd ? ` ~ ${project.periodEnd}` : " - 진행중"}
+              </TableCell>
+              <TableCell className="text-center whitespace-nowrap">
+                {project.participation !== undefined ? `${project.participation}%` : "-"}
               </TableCell>
               <TableCell>
                 <div className="flex gap-2">

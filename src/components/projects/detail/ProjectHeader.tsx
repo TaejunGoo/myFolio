@@ -11,6 +11,7 @@ interface ProjectHeaderProps {
   client: string;
   periodStart: string;
   periodEnd?: string;
+  participation?: number;
   projectLink?: string;
 }
 
@@ -20,6 +21,7 @@ const ProjectHeader = ({
   client,
   periodStart,
   periodEnd,
+  participation,
   projectLink,
 }: ProjectHeaderProps) => {
   const formattedStart = format(parseISO(periodStart), "yyyy.MM");
@@ -39,6 +41,9 @@ const ProjectHeader = ({
       <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{category}</Badge>
+          {participation !== undefined ? (
+            <Badge variant="outline">참여도 {participation}%</Badge>
+          ) : null}
           {projectLink && (
             <a
               href={projectLink}

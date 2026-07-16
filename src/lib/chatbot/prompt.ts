@@ -16,7 +16,10 @@ const formatPeriod = (periodStart: string, periodEnd?: string) => {
 const formatCanonicalSiteData = () => {
   const projects = projectsData
     .map((project) => {
-      return `- ${project.title} | ${project.client} | ${formatPeriod(project.periodStart, project.periodEnd)} | ${project.description} | 기술: ${project.stack.join(", ")}`;
+      const participation =
+        project.participation !== undefined ? ` | 참여도: ${project.participation}%` : "";
+
+      return `- ${project.title} | ${project.client} | ${formatPeriod(project.periodStart, project.periodEnd)}${participation} | ${project.description} | 기술: ${project.stack.join(", ")}`;
     })
     .join("\n");
 

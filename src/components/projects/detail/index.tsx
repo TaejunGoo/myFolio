@@ -24,6 +24,7 @@ const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps
     client,
     periodStart,
     periodEnd,
+    participation,
     projectLink,
     imageUrlAry,
     overview,
@@ -41,6 +42,7 @@ const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps
         client={client}
         periodStart={periodStart}
         periodEnd={periodEnd}
+        participation={participation}
         projectLink={projectLink}
       />
 
@@ -86,4 +88,3 @@ const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps
 };
 
 export default ProjectDetail;
-

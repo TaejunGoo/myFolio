@@ -14,7 +14,21 @@ import type { ProjectCardProps } from "@/types";
 
 export type { ProjectCardProps };
 
-const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className, priority }: ProjectCardProps) => {
+const ProjectCard = ({
+  title,
+  category,
+  description,
+  imageUrlAry,
+  projectLink,
+  slug,
+  periodStart,
+  periodEnd,
+  participation,
+  stack,
+  client,
+  className,
+  priority,
+}: ProjectCardProps) => {
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
   const isPersonalProject = category === "Personal";
 
@@ -86,6 +100,11 @@ const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, s
             <span className="font-medium text-foreground/80">{client}</span>
             <span>·</span>
             <span>{formattedStart} ~ {formattedEnd}</span>
+            {participation !== undefined ? (
+              <Badge variant="outline" className="ml-1 px-1.5 py-0 text-[10px] font-medium">
+                참여도 {participation}%
+              </Badge>
+            ) : null}
           </div>
 
           <p className="mt-3 mb-5 min-h-[calc(1.375em*2)] text-sm leading-snug break-keep text-muted-foreground">

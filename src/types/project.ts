@@ -11,6 +11,8 @@ export interface ProjectCardProps {
   slug?: string;
   periodStart: string;
   periodEnd?: string;
+  /** Contribution percentage from 0 to 100 */
+  participation?: number;
   stack: StackItem[];
   client: string;
   className?: string;
