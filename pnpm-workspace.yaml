@@ -1,6 +1,5 @@
-onlyBuiltDependencies:
-  - '@swc/core'
-  - esbuild
-  - msw
-  - sharp
-  - unrs-resolver
+allowBuilds:
+  esbuild: true
+  msw: true
+  sharp: true
+  unrs-resolver: true
