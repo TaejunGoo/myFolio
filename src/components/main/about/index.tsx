@@ -1,5 +1,4 @@
 import Container from "@/components/layout/header/Container";
-import FadeInView from "@/shared/components/motion/FadeInView";
 
 import ChatCTA from "./ChatCTA";
 import IntroCard from "./IntroCard";
@@ -16,20 +15,18 @@ const About = ({ projectsCount, maintenanceCount }: AboutProps) => {
       <h2 className="sr-only">소개</h2>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
-          <FadeInView className="lg:basis-2/5" delay={0.1}>
+          <div className="lg:basis-2/5">
             <IntroCard className="h-full" />
-          </FadeInView>
-          <FadeInView className="lg:basis-3/5" delay={0.2}>
+          </div>
+          <div className="lg:basis-3/5">
             <ProfileCard
               className="h-full"
               projectsCount={projectsCount}
               maintenanceCount={maintenanceCount}
             />
-          </FadeInView>
+          </div>
         </div>
-        <FadeInView delay={0.3}>
-          <ChatCTA />
-        </FadeInView>
+        <ChatCTA />
       </div>
     </Container>
   );
