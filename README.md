@@ -63,7 +63,6 @@ CHAT_RATE_LIMIT_WINDOW_SECONDS=60
 	- 클라이언트 요청의 `system` role 금지
 	- 마지막 메시지는 반드시 `user` role 이어야 함
 - `CHAT_TOTAL_INPUT_TEXT_MAX_LENGTH`는 서버가 저장하는 누적 세션 길이가 아니라, 이번 요청 body에 포함된 전체 대화 텍스트 합을 기준으로 계산합니다.
-- 현재 챗봇 구현 상세는 `docs/04-report/features/chatbot.md`에 정리되어 있습니다.
 
 ### Available Scripts
 
@@ -90,7 +89,7 @@ myFolio/
 │   └── types/            # TypeScript 타입 정의
 ├── public/
 │   └── images/           # 이미지 에셋
-└── CLAUDE.md             # Claude Code 작업 가이드
+└── AGENTS.md             # AI 개발 도구 공통 작업 가이드
 ```
 
 ## Features

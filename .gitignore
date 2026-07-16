@@ -36,8 +36,8 @@ yarn-error.log*
 # vercel
 .vercel
 
-# bkit
-docs/.pdca-snapshots/
+# local AI tool settings
+.claude/settings.local.json
 
 # typescript
 *.tsbuildinfo
