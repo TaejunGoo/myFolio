@@ -37,7 +37,7 @@ pnpm dev
 
 ```bash
 OPENROUTER_API_KEY=your-openrouter-api-key
-OPENROUTER_MODEL=qwen/qwen3-next-80b-a3b-instruct:free
+OPENROUTER_MODEL=deepseek/deepseek-v4-flash
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 # Optional: in-memory rate limit tuning
@@ -47,7 +47,7 @@ CHAT_RATE_LIMIT_WINDOW_SECONDS=60
 
 메모:
 - `OPENROUTER_API_KEY`가 없으면 채팅 API는 `503`으로 응답합니다.
-- rate limit은 서버 프로세스 메모리에서 동작하는 best-effort 방식입니다.
+- rate limit은 요청 IP를 우선 사용하고 브라우저 익명 ID를 보조 수단으로 사용하며, 서버 프로세스 메모리에서 동작하는 best-effort 방식입니다.
 - 분산 환경이나 인스턴스 재시작 시 카운터는 공유되지 않으며 초기화될 수 있습니다.
 
 ### Chatbot Notes
@@ -56,7 +56,7 @@ CHAT_RATE_LIMIT_WINDOW_SECONDS=60
 - 클라이언트는 Vercel AI SDK의 풍부한 메시지 구조를 내부적으로 사용하지만, 서버로 전송할 때는 text part만 남기도록 정규화합니다.
 - 브라우저 새로고침 후 대화 히스토리는 유지되지 않습니다. 현재는 페이지가 살아 있는 동안의 메모리 상태만 사용합니다.
 - 요청 검증은 `/api/chat`에서 수행되며, 아래 규칙을 적용합니다.
-	- 사용자 단일 입력 상한: `CHAT_USER_INPUT_MAX_LENGTH` (기본 1200자)
+	- 사용자 단일 입력 상한: `CHAT_USER_INPUT_MAX_LENGTH` (기본 100자)
 	- 개별 text part 상한: `CHAT_MESSAGE_TEXT_MAX_LENGTH` (기본 4000자)
 	- 요청 전체 대화 텍스트 상한: `CHAT_TOTAL_INPUT_TEXT_MAX_LENGTH` (기본 12000자)
 	- 요청 메시지 개수 상한: `CHAT_MAX_REQUEST_MESSAGES` (기본 24개)

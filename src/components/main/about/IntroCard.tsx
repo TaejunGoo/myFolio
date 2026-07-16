@@ -1,14 +1,14 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import { FileText } from "lucide-react";
 import Link from "next/link";
-import { FiGithub, FiMail } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { profile } from "@/data/profile";
-import { cn, copyEmailToClipboard } from "@/shared/utils";
+import { cn } from "@/shared/utils";
 
 import PointItem from "./PointItem";
 
@@ -54,9 +54,15 @@ const IntroCard = ({ className }: IntroCardProps) => {
               Github 방문
             </Button>
           </Link>
-          <Button variant="outline" className="flex-1" onClick={copyEmailToClipboard}>
-            <FiMail className="size-4" />
-            이메일 복사
+          <Button variant="outline" className="flex-1" asChild>
+            <Link
+              href="/docs/퍼블리셔_구태준_이력서.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FileText className="size-4" />
+              이력서 보기
+            </Link>
           </Button>
         </div>
       </CardFooter>

@@ -4,7 +4,7 @@ import { startTransition, useEffect, useRef, useState } from "react";
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { LoaderCircle, MessageCircle, SendHorizontal, Square, X } from "lucide-react";
+import { Cpu, LoaderCircle, MessageCircle, SendHorizontal, Square, X } from "lucide-react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
@@ -28,10 +28,10 @@ const NUDGE_PROMPT_POOL = [
   "대표 프로젝트를 소개해 주세요.",
   "브라우저나 디바이스 호환성 이슈를 다뤄본 적 있나요?",
   "팀의 개발 생산성을 높이기 위해 시도한 것이 있나요?",
+  "AI를 활용한 개인 프로젝트를 소개해 주세요.",
   // 커리어
   "어떤 계기로 웹 퍼블리셔가 됐나요?",
   "에이전시 경험이 어떤 역량을 키워줬나요?",
-  "앞으로 어떤 개발자로 성장하고 싶나요?",
 ];
 
 const NUDGE_DISPLAY_COUNT = 3;
@@ -59,6 +59,13 @@ interface ChatRequestMessage {
     type: "text";
     text: string;
   }[];
+}
+
+interface ChatModelInfo {
+  model: string;
+  displayName: string;
+  provider: string;
+  fallbackEnabled: boolean;
 }
 
 const assistantMarkdownComponents: Components = {
@@ -211,8 +218,11 @@ const formatIssueDetail = (issue: ChatErrorIssue) => {
 const getReadableErrorMessage = (message: string | undefined) => {
   if (!message) return "챗봇 요청에 실패했습니다.";
   if (message.startsWith("Invalid chat request.")) return "채팅 요청 형식이 올바르지 않습니다.";
+  if (message === "Invalid JSON request body.") return "채팅 요청 형식이 올바르지 않습니다.";
+  if (message === "Chat request body is too large.") return "대화 내용이 너무 깁니다. 페이지를 새로고침한 뒤 다시 질문해 주세요.";
   if (message === "Rate limit exceeded.") return "요청이 너무 많습니다.";
   if (message === "OPENROUTER_API_KEY is not configured.") return "챗봇 설정이 아직 완료되지 않았습니다.";
+  if (message === "Chatbot context is unavailable.") return "챗봇 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
   return message;
 };
 
@@ -247,7 +257,7 @@ const parseChatError = (error: Error | undefined): ParsedChatError | null => {
       retryAfter: parsed.retryAfter,
     };
   } catch {
-    return { message: getReadableErrorMessage(error.message) };
+    return { message: "챗봇 답변을 생성하지 못했습니다. 잠시 후 다시 시도해 주세요." };
   }
 };
 
@@ -257,6 +267,8 @@ const FloatingChat = () => {
   const [input, setInput] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
   const [isTooltipPinnedOpen, setIsTooltipPinnedOpen] = useState(false);
+  const [isTooltipHoverOpen, setIsTooltipHoverOpen] = useState(false);
+  const [modelInfo, setModelInfo] = useState<ChatModelInfo | null>(null);
   const [nudgePrompts, setNudgePrompts] = useState<string[]>(NUDGE_PROMPT_POOL.slice(0, NUDGE_DISPLAY_COUNT));
   const hasShownInitialTooltipRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -302,15 +314,45 @@ const FloatingChat = () => {
   }, [clientId]);
 
   useEffect(() => {
+    if (!isOpen || modelInfo) return;
+
+    const abortController = new AbortController();
+
+    const loadModelInfo = async () => {
+      try {
+        const response = await fetch("/api/chat", {
+          cache: "no-store",
+          signal: abortController.signal,
+        });
+        if (!response.ok) return;
+
+        const nextModelInfo = await response.json() as ChatModelInfo;
+        setModelInfo(nextModelInfo);
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          console.error("Failed to load chatbot model information");
+        }
+      }
+    };
+
+    void loadModelInfo();
+
+    return () => abortController.abort();
+  }, [isOpen, modelInfo]);
+
+  useEffect(() => {
     if (!isHydrated || isOpen || hasShownInitialTooltipRef.current) return;
 
     hasShownInitialTooltipRef.current = true;
-    setIsTooltipPinnedOpen(true);
+    const showTimeoutId = window.setTimeout(() => {
+      setIsTooltipPinnedOpen(true);
+    }, 0);
     const timeoutId = window.setTimeout(() => {
       setIsTooltipPinnedOpen(false);
     }, FLOATING_CHAT_TOOLTIP_DURATION);
 
     return () => {
+      window.clearTimeout(showTimeoutId);
       window.clearTimeout(timeoutId);
     };
   }, [isHydrated, isOpen]);
@@ -355,6 +397,10 @@ const FloatingChat = () => {
     <>
       {/* 패널 */}
       <div
+        role="dialog"
+        aria-label="포트폴리오 챗봇"
+        aria-hidden={!isOpen}
+        inert={!isOpen}
         className={cn(
           "fixed z-50 flex flex-col overflow-hidden border border-white/20 bg-white/80 shadow-2xl backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/70",
           // 모바일: 전체화면, 모서리 없음
@@ -371,6 +417,24 @@ const FloatingChat = () => {
           <div>
             <p className="text-sm font-semibold">무엇이든 물어보세요.</p>
             <p className="text-xs text-muted-foreground">포트폴리오에 대해 자유롭게 질문하세요.</p>
+            {modelInfo ? (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="mt-1 inline-flex cursor-help items-center gap-1 text-[10px] text-muted-foreground/80">
+                    <Cpu className="size-3" aria-hidden="true" />
+                    기본 답변 모델: {modelInfo.displayName}
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" align="start" className="max-w-72">
+                  <p>{modelInfo.model} · {modelInfo.provider}</p>
+                  {modelInfo.fallbackEnabled ? (
+                    <p className="mt-1 text-xs opacity-80 break-keep">
+                      모델 장애나 사용량 제한 시 보조 모델로 전환될 수 있습니다.
+                    </p>
+                  ) : null}
+                </TooltipContent>
+              </Tooltip>
+            ) : null}
           </div>
           <Button
             variant="ghost"
@@ -384,7 +448,11 @@ const FloatingChat = () => {
         </div>
 
         {/* 메시지 영역 */}
-        <div className="flex flex-1 flex-col gap-3 overflow-y-auto p-4">
+        <div
+          className="flex flex-1 flex-col gap-3 overflow-y-auto p-4"
+          aria-live="polite"
+          aria-busy={isGenerating}
+        >
           {messages.length === 0 ? (
             <div className="flex flex-col gap-2">
               {nudgePrompts.map((prompt) => (
@@ -499,11 +567,17 @@ const FloatingChat = () => {
               </Button>
             )}
           </form>
+          <p className="mt-2 px-1 text-[10px] leading-relaxed text-muted-foreground/70">
+            입력 내용은 AI 답변 생성을 위해 외부 모델 제공자에게 전송됩니다. 개인정보는 입력하지 마세요.
+          </p>
         </div>
       </div>
 
       {/* 플로팅 버튼: 모바일에서 패널이 열리면 숨김 (패널이 전체화면이므로) */}
-      <Tooltip {...(isTooltipPinnedOpen ? { open: true } : {})}>
+      <Tooltip
+        open={isTooltipPinnedOpen || isTooltipHoverOpen}
+        onOpenChange={setIsTooltipHoverOpen}
+      >
         <TooltipTrigger asChild>
           <Button
             id="floating-chat-button"

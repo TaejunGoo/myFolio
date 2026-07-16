@@ -232,7 +232,7 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.VIBE_CODING_PROJECTS),
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     overview:
-      "AI 코딩 보조 도구(Claude Code, GitHub Copilot 등)를 실무 및 개인 프로젝트에 적극 도입하여 업무 방식을 개선하고 있습니다. 기술 실증과 개인적인 문제 해결을 위해 시뮬레이터, 데이터 크롤러 등 실용적인 토이 프로젝트를 기획부터 배포까지 빠르게 구현하며 에이전틱 코딩의 생산성을 검증하였습니다.",
+      "AI 코딩 보조 도구(Claude Code, GitHub Copilot 등)를 실무 및 개인 프로젝트에 적극 도입하여 업무 방식을 개선하고 있습니다. 기술 실증과 개인적인 문제 해결을 위해 시뮬레이터, 데이터 크롤러 등 실용적인 개인 프로젝트를 기획부터 배포까지 빠르게 구현하며 에이전틱 코딩의 생산성을 검증하였습니다.",
     role: [
       "아이디어 기획, 문제 정의 및 요구사항 도출",
       "AI 도구를 활용한 프론트엔드 개발 및 배포 전 과정 수행",

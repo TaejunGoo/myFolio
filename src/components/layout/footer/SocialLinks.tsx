@@ -1,4 +1,3 @@
-import { Mail } from "lucide-react";
 import Link from "next/link";
 import { FiGithub, FiMail } from "react-icons/fi";
 

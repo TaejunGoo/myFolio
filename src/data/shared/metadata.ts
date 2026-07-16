@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-
 import { profile } from "@/data/profile";
+
+import type { Metadata } from "next";
 
 // ========================================
 // 사이트 기본 정보 (profile에서 파생)

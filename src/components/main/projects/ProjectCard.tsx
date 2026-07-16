@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,12 +16,30 @@ export type { ProjectCardProps };
 
 const ProjectCard = ({ title, category, description, imageUrlAry, projectLink, slug, periodStart, periodEnd, stack, client, className, priority }: ProjectCardProps) => {
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "진행 중");
+  const isPersonalProject = category === "Personal";
 
   const cardContent = (
-    <Card className={cn(className, "group flex cursor-pointer flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-black/40")}>
+    <Card
+      className={cn(
+        "group flex cursor-pointer flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
+        isPersonalProject
+          ? "border-purple-500/30 bg-linear-to-br from-purple-500/10 via-card to-blue-500/10 shadow-purple-500/5 hover:border-purple-500/50 hover:shadow-purple-500/15 dark:from-purple-500/15 dark:via-black/40 dark:to-blue-500/10"
+          : "dark:bg-black/40",
+        className,
+      )}
+    >
       <CardContent className="flex h-full flex-col">
         <div className="relative">
-          <Badge variant={"secondary"} className="absolute top-2 right-2 z-10">{category}</Badge>
+          <Badge
+            variant={isPersonalProject ? "outline" : "secondary"}
+            className={cn(
+              "absolute top-2 right-2 z-10",
+              isPersonalProject && "border-purple-500/30 bg-purple-500/15 text-purple-700 backdrop-blur-sm dark:text-purple-300",
+            )}
+          >
+            {isPersonalProject && <Sparkles />}
+            {isPersonalProject ? "Personal Project" : category}
+          </Badge>
           {
             imageUrlAry ? (
               <AspectRatio ratio={16/9} className="w-full overflow-hidden rounded-lg bg-muted">

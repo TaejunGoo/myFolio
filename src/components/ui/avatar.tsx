@@ -36,7 +36,7 @@ const AvatarImage = ({
     <Image
       fill
       data-slot="avatar-image"
-      className={cn("object-cover", className)}
+      className={cn("object-cover object-top", className)}
       alt={alt}
       sizes={sizes}
       {...props}

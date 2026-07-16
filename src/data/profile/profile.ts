@@ -20,6 +20,8 @@ export interface ProfileData {
   avatarAlt: string;
   /** 경력 시작일 (YYYY-MM 형식) */
   careerStartDate: string;
+  /** 경력 종료일 (YYYY-MM 형식) */
+  careerEndDate: string;
   /** 경력 시작일 이전 추가 경력 개월 수 */
   careerExtraMonths: number;
   /** 자기소개 문구 */
@@ -42,26 +44,28 @@ export interface ProfileData {
 export const profile: ProfileData = {
   name: "구태준",
   nameEn: "Taejun Goo",
-  title: "퍼블리셔 · UI Engineer",
-  email: "gtxggle2@gmail.com",
+  title: "Web Publisher · Front-End UI Developer",
+  email: "gtxggle@gmail.com",
   githubUrl: "https://github.com/TaejunGoo",
-  avatarUrl: "/images/profile/cat.webp",
-  avatarAlt: "우리집 고양이 감자",
+  avatarUrl: "/images/profile/profile.webp",
+  avatarAlt: "증명사진",
   careerStartDate: "2019-03",
+  careerEndDate: "2026-07",
   careerExtraMonths: 9,
-  bio: "주어진 환경에서 최선의 해결책을 찾아내며, 동료들과 함께 성장하고 기여하는 과정 속에서 보람을 느낍니다.",
+  bio: "다양한 구축·운영 프로젝트 경험과 React UI 구현 역량을 바탕으로, 디자인 시안을 안정적인 서비스 화면으로 구현합니다.",
   highlights: [
-    "최신 프론트엔드 환경부터 레거시 웹까지 폭넓은 경험",
-    "이커머스, 관리 시스템, 미디어 등 다양한 도메인에서 UI 구축",
-    "팀 내 기술 도입과 스터디 운영 등 주도적인 성장과 팀 기여",
+    "웹표준·접근성을 준수한 반응형 UI 구축",
+    "HTML·jQuery부터 React·Next.js까지 다양한 기술 환경 대응",
+    "브라우저·디바이스별 UI 이슈 분석 및 해결",
+    "단독 퍼블리싱부터 환경별 검수·이슈 대응까지 프로젝트 주도 수행",
   ],
   jobDescription: [
-    "재사용 가능한 UI 컴포넌트 개발",
-    "반응형 및 크로스 브라우징 설계",
-    "디자인·개발 파트 간 협업",
-    "시멘틱 마크업 및 웹 접근성 준수",
-    "요구사항에 따른 애니메이션 및 인터랙션 구현",
-    "사용자 경험(UX) 향상",
+    "웹표준 및 접근성을 고려한 시맨틱 마크업 설계",
+    "다양한 디바이스 환경에 맞춘 반응형 웹 구축",
+    "JavaScript·jQuery 기반 인터랙션 UI 구현",
+    "React·Next.js 기반 재사용 가능한 UI 컴포넌트 개발",
+    "브라우저·디바이스별 UI 이슈 분석 및 해결",
+    "Sass·Tailwind CSS 기반 스타일링 환경 구축 및 개선",
   ],
   mainStack: [
     "HTML",
@@ -82,5 +86,7 @@ export const profile: ProfileData = {
     "Photoshop",
     "GitHub Copilot",
     "Claude Code",
+    "Codex",
+    "Antigravity",
   ],
 };

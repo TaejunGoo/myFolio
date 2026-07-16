@@ -1,18 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { formatPeriod } from "@/shared/utils";
 import type { MaintenanceItemProps } from "@/types";
 
 const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }: MaintenanceItemProps) => {
-  const [mounted, setMounted] = useState(false);
   const { start: formattedStart, end: formattedEnd } = formatPeriod(periodStart, periodEnd, "현재");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const content = (
     <div className="flex items-center justify-center">
@@ -33,11 +26,6 @@ const MaintenanceItem = ({ name, logoUrl, periodStart, periodEnd, description }:
       )}
     </div>
   );
-
-  // 하이드레이션 오류 방지: 마운트 전에는 툴팁 태그 없이 순수 텍스트/이미지만 렌더링
-  if (!mounted) {
-    return content;
-  }
 
   return (
     <Tooltip>

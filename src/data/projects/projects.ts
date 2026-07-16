@@ -9,6 +9,7 @@ export const projectsData: ProjectCardProps[] = [
     description:
       "관능평가 및 관리 시스템 구축, React/TypeScript 기반 UI 이슈 해결 및 컴포넌트 개발 지원",
     periodStart: "2026-03",
+    periodEnd: "2026-04",
     stack: ["React", "TypeScript", "Sass"],
   },
   {
@@ -47,7 +48,7 @@ export const projectsData: ProjectCardProps[] = [
     stack: ["React", "Ant Design", "Styled-Components"],
   },
   {
-    title: "CJ 맥소노미 홈페이지 구축",
+    title: "Team MAXONOMY 홈페이지 구축",
     projectLink: "https://maxonomy.net/",
     slug: PROJECT_SLUGS.CJ_MAXONOMY,
     category: "Brand",
@@ -89,10 +90,10 @@ export const projectsData: ProjectCardProps[] = [
     category: "Media",
     client: "KBS",
     description:
-      "KBS 방송 참여 플랫폼 신규 구축, HTML/SASS 기반 모바일 최적화 UI 개발 및 SASS 도입 주도",
+      "KBS 방송 참여 플랫폼 신규 구축, HTML/Sass·JavaScript·jQuery 기반 모바일 최적화 UI 개발 및 Sass 도입 주도",
     periodStart: "2023-01",
     periodEnd: "2023-07",
-    stack: ["HTML", "Sass", "jQuery", "모바일"],
+    stack: ["HTML", "Sass", "JavaScript", "jQuery", "모바일"],
     imageUrlAry: ["/images/projects/tvut_1.webp"],
   },
   {
@@ -181,12 +182,12 @@ export const projectsData: ProjectCardProps[] = [
     stack: ["HTML", "CSS", "jQuery", "반응형", "다국어"],
   },
   {
-    title: "토이 프로젝트",
+    title: "AI 기반 개인 프로젝트 모음",
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     category: "Personal",
     client: "Personal",
     description:
-      "AI를 활용한 토이 프로젝트 모음. JSON-LD 생성 GEO 도구, 네이버 스마트스토어 교집합 검색기, 부동산 가격 트렌드 크롤러, 쌍안경 시뮬레이터 개발",
+      "업무와 일상에서 발견한 문제를 AI 도구와 웹 기술로 직접 기획하고 구현한 개인 프로젝트 모음",
     periodStart: "2026-01",
     stack: ["Claude Code", "GitHub Copilot", "Gemini CLI", "Antigravity"],
     imageUrlAry: ["/images/projects/vibe_1.webp"],

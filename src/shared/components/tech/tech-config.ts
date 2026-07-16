@@ -10,6 +10,7 @@ import {
   SiJquery,
   SiMui,
   SiNextdotjs,
+  SiOpenai,
   SiRecoil,
   SiShadcnui,
   SiStorybook,
@@ -49,6 +50,7 @@ export type TechName =
   | "Ant Design"
   | "Photoshop"
   | "Claude Code"
+  | "Codex"
   | "GitHub Copilot"
   | "SWR"
   | "Zustand"
@@ -158,6 +160,10 @@ export const techMap: Record<TechName, TechConfig> = {
   "Claude Code": {
     icon: SiAnthropic,
     className: "bg-orange-500/10 text-orange-600 border-orange-500/20",
+  },
+  Codex: {
+    icon: SiOpenai,
+    className: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
   },
   "GitHub Copilot": {
     icon: SiGithubcopilot,

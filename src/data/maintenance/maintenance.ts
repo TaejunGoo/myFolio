@@ -5,6 +5,7 @@ export const maintenanceData:MaintenanceItemProps[] = [
     name: "월드비전",
     logoUrl: "/images/maintenance/edited_worldvision.png",
     periodStart: "2026-03",
+    periodEnd: "2026-06",
     description: "월드비전 웹사이트 로그인 개편 및 유지보수 수행",
   },
   {

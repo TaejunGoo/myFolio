@@ -9,7 +9,7 @@ function parseCareerDate(dateStr: string): Date {
 // 경력 개월 수 계산
 export function getCareerDuration(
   from: Date = parseCareerDate(profile.careerStartDate),
-  to: Date = new Date(),
+  to: Date = parseCareerDate(profile.careerEndDate),
   extraMonths: number = profile.careerExtraMonths,
 ): { years: number; months: number } {
   let years = to.getFullYear() - from.getFullYear();

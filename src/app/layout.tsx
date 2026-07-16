@@ -3,11 +3,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 
+import FloatingChat from "@/components/chatbot/FloatingChat";
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import "@/app/globals.css";
-import FloatingChat from "@/components/chatbot/FloatingChat";
 import { Toaster } from "@/components/ui/sonner";
 import { createMetadata } from "@/data/shared";
 import { FloatingChatProvider } from "@/lib/chatbot/FloatingChatContext";

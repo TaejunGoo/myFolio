@@ -13,11 +13,13 @@ declare global {
 const rateLimitStore = globalThis.__portfolioChatRateLimitStore ??= new Map<string, RateLimitEntry>();
 
 const getWindowSeconds = () => {
-  return Number(process.env.CHAT_RATE_LIMIT_WINDOW_SECONDS ?? DEFAULT_WINDOW_SECONDS);
+  const value = Number.parseInt(process.env.CHAT_RATE_LIMIT_WINDOW_SECONDS ?? "", 10);
+  return Number.isFinite(value) && value > 0 ? value : DEFAULT_WINDOW_SECONDS;
 };
 
 const getMaxRequests = () => {
-  return Number(process.env.CHAT_RATE_LIMIT_MAX_REQUESTS ?? DEFAULT_MAX_REQUESTS);
+  const value = Number.parseInt(process.env.CHAT_RATE_LIMIT_MAX_REQUESTS ?? "", 10);
+  return Number.isFinite(value) && value > 0 ? value : DEFAULT_MAX_REQUESTS;
 };
 
 const getRateLimitKey = (clientId: string) => {

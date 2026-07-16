@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { profile } from "@/data/profile";
 
 export const NameCard = () => {
@@ -12,12 +11,14 @@ export const NameCard = () => {
 
   const CardContent = (
     <>
-      <Avatar className="size-10">
-        <AvatarImage src={profile.avatarUrl} alt={profile.avatarAlt} sizes="40px" loading="eager" />
-        <AvatarFallback className="bg-linear-to-br from-blue-500 to-purple-600 text-sm font-bold text-white">
-          {profile.name}
-        </AvatarFallback>
-      </Avatar>
+      <div
+        aria-hidden="true"
+        className="flex size-10 shrink-0 items-center justify-center rounded-xl ring-1 ring-foreground/20"
+      >
+        <span className="font-mono text-sm font-black tracking-tight text-foreground">
+          TJ
+        </span>
+      </div>
       <div className="flex flex-col">
         <span className="text-base leading-tight font-bold text-foreground">
           {profile.name}
