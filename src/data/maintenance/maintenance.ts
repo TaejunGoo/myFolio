@@ -40,6 +40,7 @@ export const maintenanceData:MaintenanceItemProps[] = [
     name: "이랜드그룹",
     logoUrl: "/images/maintenance/edited_eland.png",
     periodStart: "2021-06",
+    periodEnd: "2026-06",
     description: "이랜드그룹 공식 홈페이지 구축 후 유지보수 수행",
   },
   {
@@ -88,6 +89,7 @@ export const maintenanceData:MaintenanceItemProps[] = [
     name: "로이드",
     logoUrl: "/images/maintenance/edited_lloyd.png",
     periodStart: "2021-05",
+    periodEnd: "2026-06",
     description: "로이드 공식 온라인 스토어 유지보수, 기획전 및 이벤트 페이지 제작 수행",
   },
   {
