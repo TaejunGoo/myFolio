@@ -44,7 +44,7 @@ export interface ProfileData {
 export const profile: ProfileData = {
   name: "구태준",
   nameEn: "Taejun Goo",
-  title: "Web Publisher · Front-End UI Developer",
+  title: "Web Publisher",
   email: "gtxggle@gmail.com",
   githubUrl: "https://github.com/TaejunGoo",
   avatarUrl: "/images/profile/profile.webp",

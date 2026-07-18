@@ -19,13 +19,13 @@ const Home = async () => {
 
   return (
     <main>
-      <section id="about" className="pt-16 md:pt-20">
+      <section id="about" className="pt-12 md:pt-20">
         <About
           projectsCount={projectsData.length}
           maintenanceCount={maintenanceData.length}
         />
       </section>
-      <Container className="my-16 md:my-20">
+      <Container className="my-16 lg:my-20">
         <Separator />
       </Container>
       <section id="projects">
@@ -34,16 +34,16 @@ const Home = async () => {
           otherProjects={otherProjects}
         />
       </section>
-      <Container className="my-16 md:my-20">
+      <Container className="my-16 lg:my-20">
         <Separator />
       </Container>
       <section id="maintenance">
         <Maintenance items={maintenanceData} />
       </section>
-      <Container className="my-16 md:my-20">
+      <Container className="my-16 lg:my-20">
         <Separator />
       </Container>
-      <section id="skills" className="mb-16 md:mb-20">
+      <section id="skills" className="mb-16 lg:mb-20">
         <Skills data={skillsData} />
       </section>
     </main>
