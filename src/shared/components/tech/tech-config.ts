@@ -38,7 +38,7 @@ export type TechName =
   | "HTML"
   | "CSS"
   | "Sass"
-  | "Styled-Components"
+  | "styled-components"
   | "Emotion"
   | "Tailwind CSS"
   | "Storybook"
@@ -46,7 +46,7 @@ export type TechName =
   | "Git"
   | "Figma"
   | "MUI"
-  | "Shadcn UI"
+  | "shadcn/ui"
   | "Ant Design"
   | "Photoshop"
   | "Claude Code"
@@ -113,7 +113,7 @@ export const techMap: Record<TechName, TechConfig> = {
     icon: FaSass,
     className: "bg-pink-500/10 text-pink-600 border-pink-500/20",
   },
-  "Styled-Components": {
+  "styled-components": {
     icon: SiStyledcomponents,
     className: "bg-pink-500/10 text-pink-600 border-pink-500/20",
   },
@@ -145,7 +145,7 @@ export const techMap: Record<TechName, TechConfig> = {
     icon: SiMui,
     className: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },
-  "Shadcn UI": {
+  "shadcn/ui": {
     icon: SiShadcnui,
     className: "bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900 border-transparent",
   },

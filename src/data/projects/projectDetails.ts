@@ -18,35 +18,35 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.CJ_SCHOOLFOOD),
     slug: PROJECT_SLUGS.CJ_SCHOOLFOOD,
     overview:
-      "CJ 튼튼스쿨은 학교 등 교육기관을 대상으로 하는 식자재 B2B 플랫폼으로, 커머스 기능에 더해 급식자랑, 팁 공유 등 커뮤니티 기능을 제공하는 서비스입니다. React 기반의 프론트엔드 환경을 설계하고, Tailwind CSS와 Styled-components를 활용해 반응형 UI를 구현했습니다. 프로젝트의 요구사항에 맞춰 무거운 외부 라이브러리 의존도를 낮추고 공통 컴포넌트를 직접 구현하여 최적화에 집중했습니다.",
+      "CJ 튼튼스쿨은 학교 등 교육기관을 대상으로 하는 식자재 B2B 플랫폼으로, 커머스 기능과 급식자랑, 팁 공유 등의 커뮤니티 기능을 제공하는 서비스입니다. React와 TypeScript 기반 환경에서 게시판형 목록·상세 화면과 공통 UI 컴포넌트를 담당했으며, Tailwind CSS와 styled-components를 활용해 반응형 UI를 구현했습니다.",
     role: [
-      "프론트엔드 환경 설계 및 UI 컴포넌트 구조화",
-      "복잡한 전역 상태 관리 최적화",
-      "게시판형 목록 및 상세 등 주요 도메인 페이지 UI 구현",
-      "크로스 브라우저 환경의 스크롤 및 라우팅 이슈 해결",
+      "게시판형 목록 및 상세 등 담당 페이지 UI 구현",
+      "재사용 가능한 공통 UI 컴포넌트 구현",
+      "Context API 기반 Header UI 상태 중앙화",
+      "페이지 전환 시 스크롤 복원 이슈 분석 및 해결",
     ],
     highlights: [
-      "Context API 기반 전역 상태 관리로 데이터의 단일 진실 공급원(SSOT) 달성 및 Props drilling 제거",
-      "History API 제어를 통한 크로스 브라우저 환경 스크롤 위치 초기화 정책 수립",
-      "HeadlessUI를 활용한 접근성 높은 모달 등 공통 컴포넌트 구축",
+      "Header의 메뉴·검색 상태 관리 지점을 통합해 관련 컴포넌트의 상태 전달 구조 단순화",
+      "History API 제어를 통한 페이지 전환 시 스크롤 위치 초기화 정책 수립",
+      "Headless UI를 활용한 모달 등 공통 컴포넌트 구현",
     ],
     customSections: [
       {
-        title: "Context API를 활용한 전역 상태 관리 최적화",
+        title: "Context API를 활용한 Header UI 상태 관리",
         type: "list",
         content: [
-          "Header 컴포넌트의 메뉴 토글, 검색 영역 토글 등 복잡한 상태를 중앙화",
-          "Props drilling으로 인한 코드 복잡도 문제 해결",
-          "단일 진실 공급원(SSoT) 달성으로 상태 불일치 이슈 방지 및 유지보수성 향상",
+          "Header의 메뉴 토글과 검색 영역 토글 상태를 하나의 Context에서 관리",
+          "관련 컴포넌트 사이에서 반복되던 상태와 이벤트 전달 구조를 단순화",
+          "Header UI의 상태 변경 기준을 한곳에 모아 유지보수성을 개선",
         ],
       },
       {
         title: "페이지 이동 시 스크롤 위치 초기화 문제 해결",
         type: "list",
         content: [
-          "페이지 이동 시 스크롤이 중간 위치에서 시작하는 브라우저 기본 동작과 React Router 간의 충돌 인지",
+          "React Router 기반 페이지 전환과 브라우저의 자동 스크롤 복원 동작이 함께 적용되며 발생하는 현상 분석",
           "URL 변경을 감지하여 스크롤을 0으로 초기화하는 커스텀 훅 작성",
-          "window.history.scrollRestoration을 'manual'로 제어하여 크로스 브라우저 환경에서 안정적인 스크롤 위치 초기화 구현",
+          "window.history.scrollRestoration을 'manual'로 제어하여 페이지 전환 시 스크롤 위치를 일관되게 초기화",
         ],
       },
       {
@@ -60,25 +60,25 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.CJ_THE_SQUARE),
     slug: PROJECT_SLUGS.CJ_THE_SQUARE,
     overview:
-      "CJ The Square는 대한통운 임직원을 위한 사내 커뮤니티로, 글 작성, 열람, 댓글, 포인트 획득 및 교환 기능 등을 제공합니다. React를 기반으로 모바일에 최적화된 UI를 구현했으며, 개발 생산성 향상을 위해 팀 내 최초로 Tailwind CSS를 도입하여 스타일링 환경을 구축했습니다.",
+      "CJ The Square는 CJ대한통운 임직원을 위한 사내 커뮤니티로, 글 작성, 열람, 댓글, 포인트 획득 및 교환 기능 등을 제공합니다. React를 기반으로 모바일 UI 전체 화면과 CJ 포털 연동용 포틀릿 영역을 구현했으며, 퍼블리싱팀 신규 구축 프로젝트에 Tailwind CSS를 처음 도입했습니다.",
     role: [
       "모바일 최적화 커뮤니티 UI 전체 페이지 구현",
       "CJ 포털 내 연동을 위한 포틀릿(iframe) 영역 작업",
-      "Tailwind CSS 기반 스타일링 환경 구축 및 최적화 전략 수립",
+      "Tailwind CSS 기반 스타일링 환경 및 클래스 관리 방식 구성",
     ],
     highlights: [
-      "팀 내 최초 Tailwind CSS 도입으로 초기 프로토타이핑 속도 및 전반적인 UI 개발 생산성 향상",
-      "Tailwind CSS와 Styled-components의 전략적 혼용으로 개발 효율성과 코드 품질 동시 확보",
-      "iOS Chrome 환경 하단 툴바 렌더링에 따른 뷰포트 공백 문제 분석 및 해결",
+      "퍼블리싱팀 신규 구축 프로젝트에 Tailwind CSS를 처음 적용하고 클래스 조합 유틸리티 구성",
+      "스타일 복잡도에 따라 Tailwind CSS와 styled-components를 구분해 사용하는 기준 정리",
+      "iOS Chrome의 뷰포트 공백 현상에 영향을 주는 브라우저 번역 제안 팝업 조건 확인 및 개선",
     ],
     customSections: [
       {
-        title: "Tailwind CSS 도입을 통한 개발 생산성 향상",
+        title: "Tailwind CSS 도입 및 활용 기준 정리",
         type: "list",
         content: [
-          "팀 내 최초로 Tailwind CSS를 도입하여 유틸리티 클래스 기반의 직관적인 스타일링 환경 구축",
-          "tailwind-merge와 clsx를 결합한 유틸리티 함수 도입으로 동적 클래스 제어 최적화",
-          "빠른 프로토타이핑이 필요한 영역은 Tailwind를, 복잡한 동적 로직이 필요한 영역은 Styled-components를 활용",
+          "퍼블리싱팀 신규 구축 프로젝트에 Tailwind CSS를 처음 적용해 유틸리티 클래스 기반의 스타일링 환경 구성",
+          "tailwind-merge와 clsx를 결합한 공통 유틸리티로 조건부 클래스 조합 방식을 통일",
+          "빠른 프로토타이핑이 필요한 영역은 Tailwind CSS를, 복잡한 동적 스타일이 필요한 영역은 styled-components를 활용",
         ],
       },
       {
@@ -87,7 +87,8 @@ export const projectDetailData: ProjectDetailData[] = [
         content: [
           "iOS Chrome 환경에서 하단 툴바 렌더링 시 발생하는 viewport 공백 현상 파악",
           "meta viewport 설정에 viewport-fit=cover 값 적용",
-          "브라우저 번역 제안 팝업 동작과의 충돌을 확인하고, HTML lang 속성을 한국어(ko)로 명시하여 이슈 완전 해결",
+          "브라우저 번역 제안 팝업이 표시될 때 현상이 재현되는 것을 확인하고 HTML lang 속성을 한국어(ko)로 명시",
+          "viewport 및 언어 설정 적용 후 대상 모바일 환경에서 동작 재검증",
         ],
       },
       {
@@ -104,17 +105,17 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.CJ_MAXONOMY),
     slug: PROJECT_SLUGS.CJ_MAXONOMY,
     overview:
-      "Team MAXONOMY는 CJ올리브네트웍스의 디지털 마케팅 솔루션 전문 팀의 공식 홈페이지로, 팀의 서비스와 솔루션을 소개하고 고객과의 접점을 제공하는 브랜드 사이트입니다. 클라이언트측 기술 담당자로서 비개발 직군과 외주 개발사 간의 기술적 간극을 조율하고 UI/UX 품질을 검수하는 총괄 역할을 수행했습니다.",
+      "Team MAXONOMY는 CJ올리브네트웍스의 디지털 마케팅 솔루션 전문 팀의 공식 홈페이지입니다. 외주 개발사가 구현한 프로젝트에서 클라이언트 측 기술 지원 역할로 참여해 고객사·디자인팀·외주 개발사 사이의 구현 범위와 기술적 제약을 조율하고, UI QA와 일부 화면 코드 수정을 담당했습니다.",
     role: [
-      "고객사, 디자인팀, 외주 개발사 간 기술 요구사항 커뮤니케이션 조율",
-      "외주 개발사 산출물 품질 검수 및 UI QA 총괄",
+      "고객사, 디자인팀, 외주 개발사 간 구현 요구사항 조율",
+      "외주 개발사 산출물 UI QA 및 수정 사항 전달",
       "기술적 제약사항 분석 및 대안 제시",
-      "디자이너와 협업하여 실시간 UI 코드 반영",
+      "디자이너와 협업해 일부 화면 코드 수정",
     ],
     highlights: [
-      "현장 상주 및 실시간 UI 코드 반영을 통한 피드백 루프 단축",
-      "기술-비기술 직군 간 원활한 커뮤니케이션을 통한 프로젝트 일정 준수",
-      "외주 개발 산출물의 UI/UX 완성도 향상",
+      "고객사 현장에서 디자인 구현 차이를 확인하고 일부 UI 코드를 직접 수정",
+      "비개발 직군에 기술적 제약과 가능한 대안을 설명",
+      "외주 개발 산출물의 UI 차이를 확인하고 수정 요구사항을 구체화",
     ],
     customSections: [
       {
@@ -122,18 +123,18 @@ export const projectDetailData: ProjectDetailData[] = [
         type: "list",
         content: [
           "원격 작업으로 인한 외주 개발사의 디자인 요구사항 미반영 이슈 파악",
-          "고객사 현장에 상주하여 디자이너 및 클라이언트와 직접 소통 체계 구축",
+          "고객사 현장에 상주하여 디자이너 및 클라이언트와 직접 소통",
           "미흡한 디자인 구현 사항을 현장에서 즉시 코드로 반영하여 피드백 사이클 단축",
-          "비개발 직군을 대상으로 기술적 제약사항을 명확히 설명하고 최선의 대안 도출",
+          "비개발 직군에 기술적 제약사항을 설명하고 구현 가능한 대안을 제시",
         ],
       },
       {
-        title: "핵심 경험",
+        title: "담당 경험",
         type: "list",
         content: [
-          "이해관계자 간 기술적 커뮤니케이션 및 조율 역량",
-          "외주 개발 프로젝트의 실무적인 UI/UX 품질 관리 및 QA 경험",
-          "현장 협업을 통한 신속한 문제 해결 및 의사결정",
+          "고객사·디자인팀·외주 개발사 간 요구사항 조율",
+          "외주 개발 산출물의 UI QA 및 수정 사항 전달",
+          "현장 협업을 통한 일부 화면 코드 수정",
         ],
       },
       {
@@ -147,16 +148,16 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.JTBC_NEWS_RENEWAL),
     slug: PROJECT_SLUGS.JTBC_NEWS_RENEWAL,
     overview:
-      "JTBC 뉴스는 텍스트 기사, 라이브, 숏폼 등 다양한 형태의 미디어를 제공하는 종합 미디어 서비스로, Next.js와 TypeScript 기반 환경에서 UI 개발을 담당했습니다. 다양한 디바이스와 해상도에 노출되는 미디어 플랫폼의 특성에 맞춰 정교한 반응형 웹 레이아웃을 설계하고, 엣지 케이스(Edge-case)에서의 UI 안정성을 확보하는 데 주력했습니다.",
+      "JTBC 뉴스는 텍스트 기사, 라이브, 숏폼 등 다양한 형태의 미디어를 제공하는 종합 미디어 서비스입니다. Next.js와 TypeScript 기반 환경에서 뉴스·라이브·숏폼 등 담당 영역의 반응형 UI와 공통 컴포넌트를 구현하고, 다양한 브라우저·디바이스에서 발생하는 UI 이슈를 개선했습니다.",
     role: [
-      "다양한 디바이스 및 해상도에 대응하는 반응형 레이아웃 구현",
+      "뉴스·라이브·숏폼 등 담당 영역의 반응형 UI 구현",
+      "담당 영역의 재사용 가능한 공통 컴포넌트 구현 및 Storybook 문서화",
       "예외 상황(Edge-case) 분석 및 UI/UX 트러블슈팅",
       "인터랙션 및 애니메이션 구현",
-      "재사용 가능한 공통 컴포넌트 설계",
     ],
     highlights: [
-      "미디어 플랫폼 특성에 맞춘 정교한 반응형 UI 및 레이아웃 설계",
-      "CSS 미디어 쿼리와 zoom 속성을 결합한 저해상도 기기 UI 최적화 (레이아웃 시프트 방어)",
+      "미디어 플랫폼의 담당 화면과 공통 컴포넌트를 반응형으로 구현하고 Storybook에 문서화",
+      "해상도별 CSS 미디어 쿼리와 zoom 속성을 활용해 저해상도 구간의 화면 깨짐 개선",
       "CSS scroll-snap과 IntersectionObserver를 활용한 Mac 트랙패드 스크롤 경험 개선",
     ],
     customSections: [
@@ -165,9 +166,9 @@ export const projectDetailData: ProjectDetailData[] = [
         type: "list",
         content: [
           "프로젝트 후반부에 저해상도 기기 대응 정책이 추가되어 기존 UI 수정 최소화 필요",
-          "CSS 미디어 쿼리와 zoom 속성을 결합하여 각 해상도별 UI 비율을 동적으로 조정하는 솔루션 도입",
-          "JavaScript 제어 시 발생하는 런타임 지연 및 레이아웃 시프트 현상을 방어하기 위해 CSS만으로 구현",
-          "모든 CSS 네이티브 기능(sticky/fixed 등)의 정상 작동 및 브라우저 호환성 확보",
+          "저해상도 구간의 해상도별 CSS 미디어 쿼리를 생성하고 zoom 값을 적용",
+          "런타임 JavaScript 제어 대신 CSS 파싱 시점에 확대 비율이 적용되도록 구성해 초기 화면 변화를 줄임",
+          "대상 브라우저에서 기존 sticky·fixed 요소의 동작을 유지하는지 확인",
         ],
       },
       {
@@ -190,26 +191,26 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.KBS_TVUT),
     slug: PROJECT_SLUGS.KBS_TVUT,
     overview:
-      "KBS 티벗은 실시간 방송과 연동되어 시청자 참여 기능을 제공하는 플랫폼입니다. HTML과 CSS 중심의 레거시 환경에 Sass를 도입하여 유지보수성을 높이고 코딩 컨벤션을 확립했습니다. 특히 고연령층 사용자가 많은 서비스 특성을 고려하여, 확장성 높은 동적 폰트 크기 테마 시스템을 구축해 웹 접근성을 향상시켰습니다.",
+      "KBS 티벗은 실시간 방송과 연동되어 시청자 참여 기능을 제공하는 모바일 플랫폼입니다. HTML, Sass, JavaScript, jQuery를 활용해 전체 UI 화면을 구현했으며, 퍼블리싱팀 신규 구축 프로젝트에 Sass를 처음 적용하고 코딩 컨벤션을 정리했습니다. 고연령층 사용자를 고려한 폰트 크기 테마를 구축해 텍스트 가독성을 개선했습니다.",
     role: [
-      "팀 내 Sass 최초 도입 및 스타일 표준화 주도",
-      "디자인 시스템 기반 스타일링 테마 구축",
-      "접근성 향상을 위한 UI 개발 및 최적화",
+      "모바일 UI 전체 화면 퍼블리싱",
+      "퍼블리싱팀 신규 구축 프로젝트 Sass 최초 적용 및 컨벤션 문서화",
+      "디자인 토큰 기반 폰트 크기 테마 구축",
     ],
     highlights: [
-      "팀 내 최초 Sass 도입 및 지식 공유 문서 배포를 통한 기술 표준화 확립",
-      "CSS Variable과 Sass Map을 활용한 고연령층 대상 동적 폰트 크기 테마 시스템 설계",
-      "유지보수성과 확장성을 고려한 디자인 토큰 시스템 구축",
+      "모바일 서비스 전체 UI 화면 구현",
+      "퍼블리싱팀 신규 구축 프로젝트에 Sass를 처음 적용하고 코딩 컨벤션과 활용 문서 공유",
+      "CSS Variable과 Sass map을 활용해 폰트별 확대 비율을 독립적으로 관리하는 토큰 구성",
     ],
     customSections: [
       {
-        title: "팀 내 최초 Sass 도입 및 기술 표준화",
+        title: "퍼블리싱팀 신규 구축 프로젝트 Sass 최초 적용",
         type: "list",
         content: [
-          "기존 HTML/CSS/jQuery 환경의 유지보수 한계를 체감하고 팀에 Sass를 최초 도입",
-          "팀 내 Sass 코딩 컨벤션 및 스타일 가이드라인 작성",
-          "팀 구성원을 위한 지식 공유 문서를 배포하여 초기 러닝 커브 단축 및 기술 표준화 달성",
-          "코드 재사용성 향상으로 후속 프로젝트의 개발 속도 증대에 기여",
+          "기존 HTML/CSS/jQuery 환경에서 반복되는 스타일 작성과 관리 문제를 개선하기 위해 Sass 적용",
+          "퍼블리싱팀의 Sass 코딩 컨벤션 및 스타일 가이드라인 작성",
+          "팀 구성원을 위한 Sass 활용 문서를 작성하고 실제 프로젝트 사용 사례 공유",
+          "후속 신규 구축 프로젝트에서 Sass를 활용할 수 있는 작업 기준 마련",
         ],
       },
       {
@@ -217,7 +218,7 @@ export const projectDetailData: ProjectDetailData[] = [
         type: "list",
         content: [
           "고연령층 사용자 비율이 높은 점을 고려해 가독성을 높일 수 있는 폰트 확대 기능 구현",
-          "CSS Variable과 Sass Map을 결합하여 확장성 높은 폰트 사이즈 토큰 시스템 설계",
+          "CSS Variable과 Sass map을 결합하여 확장성 높은 폰트 크기 토큰 시스템 설계",
           "단순히 일괄적인 비율로 확대되는 REM 단위의 한계를 넘어, 디자인 의도에 맞게 독립적인 확대 비율이 적용되도록 구현",
         ],
       },
@@ -232,16 +233,17 @@ export const projectDetailData: ProjectDetailData[] = [
     ...getBaseProject(PROJECT_SLUGS.VIBE_CODING_PROJECTS),
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     overview:
-      "AI 코딩 보조 도구(Claude Code, GitHub Copilot 등)를 실무 및 개인 프로젝트에 적극 도입하여 업무 방식을 개선하고 있습니다. 기술 실증과 개인적인 문제 해결을 위해 시뮬레이터, 데이터 크롤러 등 실용적인 개인 프로젝트를 기획부터 배포까지 빠르게 구현하며 에이전틱 코딩의 생산성을 검증하였습니다.",
+      "AI 코딩 에이전트를 활용해 아이디어를 실제 웹 서비스로 구체화한 개인 프로젝트 모음입니다. 문제 정의와 요구사항 구성, 구현 방향 제시를 직접 수행하고, 대부분의 코드는 AI 에이전트와의 반복적인 대화를 통해 작성했습니다. 생성된 기능의 동작과 UI를 검증하고 오류를 수정하며 배포까지 진행해, 바이브 코딩으로 구현할 수 있는 범위와 한계를 경험했습니다.",
     role: [
-      "아이디어 기획, 문제 정의 및 요구사항 도출",
-      "AI 도구를 활용한 프론트엔드 개발 및 배포 전 과정 수행",
-      "데이터 수집(크롤링) 및 시뮬레이션 로직 등 핵심 기능 구현",
+      "업무와 일상에서 해결할 문제 발굴 및 요구사항 정의",
+      "AI 코딩 에이전트에 구현 방향과 작업 맥락 제공",
+      "생성된 기능의 동작 검증과 오류 수정",
+      "UI·사용 흐름 개선 및 서비스 배포",
     ],
     highlights: [
-      "일상의 불편함 해소 및 기술적 호기심 충족을 위한 실용적 솔루션 개발",
-      "AI 코딩 도구의 전략적 활용을 통한 MVP(Minimum Viable Product) 빠른 프로토타이핑",
-      "기가픽셀 이미지 렌더링, 스텔스 크롤링 등 새로운 기술 스택 실증",
+      "아이디어를 실제 사용할 수 있는 웹 서비스로 구체화하고 배포",
+      "AI 생성 코드의 동작을 검증하고 문제 상황에 맞게 반복 개선",
+      "이미지 타일링, 외부 API, 데이터 검증·수집·시각화 등 서로 다른 기술 과제 경험",
     ],
     customSections: [
       {
@@ -252,7 +254,6 @@ export const projectDetailData: ProjectDetailData[] = [
           "https://github.com/TaejunGoo/img2ld",
           "목적: 상품 상세 이미지 또는 이미지를 포함한 CSV 데이터셋을 기반으로 Product JSON-LD를 자동 생성해 구조화 데이터 작성 부담을 줄이는 서비스 개발",
           "구현: 이미지 업로드와 CSV 파싱을 분기 처리하고, Gemini 분석 결과를 Zod로 부분 검증하여 사용 가능한 필드를 최대한 유지하도록 설계",
-          "향후 계획: Gemini Batch API, 결과 DB, 수기 오버라이드 UI를 도입해 대량 처리 효율과 운영 편의성을 높이는 방향으로 확장 예정",
         ],
       },
       {
@@ -262,8 +263,8 @@ export const projectDetailData: ProjectDetailData[] = [
           "https://binoculars-simulator.vercel.app/",
           "https://github.com/TaejunGoo/binoculars-simulator",
           "목적: 쌍안경의 시각적 왜곡 및 배율 효과를 브라우저에서 시뮬레이션",
-          "기술 실증: 기가픽셀 이미지(49537x19429, 575MB)를 브라우저에서 끊김 없이 렌더링하기 위해 OpenSeadragon 뷰어 활용 및 이미지 타일링 적용",
-          "기능: 4x~12x 가변 배율 조정, CSS 및 SVG 필터를 활용한 렌즈 퀄리티 시각화",
+          "기술 적용: 기가픽셀 이미지(49537x19429, 575MB)를 브라우저에서 탐색할 수 있도록 OpenSeadragon 뷰어와 이미지 타일링 적용",
+          "기능: 4x~12x 가변 배율 조정, CSS 및 SVG 필터를 활용한 렌즈 특성 시각화",
         ],
       },
       {
@@ -284,7 +285,7 @@ export const projectDetailData: ProjectDetailData[] = [
           "https://naver-land-scraper.vercel.app/",
           "https://github.com/TaejunGoo/naver-land-scraper",
           "문제 해결: 특정 아파트 단지의 매물 가격 변동 추이를 지속적으로 추적하기 위한 자동화 도구 필요성",
-          "구현: Puppeteer를 활용한 스텔스 크롤링으로 네이버 부동산 데이터 자동 수집",
+          "구현: Puppeteer를 활용해 네이버 부동산 데이터 수집 자동화",
           "시각화: 로컬 DB에 적재된 데이터를 바탕으로 시계열 차트를 구현하여 직관적인 트렌드 파악 지원",
         ],
       },

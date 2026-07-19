@@ -57,7 +57,7 @@ export const profile: ProfileData = {
     "웹표준·접근성을 준수한 반응형 UI 구축",
     "HTML·jQuery부터 React·Next.js까지 다양한 기술 환경 대응",
     "브라우저·디바이스별 UI 이슈 분석 및 해결",
-    "단독 퍼블리싱부터 환경별 검수·이슈 대응까지 프로젝트 주도 수행",
+    "다수의 신규 구축 프로젝트 전체 퍼블리싱 단독 수행 경험",
   ],
   jobDescription: [
     "웹표준 및 접근성을 고려한 시맨틱 마크업 설계",
@@ -77,7 +77,7 @@ export const profile: ProfileData = {
     "React",
     "Next.js",
     "Tailwind CSS",
-    "Styled-Components",
+    "styled-components",
     "Emotion",
   ],
   subStack: [
