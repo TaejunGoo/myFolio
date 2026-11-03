@@ -198,12 +198,12 @@ export const projectsData: ProjectCardProps[] = [
     stack: ["HTML", "CSS", "jQuery", "반응형", "다국어"],
   },
   {
-    title: "AI 바이브 코딩 프로젝트 모음",
+    title: "AI 코딩 에이전트 활용 프로젝트",
     slug: PROJECT_SLUGS.VIBE_CODING_PROJECTS,
     category: "Personal",
     client: "Personal",
     description:
-      "업무와 일상에서 발견한 문제를 AI 코딩 에이전트와 함께 웹 서비스로 구체화한 개인 프로젝트 모음",
+      "업무와 일상에서 발견한 문제를 정의하고, AI 코딩 에이전트를 활용해 구현·검증·배포한 개인 웹 서비스 모음",
     periodStart: "2026-01",
     participation: 100,
     stack: ["Claude Code", "GitHub Copilot", "Gemini CLI", "Antigravity"],
