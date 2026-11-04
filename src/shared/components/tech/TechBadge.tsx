@@ -17,15 +17,15 @@ interface TechBadgeProps {
 const TechBadge = ({ name, className, iconOnly = false }: TechBadgeProps) => {
   const config = techMap[name as TechName];
   const Icon = config?.icon || FaCode;
-  const colorClass = config?.className || "bg-secondary text-secondary-foreground border-secondary/50";
+  const iconColorClass = config?.iconClassName || "text-muted-foreground";
 
   const badgeContent = !iconOnly ? (
-    <Badge className={cn(colorClass, className)}>
-      <Icon className={cn("size-3.5")} />
+    <Badge variant="outline" className={cn("border-border bg-muted/40 text-foreground/80", className)}>
+      <Icon className={cn("size-3.5", iconColorClass)} />
       {name}
     </Badge>
   ) : (
-    <span className={cn(colorClass, "border-none bg-transparent", className)}>
+    <span className={cn(iconColorClass, "border-none bg-transparent", className)}>
       <Icon className="size-4" />
     </span>
   );

@@ -109,7 +109,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
               className={cn(
-                "relative font-medium transition-all duration-300",
+                "relative shrink-0 font-medium whitespace-nowrap transition-all duration-300",
                 active
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-foreground/70 hover:text-foreground",
@@ -126,7 +126,7 @@ export const Nav = ({ onNavigate, direction = "horizontal" }: NavProps) => {
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
               className={cn(
-                "relative font-medium transition-all duration-300",
+                "relative shrink-0 font-medium whitespace-nowrap transition-all duration-300",
                 active
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-foreground/70 hover:text-foreground",

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Sparkles } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,10 +35,7 @@ const ProjectCard = ({
   const cardContent = (
     <Card
       className={cn(
-        "group relative flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
-        isPersonalProject
-          ? "border-purple-500/30 bg-linear-to-br from-purple-500/10 via-card to-blue-500/10 shadow-purple-500/5 hover:border-purple-500/50 hover:shadow-purple-500/15 dark:from-purple-500/15 dark:via-black/40 dark:to-blue-500/10"
-          : "dark:bg-black/40",
+        "group relative flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-black/40",
         className,
       )}
     >
@@ -48,11 +45,10 @@ const ProjectCard = ({
             variant={isPersonalProject ? "outline" : "secondary"}
             className={cn(
               "pointer-events-none absolute top-2 right-2 z-10",
-              isPersonalProject && "border-purple-500/30 bg-purple-500/15 text-purple-700 backdrop-blur-sm dark:text-purple-300",
+              isPersonalProject && "border-purple-500/20 bg-background text-purple-700 dark:text-purple-300",
             )}
           >
-            {isPersonalProject && <Sparkles />}
-            {isPersonalProject ? "Personal Project" : category}
+            {isPersonalProject ? "개인 프로젝트" : category}
           </Badge>
           {
             imageUrlAry ? (
@@ -88,15 +84,17 @@ const ProjectCard = ({
               ) : title}
             </h3>
             {projectLink && (
-              <a
-                href={projectLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${title} 웹사이트 열기 (새 탭)`}
-                className="relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
-                <ExternalLink className="size-4" aria-hidden="true" />
-              </a>
+              <span className="relative h-0 w-11 shrink-0">
+                <a
+                  href={projectLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${title} 웹사이트 열기 (새 탭)`}
+                  className="absolute -top-2.5 right-0 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                </a>
+              </span>
             )}
           </div>
 
