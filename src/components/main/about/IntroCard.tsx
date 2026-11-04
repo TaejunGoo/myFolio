@@ -47,8 +47,8 @@ const IntroCard = ({ className }: IntroCardProps) => {
         </div>
       </CardContent>
       <CardFooter>
-        <div className="w-full grid sm:grid-cols-2 gap-2">
-          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+        <div className="grid w-full gap-2 sm:grid-cols-2">
+          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="sm:col-span-2">
             <Button variant="outline" className="w-full">
               <FiGithub className="size-4" />
               Github 방문
@@ -56,12 +56,18 @@ const IntroCard = ({ className }: IntroCardProps) => {
           </Link>
           <Button variant="outline" className="flex-1" asChild>
             <Link
-              href="/docs/퍼블리셔_구태준_이력서.pdf"
+              href={profile.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
               <FileText className="size-4" />
               이력서 보기
+            </Link>
+          </Button>
+          <Button variant="outline" className="flex-1" asChild>
+            <Link href={profile.careerDocumentUrl} target="_blank" rel="noopener noreferrer">
+              <FileText className="size-4" />
+              경력기술서 보기
             </Link>
           </Button>
         </div>

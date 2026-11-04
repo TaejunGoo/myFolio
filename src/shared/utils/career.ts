@@ -27,7 +27,7 @@ export function getCareerDuration(
 
 export function getCareerDurationText(
   from: Date = parseCareerDate(profile.careerStartDate),
-  to: Date = new Date(),
+  to: Date = parseCareerDate(profile.careerEndDate),
 ): string {
   const { years, months } = getCareerDuration(from, to);
   return `${years}년 ${months}개월`;

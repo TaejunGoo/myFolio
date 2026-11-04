@@ -18,6 +18,10 @@ export interface ProfileData {
   avatarUrl: string;
   /** 아바타 이미지 alt 텍스트 */
   avatarAlt: string;
+  /** Public resume PDF URL. */
+  resumeUrl: string;
+  /** Public career details PDF URL. */
+  careerDocumentUrl: string;
   /** 경력 시작일 (YYYY-MM 형식) */
   careerStartDate: string;
   /** 경력 종료일 (YYYY-MM 형식) */
@@ -49,6 +53,8 @@ export const profile: ProfileData = {
   githubUrl: "https://github.com/TaejunGoo",
   avatarUrl: "/images/profile/profile.webp",
   avatarAlt: "증명사진",
+  resumeUrl: "/docs/퍼블리셔_구태준_이력서.pdf",
+  careerDocumentUrl: "/docs/퍼블리셔_구태준_경력기술서.pdf",
   careerStartDate: "2019-03",
   careerEndDate: "2026-07",
   careerExtraMonths: 9,
@@ -57,15 +63,16 @@ export const profile: ProfileData = {
     "웹표준·접근성을 준수한 반응형 UI 구축",
     "HTML·jQuery부터 React·Next.js까지 다양한 기술 환경 대응",
     "브라우저·디바이스별 UI 이슈 분석 및 해결",
-    "구축·운영 전반의 퍼블리싱 실무 경험",
+    "Sass·Tailwind CSS 도입 및 AI 활용·기술 공유를 통한 작업 방식 개선",
   ],
   jobDescription: [
     "웹표준 및 접근성을 고려한 시맨틱 마크업 설계",
     "다양한 디바이스 환경에 맞춘 반응형 웹 구축",
     "JavaScript·jQuery 기반 인터랙션 UI 구현",
-    "React·Next.js 기반 재사용 가능한 UI 컴포넌트 개발",
+    "React·Next.js 기반 재사용 가능한 UI 컴포넌트 개발 및 Storybook 문서화",
     "브라우저·디바이스별 UI 이슈 분석 및 해결",
     "Sass·Tailwind CSS 기반 스타일링 환경 구축 및 개선",
+    "Git 기반 형상관리 및 개발팀 협업",
   ],
   mainStack: [
     "HTML",
@@ -82,6 +89,7 @@ export const profile: ProfileData = {
   ],
   subStack: [
     "Git",
+    "Storybook",
     "Figma",
     "Photoshop",
     "GitHub Copilot",

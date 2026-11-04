@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText } from "lucide-react";
+import { Files, FileText } from "lucide-react";
 import Link from "next/link";
 import { FiGithub, FiMail } from "react-icons/fi";
 
@@ -62,7 +62,7 @@ export const HeaderActions = () => {
             asChild
           >
             <Link
-              href="/docs/퍼블리셔_구태준_이력서.pdf"
+              href={profile.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -73,6 +73,20 @@ export const HeaderActions = () => {
         </TooltipTrigger>
         <TooltipContent>
           <p>이력서 보기</p>
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="ghost" size="icon" className="hover:bg-accent" asChild>
+            <Link href={profile.careerDocumentUrl} target="_blank" rel="noopener noreferrer">
+              <Files className="size-5" />
+              <span className="sr-only">경력기술서 보기</span>
+            </Link>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>경력기술서 보기</p>
         </TooltipContent>
       </Tooltip>
 

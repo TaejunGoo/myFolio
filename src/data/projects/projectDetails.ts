@@ -153,7 +153,8 @@ export const projectDetailData: ProjectDetailData[] = [
       "뉴스·라이브·숏폼 등 담당 영역의 반응형 UI 구현",
       "담당 영역의 재사용 가능한 공통 컴포넌트 구현 및 Storybook 문서화",
       "예외 상황(Edge-case) 분석 및 UI/UX 트러블슈팅",
-      "인터랙션 및 애니메이션 구현",
+      "서비스 소개 페이지의 Framer Motion 기반 스크롤 모션 구현",
+      "개발·검증·운영 단계별 브랜치를 활용한 형상관리 및 협업",
     ],
     highlights: [
       "미디어 플랫폼의 담당 화면과 공통 컴포넌트를 반응형으로 구현하고 Storybook에 문서화",
