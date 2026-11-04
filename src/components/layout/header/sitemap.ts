@@ -5,7 +5,7 @@ import type { NavigationItem } from "@/data/navigation";
 export type SitemapType = NavigationItem;
 
 // 메인 페이지용 섹션 네비게이션
-export const mainSitemap = mainNavigation;
+export const mainSitemap = mainNavigation.filter((item) => item.href !== "#chat");
 
 // 프로젝트 상세 페이지용 네비게이션
 export const detailSitemap = detailNavigation;
