@@ -5,6 +5,8 @@ import { convertToModelMessages, streamText, type UIMessage } from "ai";
 import { z } from "zod";
 
 import {
+  CHAT_CONVERSATION_LIMIT_CODE,
+  CHAT_CONVERSATION_LIMIT_MESSAGE,
   CHAT_MAX_OUTPUT_TOKENS,
   CHAT_MAX_REQUEST_MESSAGES,
   CHAT_MESSAGE_TEXT_MAX_LENGTH,
@@ -31,7 +33,7 @@ const MODEL_DISPLAY_NAMES: Record<string, string> = {
 
 const textPartSchema = z.object({
   type: z.literal("text"),
-  text: z.string().trim().min(1).max(CHAT_MESSAGE_TEXT_MAX_LENGTH),
+  text: z.string().trim().min(1).max(CHAT_MESSAGE_TEXT_MAX_LENGTH, CHAT_CONVERSATION_LIMIT_MESSAGE),
 });
 
 const messageSchema = z.object({
@@ -59,7 +61,7 @@ const messageSchema = z.object({
 
 const requestSchema = z.object({
   clientId: z.string().trim().min(12).max(120),
-  messages: z.array(messageSchema).min(1).max(CHAT_MAX_REQUEST_MESSAGES),
+  messages: z.array(messageSchema).min(1).max(CHAT_MAX_REQUEST_MESSAGES, CHAT_CONVERSATION_LIMIT_MESSAGE),
 }).superRefine((request, context) => {
   const lastMessageIndex = request.messages.length - 1;
   const lastMessage = request.messages.at(lastMessageIndex);
@@ -95,7 +97,7 @@ const requestSchema = z.object({
     context.addIssue({
       code: "custom",
       path: ["messages"],
-      message: `전체 대화 입력은 ${CHAT_TOTAL_INPUT_TEXT_MAX_LENGTH}자까지 가능합니다.`,
+      message: CHAT_CONVERSATION_LIMIT_MESSAGE,
     });
   }
 });
@@ -221,6 +223,13 @@ export async function POST(request: Request) {
   const parsed = requestSchema.safeParse(requestJson);
 
   if (!parsed.success) {
+    if (parsed.error.issues.some((issue) => issue.message === CHAT_CONVERSATION_LIMIT_MESSAGE)) {
+      return Response.json(
+        { error: CHAT_CONVERSATION_LIMIT_MESSAGE, code: CHAT_CONVERSATION_LIMIT_CODE },
+        { status: 400 },
+      );
+    }
+
     return Response.json(
       {
         error: getValidationErrorMessage(parsed.error),

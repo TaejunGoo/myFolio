@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { throttle } from "lodash-es";
 
 /**
@@ -19,6 +19,7 @@ import { throttle } from "lodash-es";
  * - High z-index to stay above other content
  */
 const ScrollIndicator = () => {
+  const shouldReduceMotion = useReducedMotion();
   // Use MotionValue instead of state to avoid re-renders
   const scrollYProgress = useMotionValue(0);
 
@@ -35,7 +36,8 @@ const ScrollIndicator = () => {
       const winHeightPx = window.innerHeight;
       const docHeightPx = document.documentElement.scrollHeight;
 
-      const scrolled = scrollPx / (docHeightPx - winHeightPx);
+      const scrollableHeight = docHeightPx - winHeightPx;
+      const scrolled = scrollableHeight > 0 ? scrollPx / scrollableHeight : 0;
       const progress = Math.min(Math.max(scrolled, 0), 1);
 
       // Directly update MotionValue without triggering re-render
@@ -73,7 +75,7 @@ const ScrollIndicator = () => {
     <div className="pointer-events-none absolute top-0 left-0 h-[3px] w-full bg-transparent">
       <motion.div
         className="h-full origin-left bg-foreground/10 dark:bg-foreground/30"
-        style={{ scaleX }}
+        style={{ scaleX: shouldReduceMotion ? scrollYProgress : scaleX }}
       />
     </div>
   );

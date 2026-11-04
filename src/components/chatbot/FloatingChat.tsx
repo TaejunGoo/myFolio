@@ -10,11 +10,17 @@ import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { CHAT_USER_INPUT_MAX_LENGTH } from "@/lib/chatbot/constants";
+import {
+  CHAT_CONVERSATION_LIMIT_CODE,
+  CHAT_CONVERSATION_LIMIT_MESSAGE,
+  CHAT_USER_INPUT_MAX_LENGTH,
+} from "@/lib/chatbot/constants";
+import { isConversationLimitExceeded } from "@/lib/chatbot/conversation";
 import { useFloatingChat } from "@/lib/chatbot/FloatingChatContext";
-import { cn } from "@/shared/utils";
+import { cn, getScrollBehavior } from "@/shared/utils";
 
 const CHAT_CLIENT_ID_STORAGE_KEY = "portfolio-chat-client-id";
 const FLOATING_CHAT_TOOLTIP_DURATION = 3000;
@@ -43,6 +49,7 @@ const pickRandomNudgePrompts = () => {
 
 interface ParsedChatError {
   message: string;
+  code?: string;
   details?: string[];
   retryAfter?: number;
 }
@@ -244,6 +251,7 @@ const parseChatError = (error: Error | undefined): ParsedChatError | null => {
   try {
     const parsed = JSON.parse(error.message) as {
       error?: string;
+      code?: string;
       details?: ChatErrorIssue[];
       retryAfter?: number;
     };
@@ -253,6 +261,7 @@ const parseChatError = (error: Error | undefined): ParsedChatError | null => {
       .slice(0, 3);
     return {
       message: getReadableErrorMessage(parsed.error),
+      code: parsed.code,
       details: detailMessages && detailMessages.length > 0 ? detailMessages : undefined,
       retryAfter: parsed.retryAfter,
     };
@@ -263,6 +272,7 @@ const parseChatError = (error: Error | undefined): ParsedChatError | null => {
 
 const FloatingChat = () => {
   const { isOpen, close, toggle } = useFloatingChat();
+  const [isMobile, setIsMobile] = useState(false);
   const [clientId, setClientId] = useState("");
   const [input, setInput] = useState("");
   const [isHydrated, setIsHydrated] = useState(false);
@@ -272,6 +282,9 @@ const FloatingChat = () => {
   const [nudgePrompts, setNudgePrompts] = useState<string[]>(NUDGE_PROMPT_POOL.slice(0, NUDGE_DISPLAY_COUNT));
   const hasShownInitialTooltipRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const chatInstanceId = clientId ? `portfolio-chat:${clientId}` : "portfolio-chat:pending";
 
@@ -295,6 +308,20 @@ const FloatingChat = () => {
 
   const parsedError = parseChatError(error);
   const isGenerating = status === "submitted" || status === "streaming";
+  const hasConversationLimitFor = (text: string) => isConversationLimitExceeded([
+    ...sanitizeOutgoingMessages(messages),
+    { parts: [{ type: "text", text }] },
+  ]);
+  const conversationLimitReached = hasConversationLimitFor(input.trim())
+    || parsedError?.code === CHAT_CONVERSATION_LIMIT_CODE;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
+    return () => mediaQuery.removeEventListener("change", updateIsMobile);
+  }, []);
 
   useEffect(() => {
     const storedClientId = window.localStorage.getItem(CHAT_CLIENT_ID_STORAGE_KEY);
@@ -359,8 +386,10 @@ const FloatingChat = () => {
 
   // 새 메시지 도착 시 스크롤 하단 이동
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isGenerating]);
+    if (isOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: getScrollBehavior() });
+    }
+  }, [messages, isGenerating, isOpen]);
 
   const handleSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
@@ -370,6 +399,10 @@ const FloatingChat = () => {
       toast.error(`질문은 ${CHAT_USER_INPUT_MAX_LENGTH}자까지 입력할 수 있습니다.`);
       return;
     }
+    if (hasConversationLimitFor(trimmedInput)) {
+      toast.error(CHAT_CONVERSATION_LIMIT_MESSAGE);
+      return;
+    }
     clearError();
     setInput("");
     await sendMessage({ text: trimmedInput });
@@ -377,6 +410,10 @@ const FloatingChat = () => {
 
   const handleNudgeClick = async (prompt: string) => {
     if (isGenerating || !isHydrated) return;
+    if (hasConversationLimitFor(prompt)) {
+      toast.error(CHAT_CONVERSATION_LIMIT_MESSAGE);
+      return;
+    }
     clearError();
     setInput("");
     await sendMessage({ text: prompt });
@@ -395,183 +432,202 @@ const FloatingChat = () => {
 
   return (
     <>
-      {/* 패널 */}
-      <div
-        role="dialog"
-        aria-label="포트폴리오 챗봇"
-        aria-hidden={!isOpen}
-        inert={!isOpen}
-        className={cn(
-          "fixed z-50 flex flex-col overflow-hidden border border-white/20 bg-white/80 shadow-2xl backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/70",
-          // 모바일: 전체화면, 모서리 없음
-          "inset-0 rounded-none",
-          // PC: 우하단 고정 패널
-          "md:inset-auto md:bottom-24 md:right-4 md:h-[70vh] md:w-[420px] md:rounded-2xl",
-          isOpen
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-4 opacity-0",
-        )}
-      >
-        {/* 헤더 */}
-        <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 dark:border-white/10">
-          <div>
-            <p className="text-sm font-semibold">무엇이든 물어보세요.</p>
-            <p className="text-xs text-muted-foreground">포트폴리오에 대해 자유롭게 질문하세요.</p>
-            {modelInfo ? (
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <span className="mt-1 inline-flex cursor-help items-center gap-1 text-[10px] text-muted-foreground/80">
-                    <Cpu className="size-3" aria-hidden="true" />
-                    기본 답변 모델: {modelInfo.displayName}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent side="bottom" align="start" className="max-w-72">
-                  <p>{modelInfo.model} · {modelInfo.provider}</p>
-                  {modelInfo.fallbackEnabled ? (
-                    <p className="mt-1 text-xs opacity-80 break-keep">
-                      모델 장애나 사용량 제한 시 보조 모델로 전환될 수 있습니다.
-                    </p>
-                  ) : null}
-                </TooltipContent>
-              </Tooltip>
-            ) : null}
-          </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-8 shrink-0"
-            onClick={close}
-            aria-label="챗 닫기"
-          >
-            <X className="size-4" />
-          </Button>
-        </div>
-
-        {/* 메시지 영역 */}
-        <div
-          className="flex flex-1 flex-col gap-3 overflow-y-auto p-4"
-          aria-live="polite"
-          aria-busy={isGenerating}
+      <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close(); }} modal={isMobile}>
+        <DialogContent
+          id="portfolio-chat-dialog"
+          aria-modal={isMobile || undefined}
+          showCloseButton={false}
+          className="inset-0 flex h-dvh w-full max-w-none translate-none flex-col gap-0 overflow-hidden rounded-none border border-white/20 bg-white/80 p-0 shadow-2xl backdrop-blur-xl sm:max-w-none md:top-auto md:right-4 md:bottom-24 md:left-auto md:h-[70vh] md:w-[420px] md:rounded-2xl dark:border-white/10 dark:bg-black/70 motion-reduce:animate-none"
+          onOpenAutoFocus={(event) => {
+            event.preventDefault();
+            openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+            if (!isMobile && inputRef.current && !inputRef.current.disabled) {
+              inputRef.current.focus();
+            } else {
+              closeButtonRef.current?.focus();
+            }
+          }}
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            const target = openerRef.current?.isConnected ? openerRef.current : document.getElementById("floating-chat-button");
+            target?.focus();
+          }}
+          onInteractOutside={(event) => {
+            if (!isMobile) event.preventDefault();
+          }}
         >
-          {messages.length === 0 ? (
-            <div className="flex flex-col gap-2">
-              {nudgePrompts.map((prompt) => (
-                <Button
-                  key={prompt}
-                  type="button"
-                  variant="outline"
-                  className="justify-start rounded-full border-white/30 bg-white/60 text-left text-xs shadow-sm backdrop-blur-sm dark:border-white/15 dark:bg-white/5"
-                  onClick={() => void handleNudgeClick(prompt)}
-                  disabled={!isHydrated || isGenerating}
-                >
-                  {prompt}
-                </Button>
-              ))}
+          <DialogTitle className="sr-only">포트폴리오 챗봇</DialogTitle>
+          <DialogDescription className="sr-only">경력, 프로젝트, 기술 스택에 대해 질문할 수 있습니다.</DialogDescription>
+          {/* 헤더 */}
+          <div className="flex items-center justify-between border-b border-white/15 px-4 py-3 dark:border-white/10">
+            <div>
+              <p className="text-sm font-semibold">무엇이든 물어보세요.</p>
+              <p className="text-xs text-muted-foreground">포트폴리오에 대해 자유롭게 질문하세요.</p>
+              {modelInfo ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="mt-1 inline-flex cursor-help items-center gap-1 text-[10px] text-muted-foreground/80">
+                      <Cpu className="size-3" aria-hidden="true" />
+                      기본 답변 모델: {modelInfo.displayName}
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" align="start" className="max-w-72">
+                    <p>{modelInfo.model} · {modelInfo.provider}</p>
+                    {modelInfo.fallbackEnabled ? (
+                      <p className="mt-1 text-xs opacity-80 break-keep">
+                        모델 장애나 사용량 제한 시 보조 모델로 전환될 수 있습니다.
+                      </p>
+                    ) : null}
+                  </TooltipContent>
+                </Tooltip>
+              ) : null}
             </div>
-          ) : null}
+            <div className="flex shrink-0 items-center gap-1">
+              <Button
+                ref={closeButtonRef}
+                variant="ghost"
+                size="icon"
+                className="size-8 shrink-0"
+                onClick={close}
+                aria-label="챗 닫기"
+              >
+                <X className="size-4" />
+              </Button>
+            </div>
+          </div>
 
-          {messages.map((message) => {
-            const text = getMessageText(message);
-            if (!text) return null;
-            const isUser = message.role === "user";
-            return (
-              <div key={message.id} className={cn("flex", isUser ? "justify-end" : "justify-start")}>
-                <div
-                  className={cn(
-                    "max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-sm",
-                    isUser
-                      ? "rounded-br-md bg-primary text-primary-foreground"
-                      : "rounded-bl-md border border-white/20 bg-white/80 text-foreground dark:border-white/10 dark:bg-white/8",
-                  )}
-                >
-                  {isUser ? (
-                    <p className="break-keep whitespace-pre-wrap">{text}</p>
-                  ) : (
-                    <div className="wrap-break-word text-sm leading-relaxed">
-                      <ReactMarkdown components={assistantMarkdownComponents} remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
-                    </div>
-                  )}
+          {/* 메시지 영역 */}
+          <div
+            className="flex flex-1 flex-col gap-3 overflow-y-auto p-4"
+            aria-live="polite"
+            aria-busy={isGenerating}
+          >
+            {messages.length === 0 ? (
+              <div className="flex flex-col gap-2">
+                {nudgePrompts.map((prompt) => (
+                  <Button
+                    key={prompt}
+                    type="button"
+                    variant="outline"
+                    className="justify-start rounded-full border-white/30 bg-white/60 text-left text-xs shadow-sm backdrop-blur-sm dark:border-white/15 dark:bg-white/5"
+                    onClick={() => void handleNudgeClick(prompt)}
+                    disabled={!isHydrated || isGenerating}
+                  >
+                    {prompt}
+                  </Button>
+                ))}
+              </div>
+            ) : null}
+
+            {messages.map((message) => {
+              const text = getMessageText(message);
+              if (!text) return null;
+              const isUser = message.role === "user";
+              return (
+                <div key={message.id} className={cn("flex", isUser ? "justify-end" : "justify-start")}>
+                  <div
+                    className={cn(
+                      "max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-sm",
+                      isUser
+                        ? "rounded-br-md bg-primary text-primary-foreground"
+                        : "rounded-bl-md border border-white/20 bg-white/80 text-foreground dark:border-white/10 dark:bg-white/8",
+                    )}
+                  >
+                    {isUser ? (
+                      <p className="break-keep whitespace-pre-wrap">{text}</p>
+                    ) : (
+                      <div className="wrap-break-word text-sm leading-relaxed">
+                        <ReactMarkdown components={assistantMarkdownComponents} remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+
+            {isGenerating ? (
+              <div className="flex justify-start">
+                <div className="flex items-center gap-2 rounded-3xl rounded-bl-md border border-white/20 bg-white/75 px-4 py-3 text-sm text-muted-foreground dark:border-white/10 dark:bg-white/8">
+                  <LoaderCircle className="size-4 animate-spin" />
+                  답변을 생성하는 중입니다.
                 </div>
               </div>
-            );
-          })}
+            ) : null}
 
-          {isGenerating ? (
-            <div className="flex justify-start">
-              <div className="flex items-center gap-2 rounded-3xl rounded-bl-md border border-white/20 bg-white/75 px-4 py-3 text-sm text-muted-foreground dark:border-white/10 dark:bg-white/8">
-                <LoaderCircle className="size-4 animate-spin" />
-                답변을 생성하는 중입니다.
+            {conversationLimitReached ? (
+              <div role="alert" className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-200">
+                <p>{CHAT_CONVERSATION_LIMIT_MESSAGE}</p>
               </div>
-            </div>
-          ) : null}
+            ) : parsedError ? (
+              <div role="alert" className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-200">
+                <p className="font-medium">{parsedError.message}</p>
+                {parsedError.details?.length ? (
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-xs opacity-90">
+                    {parsedError.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                {parsedError.retryAfter ? (
+                  <p className="mt-1 text-xs opacity-80">
+                    약 {parsedError.retryAfter}초 후 다시 시도해 주세요.
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
 
-          {parsedError ? (
-            <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-200">
-              <p className="font-medium">{parsedError.message}</p>
-              {parsedError.details?.length ? (
-                <ul className="mt-2 list-disc space-y-1 pl-5 text-xs opacity-90">
-                  {parsedError.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
-                </ul>
-              ) : null}
-              {parsedError.retryAfter ? (
-                <p className="mt-1 text-xs opacity-80">
-                  약 {parsedError.retryAfter}초 후 다시 시도해 주세요.
-                </p>
-              ) : null}
-            </div>
-          ) : null}
+            <div ref={messagesEndRef} />
+          </div>
 
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* 입력 영역 */}
-        <div className="border-t border-white/15 p-3 dark:border-white/10">
-          <form className="flex items-center gap-2" onSubmit={(event) => void handleSubmit(event)}>
-            <div className="relative flex-1">
-              <Textarea
-                autoResize
-                value={input}
-                onChange={(event) => setInput(event.currentTarget.value)}
-                onKeyDown={(event) => void handleInputKeyDown(event)}
-                placeholder="질문을 입력해 주세요."
-                maxLength={CHAT_USER_INPUT_MAX_LENGTH}
-                disabled={!isHydrated || isGenerating}
-                className="block min-h-10 max-h-[120px] resize-none py-2.5 pl-3 pr-14 text-sm"
-              />
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground/60 select-none pointer-events-none">
-                {input.length}/{CHAT_USER_INPUT_MAX_LENGTH}
-              </span>
-            </div>
-            {isGenerating ? (
-              <Button 
-                type="button" 
-                variant="outline" 
-                size="icon" 
-                className="size-10 shrink-0 rounded-xl border-amber-500/30 text-amber-500 hover:bg-amber-500/10" 
-                onClick={stop}
-                aria-label="답변 생성 중단"
-              >
-                <Square className="size-4 fill-current" />
-              </Button>
-            ) : (
-              <Button 
-                type="submit" 
-                size="icon" 
-                className="size-10 shrink-0 rounded-xl transition-all duration-200" 
-                disabled={!isHydrated || !input.trim() || isGenerating}
-                aria-label="메시지 전송"
-              >
-                <SendHorizontal className="size-4" />
-              </Button>
-            )}
-          </form>
-          <p className="mt-2 px-1 text-[10px] leading-relaxed text-muted-foreground/70">
-            입력 내용은 AI 답변 생성을 위해 외부 모델 제공자에게 전송됩니다. 개인정보는 입력하지 마세요.
-          </p>
-        </div>
-      </div>
+          {/* 입력 영역 */}
+          <div className="border-t border-white/15 p-3 dark:border-white/10">
+            <form className="flex items-center gap-2" onSubmit={(event) => void handleSubmit(event)}>
+              <div className="relative flex-1">
+                <Textarea
+                  ref={inputRef}
+                  aria-label="질문 입력"
+                  autoResize
+                  value={input}
+                  onChange={(event) => setInput(event.currentTarget.value)}
+                  onKeyDown={(event) => void handleInputKeyDown(event)}
+                  placeholder="질문을 입력해 주세요."
+                  maxLength={CHAT_USER_INPUT_MAX_LENGTH}
+                  disabled={!isHydrated || isGenerating}
+                  className="block min-h-10 max-h-[120px] resize-none py-2.5 pl-3 pr-14 text-sm"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground/60 select-none pointer-events-none">
+                  {input.length}/{CHAT_USER_INPUT_MAX_LENGTH}
+                </span>
+              </div>
+              {isGenerating ? (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  className="size-10 shrink-0 rounded-xl border-amber-500/30 text-amber-500 hover:bg-amber-500/10"
+                  onClick={stop}
+                  aria-label="답변 생성 중단"
+                >
+                  <Square className="size-4 fill-current" />
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  size="icon"
+                  className="size-10 shrink-0 rounded-xl transition-all duration-200"
+                  disabled={!isHydrated || !input.trim() || isGenerating || conversationLimitReached}
+                  aria-label="메시지 전송"
+                >
+                  <SendHorizontal className="size-4" />
+                </Button>
+              )}
+            </form>
+            <p className="mt-2 px-1 text-[10px] leading-relaxed text-muted-foreground/70">
+              입력 내용은 AI 답변 생성을 위해 외부 모델 제공자에게 전송됩니다. 개인정보는 입력하지 마세요.
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* 플로팅 버튼: 모바일에서 패널이 열리면 숨김 (패널이 전체화면이므로) */}
       <Tooltip
@@ -588,6 +644,9 @@ const FloatingChat = () => {
               isOpen && "md:rotate-90",
               isOpen && "max-md:hidden",
             )}
+            aria-haspopup="dialog"
+            aria-expanded={isOpen}
+            aria-controls={isOpen ? "portfolio-chat-dialog" : undefined}
             aria-label={isOpen ? "챗 닫기" : "챗 열기"}
           >
             {isOpen ? <X className="size-5" /> : <MessageCircle className="size-5" />}

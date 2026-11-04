@@ -5,6 +5,13 @@
 
 const HEADER_OFFSET = 80; // header 높이 + 여유 공간 (px)
 
+/** Choose immediate scrolling when the user requests reduced motion. */
+export const getScrollBehavior = (): ScrollBehavior => {
+  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "instant"
+    : "smooth";
+};
+
 /**
  * 지정된 엘리먼트로 부드럽게 스크롤하며 header offset을 고려합니다.
  *
@@ -20,7 +27,7 @@ export const scrollToElement = (
 
   window.scrollTo({
     top: offsetPosition,
-    behavior: "smooth",
+    behavior: getScrollBehavior(),
   });
 };
 

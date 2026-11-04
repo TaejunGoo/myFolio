@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+import { useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import { Navigation, Pagination, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,6 +28,7 @@ interface ImageViewerProps {
 
 const ImageViewer = ({ images, initialIndex, open, onOpenChange, title, onCloseAutoFocus }: ImageViewerProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Dialog가 열릴 때 초기 슬라이드로 이동
   useEffect(() => {
@@ -50,6 +52,7 @@ const ImageViewer = ({ images, initialIndex, open, onOpenChange, title, onCloseA
         <Swiper
           modules={[Navigation, Pagination, Zoom]}
           navigation
+          speed={shouldReduceMotion ? 0 : 300}
           pagination={{ type: "fraction" }}
           zoom={true}
           initialSlide={initialIndex}

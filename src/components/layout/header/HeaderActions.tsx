@@ -20,16 +20,12 @@ export const HeaderActions = () => {
     <div className="flex items-center gap-1">
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:bg-accent"
-            >
+          <Button variant="ghost" size="icon" className="hover:bg-accent" asChild>
+            <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer">
               <FiGithub className="size-5" />
               <span className="sr-only">Github 방문</span>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>Github 방문</p>

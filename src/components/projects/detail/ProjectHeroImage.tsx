@@ -1,11 +1,16 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
+import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import ImagePlaceholder from "@/shared/components/ui/ImagePlaceholder";
+
+import type { Swiper as SwiperType } from "swiper/types";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -17,6 +22,19 @@ interface ProjectHeroImageProps {
 }
 
 const ProjectHeroImage = ({ imageUrlAry, title }: ProjectHeroImageProps) => {
+  const shouldReduceMotion = useReducedMotion();
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || swiper.destroyed) return;
+    if (shouldReduceMotion) {
+      swiper.autoplay.stop();
+    } else {
+      swiper.autoplay.start();
+    }
+  }, [shouldReduceMotion]);
+
   if (!imageUrlAry || imageUrlAry.length === 0) {
     return (
       <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg bg-muted">
@@ -46,7 +64,9 @@ const ProjectHeroImage = ({ imageUrlAry, title }: ProjectHeroImageProps) => {
       slidesPerView={1}
       pagination={{ clickable: true }}
       loop={true}
-      autoplay={{ delay: 3000, disableOnInteraction: true }}
+      autoplay={shouldReduceMotion ? false : { delay: 3000, disableOnInteraction: true }}
+      speed={shouldReduceMotion ? 0 : 300}
+      onSwiper={(swiper) => { swiperRef.current = swiper; }}
       navigation={true}
       className="overflow-hidden rounded-lg"
     >

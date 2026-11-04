@@ -35,7 +35,7 @@ const ProjectCard = ({
   const cardContent = (
     <Card
       className={cn(
-        "group flex cursor-pointer flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
+        "group relative flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
         isPersonalProject
           ? "border-purple-500/30 bg-linear-to-br from-purple-500/10 via-card to-blue-500/10 shadow-purple-500/5 hover:border-purple-500/50 hover:shadow-purple-500/15 dark:from-purple-500/15 dark:via-black/40 dark:to-blue-500/10"
           : "dark:bg-black/40",
@@ -47,7 +47,7 @@ const ProjectCard = ({
           <Badge
             variant={isPersonalProject ? "outline" : "secondary"}
             className={cn(
-              "absolute top-2 right-2 z-10",
+              "pointer-events-none absolute top-2 right-2 z-10",
               isPersonalProject && "border-purple-500/30 bg-purple-500/15 text-purple-700 backdrop-blur-sm dark:text-purple-300",
             )}
           >
@@ -78,21 +78,25 @@ const ProjectCard = ({
         <div className="mt-4 flex flex-1 flex-col">
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-xl leading-tight font-bold break-keep">
-              {title}
+              {slug ? (
+                <Link
+                  href={`/projects/${slug}`}
+                  className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-ring"
+                >
+                  {title}
+                </Link>
+              ) : title}
             </h3>
             {projectLink && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.open(projectLink, "_blank", "noopener,noreferrer");
-                }}
-                title="사이트 방문"
-                className="relative z-10 mt-1 cursor-pointer text-muted-foreground transition-colors hover:text-primary"
+              <a
+                href={projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${title} 웹사이트 열기 (새 탭)`}
+                className="relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                <ExternalLink className="size-4" />
-              </button>
+                <ExternalLink className="size-4" aria-hidden="true" />
+              </a>
             )}
           </div>
 
@@ -123,10 +127,6 @@ const ProjectCard = ({
     </Card>
   );
 
-  return (
-    <Link href={`/projects/${slug}`} className="block size-full">
-      {cardContent}
-    </Link>
-  );
+  return cardContent;
 };
 export default ProjectCard;

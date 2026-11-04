@@ -2,47 +2,36 @@
 
 import { MessageCircle } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { useFloatingChat } from "@/lib/chatbot/FloatingChatContext";
+import { cn } from "@/shared/utils";
 
 const ChatCTA = () => {
   const { open } = useFloatingChat();
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      open();
-    }
-  };
-
   return (
-    <div
+    <button
       id="chat"
-      role="button"
-      tabIndex={0}
+      type="button"
+      aria-haspopup="dialog"
+      aria-label="AI 어시스턴트에게 질문하기"
       onClick={open}
-      onKeyDown={handleKeyDown}
-      className="flex cursor-pointer select-none items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/60 px-5 py-4 shadow-xl backdrop-blur-lg transition-all duration-200 hover:border-primary/30 hover:bg-white/80 active:scale-[0.99] dark:border-white/10 dark:bg-black/40 dark:hover:border-primary/30 dark:hover:bg-black/50"
+      className="flex cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/60 px-5 py-4 text-left shadow-xl backdrop-blur-lg transition-all duration-200 select-none hover:border-primary/30 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:scale-[0.99] dark:border-white/10 dark:bg-black/40 dark:hover:border-primary/30 dark:hover:bg-black/50"
     >
-      <div className="flex items-center gap-3">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
-          <MessageCircle className="size-4" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold">AI 어시스턴트에게 물어보세요</p>
-          <p className="text-xs text-muted-foreground">경력, 프로젝트, 기술 스택 등 궁금한 점을 바로 확인해 보세요.</p>
-        </div>
-      </div>
-      <Button
-        size="sm"
-        variant="outline"
-        className="pointer-events-none shrink-0 gap-1.5"
-        aria-label="챗봇 열기"
-      >
-        <MessageCircle className="size-3.5" />
+      <span className="flex min-w-0 items-center gap-3">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
+          <MessageCircle className="size-4" aria-hidden="true" />
+        </span>
+        <span>
+          <span className="block text-sm font-semibold">AI 어시스턴트에게 물어보세요</span>
+          <span className="block text-xs text-muted-foreground">경력, 프로젝트, 기술 스택 등 궁금한 점을 바로 확인해 보세요.</span>
+        </span>
+      </span>
+      <span className={cn(buttonVariants({ size: "sm", variant: "outline" }), "shrink-0 gap-1.5")}>
+        <MessageCircle className="size-3.5" aria-hidden="true" />
         질문하기
-      </Button>
-    </div>
+      </span>
+    </button>
   );
 };
 

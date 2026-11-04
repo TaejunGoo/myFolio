@@ -60,11 +60,11 @@ export const MobileHeader = () => {
   return (
     <div className="block h-16 md:hidden">
       <Container className="h-full">
-        <div className="flex size-full items-center justify-between">
+        <div className="flex size-full items-center justify-between gap-2">
           {isMainPage ? (
             <NameCard />
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
               <Button
                 variant="ghost"
                 size="icon"
@@ -74,7 +74,7 @@ export const MobileHeader = () => {
                 <ArrowLeft className="size-5" />
                 <span className="sr-only">뒤로 가기</span>
               </Button>
-              <h1 className="truncate text-lg font-bold">{pageTitle}</h1>
+              <h1 className="min-w-0 truncate text-lg font-bold">{pageTitle}</h1>
             </div>
           )}
 

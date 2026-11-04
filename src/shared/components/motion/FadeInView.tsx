@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
 
 import { cn } from "@/shared/utils";
 
@@ -67,14 +67,16 @@ const FadeInView = ({
   className,
   ...props
 }: FadeInViewProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   const variants: Variants = {
-    hidden: { opacity: 0, y: yOffset },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : yOffset },
     visible: { opacity: 1, y: 0 },
   };
 
   return (
     <motion.div
-      initial="hidden"
+      initial={shouldReduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{
         margin: viewportMargin,
@@ -83,8 +85,8 @@ const FadeInView = ({
       }}
       variants={variants}
       transition={{
-        duration,
-        delay,
+        duration: shouldReduceMotion ? 0 : duration,
+        delay: shouldReduceMotion ? 0 : delay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
       className={cn(className)}

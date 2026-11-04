@@ -48,12 +48,12 @@ const IntroCard = ({ className }: IntroCardProps) => {
       </CardContent>
       <CardFooter>
         <div className="grid w-full gap-2 sm:grid-cols-2">
-          <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="sm:col-span-2">
-            <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full sm:col-span-2" asChild>
+            <Link href={profile.githubUrl} target="_blank" rel="noopener noreferrer">
               <FiGithub className="size-4" />
               Github 방문
-            </Button>
-          </Link>
+            </Link>
+          </Button>
           <Button variant="outline" className="flex-1" asChild>
             <Link
               href={profile.resumeUrl}

@@ -14,6 +14,8 @@ export interface ProfileData {
   email: string;
   /** GitHub URL */
   githubUrl: string;
+  /** Public portfolio URL. */
+  portfolioUrl: string;
   /** 아바타 이미지 경로 */
   avatarUrl: string;
   /** 아바타 이미지 alt 텍스트 */
@@ -51,6 +53,7 @@ export const profile: ProfileData = {
   title: "Web Publisher",
   email: "gtxggle@gmail.com",
   githubUrl: "https://github.com/TaejunGoo",
+  portfolioUrl: "https://taejun-my-folio.vercel.app/",
   avatarUrl: "/images/profile/profile.webp",
   avatarAlt: "증명사진",
   resumeUrl: "/docs/퍼블리셔_구태준_이력서.pdf",

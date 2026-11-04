@@ -11,7 +11,7 @@ export const SITE_AUTHOR = profile.nameEn;
 export const SITE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://taejun-my-folio.vercel.app";
+    : profile.portfolioUrl.replace(/\/$/, "");
 export const SITE_LOCALE = "ko_KR";
 
 // ========================================
