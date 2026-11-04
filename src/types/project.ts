@@ -19,6 +19,25 @@ export interface ProjectCardProps {
   priority?: boolean;
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+}
+
+export interface SubProject {
+  id: string;
+  title: string;
+  subtitle?: string;
+  details: string[];
+  links?: { label: string; href: string }[];
+  images?: ProjectImage[];
+  status?: "discontinued" | "in-progress";
+  statusDescription?: string;
+}
+
 export interface CustomSection {
   title: string;
   type: "text" | "list" | "gallery";
@@ -32,4 +51,5 @@ export interface ProjectDetailData extends Omit<ProjectCardProps, "className"> {
   highlights?: string[];
   challenges?: string[];
   customSections?: CustomSection[];
+  subProjects?: SubProject[];
 }

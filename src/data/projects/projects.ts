@@ -206,7 +206,7 @@ export const projectsData: ProjectCardProps[] = [
       "업무와 일상에서 발견한 문제를 정의하고, AI 코딩 에이전트를 활용해 구현·검증·배포한 개인 웹 서비스 모음",
     periodStart: "2026-01",
     participation: 100,
-    stack: ["Claude Code", "GitHub Copilot", "Gemini CLI", "Antigravity"],
+    stack: ["Claude Code", "Codex", "GitHub Copilot", "Gemini CLI", "Antigravity"],
     imageUrlAry: ["/images/projects/vibe_1.webp"],
   },
 ];

@@ -245,56 +245,120 @@ export const projectDetailData: ProjectDetailData[] = [
       "AI가 생성한 결과를 검증하고 요구사항에 맞게 반복 개선",
       "대용량 이미지 탐색, 외부 API 연동, 데이터 수집·시각화 구현 경험",
     ],
-    customSections: [
+    subProjects: [
       {
-        title: "Img2LD (Product JSON-LD 생성기)",
-        type: "list",
-        content: [
-          "https://img2ld.vercel.app/",
-          "https://github.com/TaejunGoo/img2ld",
-          "목적: 상품 상세 이미지 또는 이미지를 포함한 CSV 데이터셋을 기반으로 Product JSON-LD를 자동 생성해 구조화 데이터 작성 부담을 줄이는 서비스 개발",
-          "구현: 이미지 업로드와 CSV 파싱을 분기 처리하고, Gemini 분석 결과를 Zod로 부분 검증하여 사용 가능한 필드를 최대한 유지하도록 설계",
+        id: "img2ld",
+        title: "Img2LD",
+        subtitle: "상품 구조화 데이터 생성기",
+        details: [
+          "상품 상세 이미지 또는 이미지를 포함한 CSV 데이터셋을 기반으로 Product JSON-LD를 자동 생성해 구조화 데이터 작성 부담을 줄이는 서비스 개발",
+          "이미지 업로드와 CSV 파싱을 분기 처리하고, Gemini 분석 결과를 Zod로 부분 검증하여 사용 가능한 필드를 최대한 유지하도록 설계",
+        ],
+        links: [
+          { label: "서비스 보기", href: "https://img2ld.vercel.app/" },
+          { label: "GitHub", href: "https://github.com/TaejunGoo/img2ld" },
+        ],
+        images: [
+          { src: "/images/projects/vibe_5.webp", width: 1281, height: 826, alt: "Img2LD의 상품 이미지 업로드와 Product JSON-LD 생성 결과 화면", caption: "상품 상세 이미지를 업로드하고 구조화 데이터 생성 결과를 확인하는 화면" },
         ],
       },
       {
-        title: "Binoculars Simulator (쌍안경 시뮬레이터)",
-        type: "list",
-        content: [
-          "https://binoculars-simulator.vercel.app/",
-          "https://github.com/TaejunGoo/binoculars-simulator",
-          "목적: 쌍안경의 시각적 왜곡 및 배율 효과를 브라우저에서 시뮬레이션",
-          "기술 적용: 기가픽셀 이미지(49537x19429, 575MB)를 브라우저에서 탐색할 수 있도록 OpenSeadragon 뷰어와 이미지 타일링 적용",
-          "기능: 4x~12x 가변 배율 조정, CSS 및 SVG 필터를 활용한 렌즈 특성 시각화",
+        id: "binoculars-simulator",
+        title: "Binoculars Simulator",
+        subtitle: "쌍안경 시뮬레이터",
+        details: [
+          "쌍안경의 시각적 왜곡 및 배율 효과를 브라우저에서 시뮬레이션",
+          "기가픽셀 이미지(49537x19429, 575MB)를 브라우저에서 탐색할 수 있도록 OpenSeadragon 뷰어와 이미지 타일링 적용",
+          "4x~12x 가변 배율 조정, CSS 및 SVG 필터를 활용한 렌즈 특성 시각화",
+        ],
+        links: [
+          { label: "서비스 보기", href: "https://binoculars-simulator.vercel.app/" },
+          { label: "GitHub", href: "https://github.com/TaejunGoo/binoculars-simulator" },
+        ],
+        images: [
+          { src: "/images/projects/vibe_4.webp", width: 1920, height: 926, alt: "쌍안경 시뮬레이터의 배율 및 렌즈 설정 패널과 확대 이미지 화면", caption: "배율과 렌즈 특성을 조정하며 원본 이미지의 확대 결과를 비교하는 화면" },
         ],
       },
       {
-        title: "네이버 스마트스토어 교집합 찾기 (서비스 종료)",
-        type: "list",
-        content: [
-          "서비스 상태: 네이버 쇼핑 검색 API가 2026년 7월 31일 종료되어 현재 교집합 검색을 이용할 수 없습니다. 배포 페이지에서 종료 안내를 확인할 수 있습니다.",
-          "네이버 공식 종료 공지: https://developers.naver.com/notice/article/32564",
-          "https://naver-store-intersect-finder.vercel.app/",
-          "https://github.com/TaejunGoo/naver-store-intersect-finder",
-          "문제 해결: 여러 관심 상품을 단일 스토어에서 묶음 배송으로 구매하고 싶을 때 일일이 검색해야 하는 페인포인트(Pain-point) 해소",
-          "구현: 네이버 쇼핑 검색 API를 활용하여 입력한 여러 키워드의 상품을 모두 판매하는 스토어만 교집합으로 필터링",
-          "안정성: Redis를 활용하여 API 요청 횟수 제한(Rate Limiting) 관리",
+        id: "naver-store-intersect-finder",
+        title: "네이버 스마트스토어 교집합 찾기",
+        subtitle: "스마트스토어 검색 도구",
+        statusDescription: "네이버 쇼핑 검색 API 종료(2026년 7월 31일)로 교집합 검색 제공 중단. 배포 페이지에서 종료 안내 확인 가능",
+        details: [
+          "여러 관심 상품을 단일 스토어에서 묶음 배송으로 구매하고 싶을 때 일일이 검색해야 하는 페인포인트(Pain-point) 해소",
+          "네이버 쇼핑 검색 API를 활용하여 입력한 여러 키워드의 상품을 모두 판매하는 스토어만 교집합으로 필터링",
+          "Redis를 활용하여 API 요청 횟수 제한(Rate Limiting) 관리",
+        ],
+        links: [
+          { label: "웹사이트 열기", href: "https://naver-store-intersect-finder.vercel.app/" },
+          { label: "GitHub", href: "https://github.com/TaejunGoo/naver-store-intersect-finder" },
+        ],
+        images: [
+          { src: "/images/projects/vibe_3.webp", width: 1600, height: 900, alt: "여러 검색어의 상품을 함께 판매하는 스마트스토어 검색 결과 화면", caption: "서비스 운영 당시의 교집합 검색 결과 화면" },
         ],
       },
       {
+        id: "real-estate-dashboard",
         title: "부동산 가격 트렌드 대시보드",
-        type: "list",
-        content: [
-          "https://naver-land-scraper.vercel.app/",
-          "https://github.com/TaejunGoo/naver-land-scraper",
-          "문제 해결: 특정 아파트 단지의 매물 가격 변동 추이를 지속적으로 추적하기 위한 자동화 도구 필요성",
-          "구현: Puppeteer를 활용해 네이버 부동산 데이터 수집 자동화",
-          "시각화: 로컬 DB에 적재된 데이터를 바탕으로 시계열 차트를 구현하여 직관적인 트렌드 파악 지원",
+        subtitle: "부동산 데이터 수집·시각화",
+        details: [
+          "특정 아파트 단지의 매물 가격 변동 추이를 지속적으로 추적하기 위한 자동화 도구 필요성",
+          "Puppeteer를 활용해 네이버 부동산 데이터 수집 자동화",
+          "로컬 DB에 적재된 데이터를 바탕으로 시계열 차트를 구현하여 직관적인 트렌드 파악 지원",
+        ],
+        links: [
+          { label: "서비스 보기", href: "https://naver-land-scraper.vercel.app/" },
+          { label: "GitHub", href: "https://github.com/TaejunGoo/naver-land-scraper" },
+        ],
+        images: [
+          { src: "/images/projects/vibe_2.webp", width: 1600, height: 900, alt: "부동산 대시보드의 매물 증감 지표와 관심 아파트 단지 목록", caption: "매물 증감과 관심 단지별 현황을 모아 보는 대시보드 화면" },
         ],
       },
       {
-        title: "갤러리",
-        type: "gallery",
-        content: ["/images/projects/vibe_5.webp", "/images/projects/vibe_4.webp", "/images/projects/vibe_3.webp", "/images/projects/vibe_2.webp"],
+        id: "household-ledger",
+        title: "가계부 앱",
+        subtitle: "Figma 디자인과 AI 코딩을 연결하는 앱 제작",
+        status: "in-progress",
+        details: [
+          "부부·가족이 수입과 지출을 함께 기록하는 공유 가계부 앱 기획 및 디자인·개발 진행 중",
+          "Figma에서 코어 화면과 디자인 기준 직접 설계",
+          "Codex가 Figma MCP로 코어 화면을 참조해 기존 레이아웃·스타일 기조에 맞춰 후속 화면 추가 및 확장",
+          "완성된 화면 디자인을 Codex가 Figma MCP로 다시 확인하고, 재사용 가능한 코드 컴포넌트로 제작해 Storybook에 등록",
+          "향후 Supabase를 연동해 가계부 데이터 저장 및 가족 간 공유 기능 구현 계획",
+        ],
+        links: [
+          { label: "Figma 디자인 보기", href: "https://www.figma.com/design/8cXT2YVqMIthCBi6JlZAtG?node-id=0-1" },
+        ],
+        images: [
+          {
+            src: "/images/projects/household-ledger/calendar.png",
+            width: 393,
+            height: 854,
+            alt: "가계부 앱의 월 달력과 날짜별 거래 내역 디자인 시안",
+            caption: "메인 달력·날짜별 내역 디자인 시안",
+          },
+          {
+            src: "/images/projects/household-ledger/transaction-form.png",
+            width: 393,
+            height: 852,
+            alt: "지출과 수입의 금액 및 카테고리를 입력하는 거래 등록 디자인 시안",
+            caption: "거래 등록 디자인 시안",
+          },
+          {
+            src: "/images/projects/household-ledger/recurring-expenses.png",
+            width: 393,
+            height: 852,
+            alt: "가계부 앱의 반복지출 목록 디자인 시안",
+            caption: "반복지출 목록 디자인 시안",
+          },
+          {
+            src: "/images/projects/household-ledger/component-states.png",
+            width: 1202,
+            height: 1049,
+            alt: "카테고리 선택과 버튼, 달력, 빈 상태 및 모달의 Figma 컴포넌트 상태 구성",
+            caption: "선택·비활성·빈 상태와 모달을 정리한 Figma 컴포넌트 구성",
+          },
+        ],
       },
     ],
   },

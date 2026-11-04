@@ -124,7 +124,7 @@ const ProjectCard = ({
   );
 
   return (
-    <Link href={`/projects/${slug}`} className="block h-full">
+    <Link href={`/projects/${slug}`} className="block size-full">
       {cardContent}
     </Link>
   );

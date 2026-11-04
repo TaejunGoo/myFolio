@@ -1,17 +1,11 @@
 "use client";
 
-import { useState } from "react";
-
 import { ExternalLink } from "lucide-react";
-import dynamic from "next/dynamic";
-import Image from "next/image";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import type { CustomSection } from "@/types";
 
+import ProjectGallery from "./ProjectGallery";
 import ProjectSection from "./ProjectSection";
-
-const ImageViewer = dynamic(() => import("./ImageViewer"), { ssr: false });
 
 interface ProjectCustomSectionProps {
   section: CustomSection;
@@ -49,13 +43,6 @@ const parseTextWithLinks = (text: string) => {
 
 const ProjectCustomSection = ({ section }: ProjectCustomSectionProps) => {
   const { title, type, content } = section;
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
-  const handleImageClick = (index: number) => {
-    setSelectedImageIndex(index);
-    setIsViewerOpen(true);
-  };
 
   return (
     <ProjectSection title={title}>
@@ -75,33 +62,10 @@ const ProjectCustomSection = ({ section }: ProjectCustomSectionProps) => {
       )}
 
       {type === "gallery" && Array.isArray(content) && (
-        <>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {content.map((url, index) => (
-              <AspectRatio
-                key={index}
-                ratio={16 / 9}
-                className="overflow-hidden rounded-lg bg-muted transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src={url}
-                  alt={`${title} - ${index + 1}`}
-                  fill
-                  className="cursor-pointer object-cover object-top"
-                  onClick={() => handleImageClick(index)}
-                />
-              </AspectRatio>
-            ))}
-          </div>
-
-          <ImageViewer
-            images={content}
-            initialIndex={selectedImageIndex}
-            open={isViewerOpen}
-            onOpenChange={setIsViewerOpen}
-            title={title}
-          />
-        </>
+        <ProjectGallery
+          title={title}
+          images={content.map((src, index) => ({ src, alt: `${title} - ${index + 1}` }))}
+        />
       )}
     </ProjectSection>
   );

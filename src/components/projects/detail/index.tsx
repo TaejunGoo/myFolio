@@ -10,6 +10,7 @@ import ProjectNavigation from "./ProjectNavigation";
 import ProjectOverview from "./ProjectOverview";
 import ProjectRole from "./ProjectRole";
 import ProjectStack from "./ProjectStack";
+import ProjectSubProjects from "./ProjectSubProjects";
 
 interface ProjectDetailProps {
   project: ProjectDetailData;
@@ -32,6 +33,7 @@ const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps
     stack,
     highlights,
     customSections,
+    subProjects,
   } = project;
 
   return (
@@ -67,6 +69,13 @@ const ProjectDetail = ({ project, prevProject, nextProject }: ProjectDetailProps
           <>
             <Separator />
             <ProjectHighlights highlights={highlights} />
+          </>
+        )}
+
+        {subProjects && subProjects.length > 0 && (
+          <>
+            <Separator />
+            <ProjectSubProjects projects={subProjects} />
           </>
         )}
 
