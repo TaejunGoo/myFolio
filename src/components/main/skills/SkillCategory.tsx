@@ -28,7 +28,7 @@ const SkillCategory = ({ category, className }: SkillCategoryProps) => {
     <Card
       className={cn(
         "group relative h-full transition-all duration-300 dark:bg-black/40",
-        "hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/20",
+        "hover:-translate-y-1",
         className,
       )}
     >

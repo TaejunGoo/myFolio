@@ -35,7 +35,7 @@ const ProjectCard = ({
   const cardContent = (
     <Card
       className={cn(
-        "group relative flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-black/40",
+        "group relative flex flex-col transition-all duration-300 hover:-translate-y-1 dark:bg-black/40",
         className,
       )}
     >

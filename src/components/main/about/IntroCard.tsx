@@ -17,11 +17,11 @@ interface IntroCardProps {
 }
 const IntroCard = ({ className }: IntroCardProps) => {
   return (
-    <Card className={cn("w-full border-white/20 bg-white/60 shadow-xl backdrop-blur-lg dark:border-white/10 dark:bg-black/40", className)}>
+    <Card className={cn("w-full border-border bg-white/60 backdrop-blur-lg dark:bg-black/40", className)}>
       <CardHeader className="space-y-6">
         <div className="flex flex-col items-start gap-4">
           <div className="flex items-center gap-4">
-            <Avatar className="size-20 shadow-xl md:size-24">
+            <Avatar className="size-20 md:size-24">
               <AvatarImage src={profile.avatarUrl} alt={profile.avatarAlt} sizes="(max-width: 768px) 80px, 96px" />
               <AvatarFallback className="bg-linear-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white">
                 {profile.name}

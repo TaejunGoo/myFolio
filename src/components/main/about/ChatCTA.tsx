@@ -16,7 +16,7 @@ const ChatCTA = () => {
       aria-haspopup="dialog"
       aria-label="AI 어시스턴트에게 질문하기"
       onClick={open}
-      className="flex cursor-pointer flex-col items-stretch justify-between gap-3 rounded-2xl border border-white/20 bg-white/60 px-5 py-4 text-left shadow-xl backdrop-blur-lg transition-all duration-200 select-none hover:border-primary/30 hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:scale-[0.99] sm:flex-row sm:items-center sm:gap-4 dark:border-white/10 dark:bg-black/40 dark:hover:border-primary/30 dark:hover:bg-black/50"
+      className="flex cursor-pointer flex-col items-stretch justify-between gap-3 rounded-2xl border border-border bg-white/60 px-5 py-4 text-left backdrop-blur-lg transition-all duration-200 select-none hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:scale-[0.99] sm:flex-row sm:items-center sm:gap-4 dark:bg-black/40 dark:hover:bg-black/50"
     >
       <span className="flex min-w-0 items-center gap-3">
         <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">

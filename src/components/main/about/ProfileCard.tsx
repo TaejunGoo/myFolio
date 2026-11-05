@@ -27,11 +27,11 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
     },
   ];
   return (
-    <Card className={cn("w-full border-white/20 bg-white/60 shadow-xl backdrop-blur-lg dark:border-white/10 dark:bg-black/40", className)}>
+    <Card className={cn("w-full border-border bg-white/60 backdrop-blur-lg dark:bg-black/40", className)}>
       <CardContent>
         <div className="flex flex-col gap-6">
           <div
-            className="rounded-lg bg-white/40 p-4 text-center shadow-xs dark:bg-white/5"
+            className="rounded-lg bg-white/40 p-4 text-center dark:bg-white/5"
           >
             <ProfileItem title="주요 업무 및 역할">
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
@@ -48,7 +48,7 @@ const ProfileCard = ({ className, projectsCount, maintenanceCount }: ProfileCard
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="gap-1/2 flex flex-col items-center rounded-lg bg-white/40 p-4 text-center shadow-xs first:col-span-2 md:first:col-span-1 dark:bg-white/5"
+                className="gap-1/2 flex flex-col items-center rounded-lg bg-white/40 p-4 text-center first:col-span-2 md:first:col-span-1 dark:bg-white/5"
               >
                 <span className="text-xl font-bold tracking-tight md:text-2xl">
                   {stat.value}
